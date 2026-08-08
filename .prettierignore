@@ -1,0 +1,11 @@
+node_modules/
+.expo/
+dist/
+ios/
+android/
+package-lock.json
+
+# Authored documents — formatted by hand, not by a tool
+CLAUDE.md
+HIGH_LEVEL_OVERVIEW.md
+IMPLEMENTATION.md

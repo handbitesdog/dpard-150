@@ -1,0 +1,40 @@
+appId: gov.dallascityhall.parks
+name: Onboarding runs once on a fresh install
+---
+# Fresh install: welcome -> 4 slides -> Discover.
+- clearState
+- launchApp
+
+- assertVisible:
+    id: 'onboarding-welcome'
+- tapOn:
+    id: 'onboarding-get-started'
+
+- assertVisible: 'Learn'
+- assertVisible:
+    id: 'onboarding-advance'
+- tapOn:
+    id: 'onboarding-advance'
+
+- assertVisible: 'Collect'
+- tapOn:
+    id: 'onboarding-advance'
+
+- assertVisible: 'Listen'
+- tapOn:
+    id: 'onboarding-advance'
+
+- assertVisible: 'Connect'
+- assertVisible: "Let's go!"
+- tapOn:
+    id: 'onboarding-advance'
+
+- assertVisible:
+    id: 'screen-discover'
+
+# Relaunch without clearing state: straight to Discover, no intro.
+- launchApp
+- assertVisible:
+    id: 'screen-discover'
+- assertNotVisible:
+    id: 'onboarding-welcome'

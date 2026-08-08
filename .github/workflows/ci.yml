@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Typecheck, lint, and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Unit and component tests
+        run: npm test -- --ci
+# Maestro is deliberately not run here. The stack needs a custom dev client —
+# MMKV, react-native-maps, and the background-audio config plugins all rule out
+# Expo Go — so every Maestro run needs a built artifact on a macOS runner. Run
+# the flows in maestro/ on a schedule and before each release instead.
+# See IMPLEMENTATION.md, Appendix D.

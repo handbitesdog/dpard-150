@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Dallas Parks & Rec",
+    "slug": "dpard",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "dpard",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "gov.dallascityhall.parks"
+    },
+    "android": {
+      "package": "gov.dallascityhall.parks",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

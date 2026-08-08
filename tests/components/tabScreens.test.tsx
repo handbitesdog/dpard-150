@@ -1,0 +1,22 @@
+import { render, screen } from '@testing-library/react-native';
+import ConnectScreen from '../../app/(tabs)/connect';
+import DiscoverScreen from '../../app/(tabs)/discover';
+import ExploreScreen from '../../app/(tabs)/explore';
+import ListenScreen from '../../app/(tabs)/listen';
+import PassportScreen from '../../app/(tabs)/passport';
+
+describe('tab screens', () => {
+  const screens = [
+    ['Discover', DiscoverScreen],
+    ['Listen', ListenScreen],
+    ['Explore', ExploreScreen],
+    ['Passport', PassportScreen],
+    ['Connect', ConnectScreen],
+  ] as const;
+
+  it.each(screens)('%s renders with a heading', async (title, Screen) => {
+    await render(<Screen />);
+
+    expect(screen.getByRole('header', { name: title })).toBeOnTheScreen();
+  });
+});
