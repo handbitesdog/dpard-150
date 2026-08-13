@@ -13,6 +13,8 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ONBOARDING_SLIDES, type OnboardingSlide } from '@/features/onboarding/slides';
 import { usePrefsStore } from '@/stores/prefsStore';
+import { palette } from '@/design/colors';
+import { fontFamily } from '@/design/typography';
 
 /** Clamps a `[step]` route param (1-based) to a valid slide index (0-based). */
 function parseStepParam(step: string | undefined): number {
@@ -111,10 +113,16 @@ export default function OnboardingSlides() {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#ffffff' },
+  screen: { flex: 1, backgroundColor: palette.beige },
   slide: { flex: 1, justifyContent: 'center', paddingHorizontal: 24 },
-  title: { fontSize: 34, lineHeight: 40, fontWeight: '700', marginBottom: 16 },
-  body: { fontSize: 17, lineHeight: 24 },
+  title: {
+    fontSize: 34,
+    lineHeight: 40,
+    fontFamily: fontFamily.bold,
+    color: palette.navy,
+    marginBottom: 16,
+  },
+  body: { fontSize: 17, lineHeight: 24, fontFamily: fontFamily.regular, color: palette.navy },
   progress: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -122,17 +130,17 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   dot: { width: 8, height: 8, borderRadius: 4 },
-  dotActive: { backgroundColor: '#0f3357' },
-  dotInactive: { backgroundColor: '#e5e5ea' },
+  dotActive: { backgroundColor: palette.navy },
+  dotInactive: { backgroundColor: palette.grey },
   button: {
     minHeight: 44,
     marginHorizontal: 24,
     marginBottom: 16,
     borderRadius: 12,
-    backgroundColor: '#0f3357',
+    backgroundColor: palette.navy,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 24,
   },
-  buttonLabel: { color: '#ffffff', fontSize: 17, fontWeight: '600' },
+  buttonLabel: { color: palette.white, fontSize: 17, fontFamily: fontFamily.semibold },
 });

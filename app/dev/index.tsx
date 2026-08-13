@@ -4,6 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { readSkipOnboardingFlag, shouldShowOnboarding } from '@/lib/onboarding';
 import { usePrefsStore } from '@/stores/prefsStore';
 import { clearAllPersistedState } from '@/stores/storage';
+import { palette } from '@/design/colors';
+import { fontFamily } from '@/design/typography';
 
 function DevButton({
   label,
@@ -81,16 +83,16 @@ export default function DevTools() {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#ffffff', padding: 24, gap: 12 },
+  screen: { flex: 1, backgroundColor: palette.beige, padding: 24, gap: 12 },
   status: { gap: 4, marginBottom: 12 },
-  statusLine: { fontSize: 13, lineHeight: 18, fontFamily: 'Courier' },
+  statusLine: { fontSize: 13, lineHeight: 18, fontFamily: 'Courier', color: palette.navy },
   button: {
     minHeight: 44,
     borderRadius: 12,
-    backgroundColor: '#0f3357',
+    backgroundColor: palette.navy,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 24,
   },
-  buttonLabel: { color: '#ffffff', fontSize: 17, fontWeight: '600' },
+  buttonLabel: { color: palette.white, fontSize: 17, fontFamily: fontFamily.semibold },
 });

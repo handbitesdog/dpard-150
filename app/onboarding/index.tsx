@@ -1,6 +1,8 @@
 import { Link } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { palette } from '@/design/colors';
+import { fontFamily } from '@/design/typography';
 
 export default function OnboardingWelcome() {
   return (
@@ -29,17 +31,23 @@ export default function OnboardingWelcome() {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#ffffff', padding: 24 },
+  screen: { flex: 1, backgroundColor: palette.beige, padding: 24 },
   body: { flex: 1, justifyContent: 'center' },
-  title: { fontSize: 34, lineHeight: 40, fontWeight: '700', marginBottom: 16 },
-  subtitle: { fontSize: 17, lineHeight: 24 },
+  title: {
+    fontSize: 34,
+    lineHeight: 40,
+    fontFamily: fontFamily.bold,
+    color: palette.navy,
+    marginBottom: 16,
+  },
+  subtitle: { fontSize: 17, lineHeight: 24, fontFamily: fontFamily.regular, color: palette.navy },
   button: {
     minHeight: 44,
     borderRadius: 12,
-    backgroundColor: '#0f3357',
+    backgroundColor: palette.navy,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 24,
   },
-  buttonLabel: { color: '#ffffff', fontSize: 17, fontWeight: '600' },
+  buttonLabel: { color: palette.white, fontSize: 17, fontFamily: fontFamily.semibold },
 });
