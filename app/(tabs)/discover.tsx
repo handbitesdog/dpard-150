@@ -1,13 +1,12 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Screen } from '@/components/Screen';
-import { palette } from '@/design/colors';
-import { fontFamily } from '@/design/typography';
+import { Text } from '@/components/Text';
 import { spacing } from '@/design/spacing';
 
 export default function DiscoverScreen() {
   return (
     <Screen>
-      <Text style={styles.title} accessibilityRole="header">
+      <Text variant="title1" accessibilityRole="header" style={styles.title}>
         Discover
       </Text>
     </Screen>
@@ -16,10 +15,6 @@ export default function DiscoverScreen() {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 28,
-    lineHeight: 34,
-    fontFamily: fontFamily.bold,
-    color: palette.navy,
     marginTop: spacing.lg,
     marginBottom: spacing.xl,
   },

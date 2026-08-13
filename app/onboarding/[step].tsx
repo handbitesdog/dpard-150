@@ -3,7 +3,6 @@ import {
   FlatList,
   Pressable,
   StyleSheet,
-  Text,
   View,
   useWindowDimensions,
   type NativeScrollEvent,
@@ -13,8 +12,8 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ONBOARDING_SLIDES, type OnboardingSlide } from '@/features/onboarding/slides';
 import { usePrefsStore } from '@/stores/prefsStore';
+import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
-import { fontFamily } from '@/design/typography';
 
 /** Clamps a `[step]` route param (1-based) to a valid slide index (0-based). */
 function parseStepParam(step: string | undefined): number {
@@ -77,10 +76,10 @@ export default function OnboardingSlides() {
         onMomentumScrollEnd={handleMomentumEnd}
         renderItem={({ item }) => (
           <View style={[styles.slide, { width }]}>
-            <Text style={styles.title} accessibilityRole="header">
+            <Text variant="display" accessibilityRole="header" style={styles.title}>
               {item.title}
             </Text>
-            <Text style={styles.body}>{item.body}</Text>
+            <Text variant="body">{item.body}</Text>
           </View>
         )}
       />
@@ -106,7 +105,9 @@ export default function OnboardingSlides() {
         accessibilityLabel={isLast ? "Let's go!" : 'Next'}
         testID="onboarding-advance"
       >
-        <Text style={styles.buttonLabel}>{isLast ? "Let's go!" : 'Next'}</Text>
+        <Text variant="headline" color="white">
+          {isLast ? "Let's go!" : 'Next'}
+        </Text>
       </Pressable>
     </SafeAreaView>
   );
@@ -115,14 +116,7 @@ export default function OnboardingSlides() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: palette.beige },
   slide: { flex: 1, justifyContent: 'center', paddingHorizontal: 24 },
-  title: {
-    fontSize: 34,
-    lineHeight: 40,
-    fontFamily: fontFamily.bold,
-    color: palette.navy,
-    marginBottom: 16,
-  },
-  body: { fontSize: 17, lineHeight: 24, fontFamily: fontFamily.regular, color: palette.navy },
+  title: { marginBottom: 16 },
   progress: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -142,5 +136,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 24,
   },
-  buttonLabel: { color: palette.white, fontSize: 17, fontFamily: fontFamily.semibold },
 });
