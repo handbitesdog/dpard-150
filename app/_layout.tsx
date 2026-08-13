@@ -6,6 +6,7 @@ import {
   NunitoSans_700Bold,
   useFonts,
 } from '@expo-google-fonts/nunito-sans';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function RootLayout() {
   // Avenir Next is a preinstalled iOS system font, so it needs no loading there.
@@ -19,13 +20,13 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
-    <>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <StatusBar style="dark" />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
         <Stack.Screen name="onboarding" />
         <Stack.Screen name="(tabs)" />
       </Stack>
-    </>
+    </GestureHandlerRootView>
   );
 }

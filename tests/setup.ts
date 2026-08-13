@@ -1,4 +1,5 @@
 import * as matchers from '@testing-library/react-native/matchers';
+import 'react-native-gesture-handler/jestSetup';
 
 expect.extend(matchers);
 
