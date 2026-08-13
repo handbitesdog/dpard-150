@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import type { PropsWithChildren } from 'react';
 import { Stack } from 'expo-router';
 import { Button } from '@/components/Button';
+import { Divider } from '@/components/Divider';
 import { LinkRow } from '@/components/LinkRow';
 import { Screen } from '@/components/Screen';
+import { Section } from '@/components/Section';
+import { Sheet } from '@/components/Sheet';
 import { Text } from '@/components/Text';
 import { spacing } from '@/design/spacing';
 import type { TypographyVariant } from '@/design/typography';
@@ -22,19 +24,9 @@ const typographyVariants: TypographyVariant[] = [
   'caption',
 ];
 
-function Section({ title, children }: PropsWithChildren<{ title: string }>) {
-  return (
-    <View style={styles.section}>
-      <Text variant="title2" accessibilityRole="header" style={styles.sectionTitle}>
-        {title}
-      </Text>
-      <View style={styles.sectionBody}>{children}</View>
-    </View>
-  );
-}
-
 export default function ComponentGallery() {
   const [loading, setLoading] = useState(false);
+  const [sheetVisible, setSheetVisible] = useState(false);
 
   const handleLoad = () => {
     setLoading(true);
@@ -94,7 +86,23 @@ export default function ComponentGallery() {
             />
           </Section>
 
-          <Section title="LinkRow">
+          <Section title="Divider">
+            <Text>Above the divider</Text>
+            <Divider />
+            <Text>Below the divider</Text>
+          </Section>
+
+          <Section title="Sheet">
+            <Button
+              label="Open sheet"
+              onPress={() => setSheetVisible(true)}
+              variant="secondary"
+              color="sky"
+              fullWidth={false}
+            />
+          </Section>
+
+          <Section title="LinkRow" onSeeAllPress={() => {}}>
             <View style={styles.tightList}>
               <LinkRow icon="call-outline" label="123-456-7890" onPress={() => {}} />
               <LinkRow icon="globe-outline" label="dallasparks.org/" onPress={() => {}} />
@@ -107,21 +115,25 @@ export default function ComponentGallery() {
           </Section>
         </ScrollView>
       </Screen>
+
+      <Sheet visible={sheetVisible} onDismiss={() => setSheetVisible(false)}>
+        <View style={styles.sheetContent}>
+          <Text variant="title2" accessibilityRole="header">
+            Kiest Park
+          </Text>
+          <Text>Open daily, 6am–10pm. Free parking off Elmwood Blvd.</Text>
+          <Button label="Close" onPress={() => setSheetVisible(false)} />
+        </View>
+      </Sheet>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  section: {
-    marginBottom: spacing.xl,
-  },
-  sectionTitle: {
-    marginBottom: spacing.md,
-  },
-  sectionBody: {
-    gap: spacing.base,
-  },
   tightList: {
     gap: spacing.xs,
+  },
+  sheetContent: {
+    gap: spacing.base,
   },
 });
