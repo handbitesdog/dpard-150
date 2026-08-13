@@ -1,7 +1,7 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
-import { fontFamily } from '@/design/typography';
 
 /**
  * Stand-in for a tab's real content until its page-building phase lands.
@@ -11,7 +11,7 @@ import { fontFamily } from '@/design/typography';
 export function PlaceholderScreen({ title }: { title: string }) {
   return (
     <SafeAreaView style={styles.screen} testID={`screen-${title.toLowerCase()}`}>
-      <Text style={styles.title} accessibilityRole="header">
+      <Text variant="title1" accessibilityRole="header">
         {title}
       </Text>
     </SafeAreaView>
@@ -25,5 +25,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: { fontSize: 28, lineHeight: 34, fontFamily: fontFamily.bold, color: palette.navy },
 });
