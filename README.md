@@ -43,6 +43,10 @@ eas build --profile development --platform android
 If you have Xcode installed and want an iOS Simulator build instead, use the
 `development-simulator` profile.
 
+iOS builds need a paid Apple Developer account — even `development`, internal-distribution
+ones. Until that's set up, development and testing happen on Android only; nothing in the
+app is Android-specific.
+
 With the dev client installed, start the bundler:
 
 ```bash

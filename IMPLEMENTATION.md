@@ -82,7 +82,7 @@ The rule that keeps this testable: **`app/` holds routing only, `components/` ne
 
 ### Deliverables
 1. Scaffold Expo + TypeScript + Expo Router. ESLint, Prettier, `strict` TS, path aliases (`@/`).
-2. EAS project configured; dev client builds for iOS and Android.
+2. EAS project configured; dev client builds for iOS and Android. iOS build/verification is deferred until a paid Apple Developer account is set up — see the note under Exit criteria.
 3. Five tab routes with placeholder screens and the correct tab bar labels/icons.
 4. Onboarding: welcome screen with "Get started" → 4 slides, each with "Next", the last with "Let's go!" → main app. Slides carry a progress indicator and can be swiped as well as tapped.
 5. `prefsStore` (hook export `usePrefsStore`) with `onboardingCompletedAt`, persisted through MMKV. Phase 3 extends it rather than replacing it.
@@ -113,6 +113,8 @@ export function shouldShowOnboarding(s: {
 
 ### Exit criteria
 Dev client runs on both platforms. Intro appears exactly once. Skip flag works and is provably dev-only. CI green.
+
+**Status:** verified on Android (emulator build, manual walkthrough, and `maestro/onboarding.yaml`). iOS is unverified — there's no Apple Developer account yet, and `eas build --platform ios` needs one even for internal-distribution dev-client builds. Nothing in the code is Android-specific; this is a build/verification gap, not a design decision, and it blocks Phase 1 sign-off on iOS until the account exists.
 
 ---
 
