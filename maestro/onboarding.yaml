@@ -1,6 +1,13 @@
 appId: gov.dallascityhall.parks
 name: Onboarding runs once on a fresh install
 ---
+# Against a dev-client build, clearState also wipes the dev client's saved
+# Metro connection, so launchApp lands on its native "Development servers"
+# picker instead of the app. Tap the listed server there manually before this
+# flow will find `onboarding-welcome` -- Maestro can't do it (it's outside
+# the RN view tree). A standalone/preview build has no such screen and
+# doesn't need this. See README.md, "Tests".
+#
 # Fresh install: welcome -> 4 slides -> Discover.
 - clearState
 - launchApp

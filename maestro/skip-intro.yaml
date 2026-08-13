@@ -4,6 +4,13 @@ name: Skip flag lands on Discover directly
 # Requires a bundle built or served with EXPO_PUBLIC_SKIP_ONBOARDING=1
 # (`npm run start:skip-intro`). The variable is inlined at build time, so it
 # cannot be set from here.
+#
+# Against a dev-client build, clearState also wipes the dev client's saved
+# Metro connection, so launchApp lands on its native "Development servers"
+# picker instead of the app. Tap the listed server there manually before this
+# flow will find `screen-discover` -- Maestro can't do it (it's outside the
+# RN view tree). A standalone/preview build has no such screen and doesn't
+# need this. See README.md, "Tests".
 - clearState
 - launchApp
 

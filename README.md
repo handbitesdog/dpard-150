@@ -92,3 +92,10 @@ not part of CI — see the note at the bottom of `.github/workflows/ci.yml`.
 ```bash
 maestro test maestro/onboarding.yaml
 ```
+
+Each flow starts with `clearState`, which also wipes the dev client's saved Metro
+connection. `launchApp` then opens the dev client's native "Development servers"
+picker instead of the app — tap the listed server there by hand once the emulator/
+device screen is up; Maestro can't do this for you, since it's outside the RN view
+tree. Once tapped, the rest of the flow runs unattended. A standalone or preview
+build has no such picker and doesn't need this step.
