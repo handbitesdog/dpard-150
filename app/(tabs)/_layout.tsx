@@ -2,6 +2,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { BottomTabBar, Tabs } from 'expo-router/js-tabs';
 import type { ColorValue } from 'react-native';
 import { MiniPlayerSlot } from '@/components/MiniPlayerSlot';
+import { navyMuted, palette } from '@/design/colors';
+import { spacing } from '@/design/spacing';
+import { fontSize } from '@/design/typography';
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
@@ -15,7 +18,18 @@ function tabIcon(name: IconName) {
 export default function TabsLayout() {
   return (
     <Tabs
-      screenOptions={{ headerShown: false, tabBarActiveTintColor: '#0f3357' }}
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: palette.navy,
+        tabBarInactiveTintColor: navyMuted,
+        tabBarStyle: {
+          backgroundColor: palette.beige,
+          paddingTop: spacing.md,
+          paddingBottom: spacing.lg,
+          paddingHorizontal: spacing.sm,
+        },
+        tabBarLabelStyle: { fontSize: fontSize.sm.size, lineHeight: fontSize.sm.lineHeight },
+      }}
       tabBar={(props) => (
         <>
           <MiniPlayerSlot />
