@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { PropsWithChildren } from 'react';
 import { Stack } from 'expo-router';
 import { Button } from '@/components/Button';
+import { LinkRow } from '@/components/LinkRow';
 import { Screen } from '@/components/Screen';
 import { palette } from '@/design/colors';
 import { fontFamily } from '@/design/typography';
@@ -71,6 +72,18 @@ export default function ComponentGallery() {
               fullWidth={false}
             />
           </Section>
+
+          <Section title="LinkRow">
+            <View style={styles.linkRows}>
+              <LinkRow icon="call-outline" label="123-456-7890" onPress={() => {}} />
+              <LinkRow icon="globe-outline" label="dallasparks.org/" onPress={() => {}} />
+              <LinkRow
+                icon="location-outline"
+                label="123 Sesame Street, Dallas TX 12345"
+                onPress={() => {}}
+              />
+            </View>
+          </Section>
         </ScrollView>
       </Screen>
     </>
@@ -90,5 +103,8 @@ const styles = StyleSheet.create({
   },
   sectionBody: {
     gap: spacing.base,
+  },
+  linkRows: {
+    gap: spacing.xs,
   },
 });
