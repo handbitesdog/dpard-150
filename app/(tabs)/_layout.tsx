@@ -4,7 +4,7 @@ import type { ColorValue } from 'react-native';
 import { MiniPlayerSlot } from '@/components/MiniPlayerSlot';
 import { navyMuted, palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
-import { fontSize } from '@/design/typography';
+import { typography } from '@/design/typography';
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
@@ -28,7 +28,10 @@ export default function TabsLayout() {
           paddingBottom: spacing.lg,
           paddingHorizontal: spacing.sm,
         },
-        tabBarLabelStyle: { fontSize: fontSize.sm.size, lineHeight: fontSize.sm.lineHeight },
+        tabBarLabelStyle: {
+          fontSize: typography.footnote.size,
+          lineHeight: typography.footnote.lineHeight,
+        },
       }}
       tabBar={(props) => (
         <>

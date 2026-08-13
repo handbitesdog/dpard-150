@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { Button } from '@/components/Button';
 import { palette } from '@/design/colors';
+import { typography } from '@/design/typography';
 
 describe('Button', () => {
   it('renders as an accessible button with the label', async () => {
@@ -58,7 +59,7 @@ describe('Button', () => {
   it('shrinks text for the small size', async () => {
     await render(<Button label="Directions" onPress={jest.fn()} size="small" />);
 
-    expect(screen.getByText('Directions')).toHaveStyle({ fontSize: 16 });
+    expect(screen.getByText('Directions')).toHaveStyle({ fontSize: typography.subhead.size });
   });
 
   it('hugs its content when fullWidth is false', async () => {

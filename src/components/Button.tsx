@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
 import { palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
-import { fontFamily, fontSize } from '@/design/typography';
+import { fontFamily, typography } from '@/design/typography';
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
@@ -42,7 +42,7 @@ export function Button({
   fullWidth = true,
 }: ButtonProps) {
   const backgroundColor = variant === 'primary' ? palette.navy : palette[color];
-  const iconSize = size === 'small' ? fontSize.base.size : fontSize.lg.size;
+  const iconSize = size === 'small' ? typography.subhead.size : typography.headline.size;
 
   return (
     <Pressable
@@ -105,11 +105,11 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   labelDefault: {
-    fontSize: fontSize.lg.size,
-    lineHeight: fontSize.lg.lineHeight,
+    fontSize: typography.headline.size,
+    lineHeight: typography.headline.lineHeight,
   },
   labelSmall: {
-    fontSize: fontSize.base.size,
-    lineHeight: fontSize.base.lineHeight,
+    fontSize: typography.subhead.size,
+    lineHeight: typography.subhead.lineHeight,
   },
 });

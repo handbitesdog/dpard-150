@@ -11,12 +11,17 @@ export const fontFamily = {
   bold: Platform.select({ ios: 'AvenirNext-Bold', default: 'NunitoSans_700Bold' }),
 } as const;
 
-// Line heights derived at a ~1.3-1.4x ratio of their size, rounded to the nearest pixel.
-export const fontSize = {
-  xs: { size: 12, lineHeight: 16 },
-  sm: { size: 14, lineHeight: 19 },
-  base: { size: 16, lineHeight: 22 },
-  lg: { size: 18, lineHeight: 24 },
-  xl: { size: 20, lineHeight: 27 },
-  xxl: { size: 32, lineHeight: 43 },
+// Semantic type scale (IMPLEMENTATION.md Appendix C). The `Text` component
+// is the only thing that should read this — everything else takes a variant.
+export const typography = {
+  display: { size: 34, lineHeight: 40, weight: 'bold' },
+  title1: { size: 28, lineHeight: 34, weight: 'bold' },
+  title2: { size: 22, lineHeight: 28, weight: 'semibold' },
+  headline: { size: 17, lineHeight: 22, weight: 'semibold' },
+  body: { size: 17, lineHeight: 24, weight: 'regular' },
+  subhead: { size: 15, lineHeight: 20, weight: 'regular' },
+  footnote: { size: 13, lineHeight: 18, weight: 'regular' },
+  caption: { size: 12, lineHeight: 16, weight: 'regular' },
 } as const;
+
+export type TypographyVariant = keyof typeof typography;
