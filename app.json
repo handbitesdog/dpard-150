@@ -9,7 +9,10 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "gov.dallascityhall.parks"
+      "bundleIdentifier": "gov.dallascityhall.parks",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "gov.dallascityhall.parks",
@@ -21,9 +24,24 @@
       },
       "predictiveBackGestureEnabled": false
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "91b528f4-9f3a-4620-b050-d41b250931f1"
+      }
+    },
+    "owner": "parklife-astraikis",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/91b528f4-9f3a-4620-b050-d41b250931f1"
     }
   }
 }
