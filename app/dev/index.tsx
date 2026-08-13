@@ -69,6 +69,11 @@ export default function DevTools() {
       </View>
 
       <DevButton
+        label="Component gallery"
+        onPress={() => router.push('/dev/gallery')}
+        testID="dev-open-gallery"
+      />
+      <DevButton
         label="Replay onboarding"
         onPress={replayOnboarding}
         testID="dev-replay-onboarding"
