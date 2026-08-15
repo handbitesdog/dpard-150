@@ -11,6 +11,7 @@ import { LinkRow } from '@/components/LinkRow';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
 import { Screen } from '@/components/Screen';
+import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
@@ -45,6 +46,7 @@ const typographyVariants: TypographyVariant[] = [
 export default function ComponentGallery() {
   const [loading, setLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [searchValue, setSearchValue] = useState('');
 
   const handleLoad = () => {
     setLoading(true);
@@ -64,6 +66,10 @@ export default function ComponentGallery() {
                 </Text>
               ))}
             </View>
+          </Section>
+
+          <Section title="SearchBar">
+            <SearchBar value={searchValue} onChangeText={setSearchValue} />
           </Section>
 
           <Section title="Button — primary">
