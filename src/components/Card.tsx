@@ -1,0 +1,51 @@
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import type { ImageSourcePropType } from 'react-native';
+import { Text } from '@/components/Text';
+import { palette } from '@/design/colors';
+import { radii } from '@/design/radii';
+import { spacing } from '@/design/spacing';
+
+type CardProps = {
+  image?: ImageSourcePropType;
+  imageSize: number;
+  width: number;
+  title: string;
+  subtitle: string;
+  onPress: () => void;
+};
+
+/** Shared layout for `ParkCard` and `FigureCard` — a square image over a title and subtitle. */
+export function Card({ image, imageSize, width, title, subtitle, onPress }: CardProps) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={`${title}, ${subtitle}`}
+      style={({ pressed }) => [{ width, opacity: pressed ? 0.85 : 1 }]}
+    >
+      {image ? (
+        <Image source={image} style={[styles.image, { width: imageSize, height: imageSize }]} />
+      ) : (
+        <View style={[styles.image, styles.placeholder, { width: imageSize, height: imageSize }]} />
+      )}
+      <Text variant="headline" style={styles.title} numberOfLines={1}>
+        {title}
+      </Text>
+      <Text variant="subhead" numberOfLines={1}>
+        {subtitle}
+      </Text>
+    </Pressable>
+  );
+}
+
+const styles = StyleSheet.create({
+  image: {
+    borderRadius: radii.md,
+  },
+  placeholder: {
+    backgroundColor: palette.grey,
+  },
+  title: {
+    marginTop: spacing.sm,
+  },
+});
