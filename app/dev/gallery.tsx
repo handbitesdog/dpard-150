@@ -3,10 +3,13 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { Button } from '@/components/Button';
 import { Divider } from '@/components/Divider';
+import { Icon } from '@/components/Icon';
+import PlaceholderIcon from '@/components/icons/placeholder.svg';
 import { LinkRow } from '@/components/LinkRow';
 import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
+import { palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 import type { TypographyVariant } from '@/design/typography';
 
@@ -84,6 +87,13 @@ export default function ComponentGallery() {
             />
           </Section>
 
+          <Section title="Icon">
+            <View style={styles.iconRow}>
+              <Icon icon={PlaceholderIcon} />
+              <Icon icon={PlaceholderIcon} size={32} color={palette.pear} />
+            </View>
+          </Section>
+
           <Section title="Divider">
             <Text>Above the divider</Text>
             <Divider />
@@ -110,5 +120,10 @@ export default function ComponentGallery() {
 const styles = StyleSheet.create({
   tightList: {
     gap: spacing.xs,
+  },
+  iconRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.base,
   },
 });
