@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
 import { palette } from '@/design/colors';
+import { radii } from '@/design/radii';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
 
@@ -18,8 +19,8 @@ type ButtonSize = 'default' | 'small';
 type ButtonProps = {
   label: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary';
-  /** Fill color for the secondary variant. Ignored for primary (always navy). */
+  variant?: 'primary' | 'secondary' | 'icon';
+  /** Fill color for the secondary variant. Ignored for primary and icon. */
   color?: SecondaryColor;
   size?: ButtonSize;
   icon?: IconName;
@@ -41,7 +42,10 @@ export function Button({
   accessibilityLabel,
   fullWidth = true,
 }: ButtonProps) {
-  const backgroundColor = variant === 'primary' ? palette.navy : palette[color];
+  const isIcon = variant === 'icon';
+  const backgroundColor =
+    variant === 'primary' ? palette.navy : variant === 'icon' ? palette.white : palette[color];
+  const iconColor = isIcon ? palette.navy : palette.white;
   const iconSize = size === 'small' ? typography.subhead.size : typography.headline.size;
 
   return (
@@ -53,22 +57,30 @@ export function Button({
       accessibilityState={{ disabled: disabled || loading, busy: loading }}
       style={({ pressed }) => [
         styles.button,
-        size === 'small' ? styles.buttonSmall : styles.buttonDefault,
-        fullWidth ? styles.fullWidth : styles.inline,
+        isIcon
+          ? size === 'small'
+            ? styles.iconButtonSmall
+            : styles.iconButtonDefault
+          : size === 'small'
+            ? styles.buttonSmall
+            : styles.buttonDefault,
+        !isIcon && (fullWidth ? styles.fullWidth : styles.inline),
         { backgroundColor, opacity: disabled ? 0.5 : pressed ? 0.85 : 1 },
       ]}
     >
       {loading && (
-        <ActivityIndicator color={palette.white} size="small" style={styles.icon} />
+        <ActivityIndicator color={iconColor} size="small" style={!isIcon && styles.icon} />
       )}
       {!loading && icon && (
-        <Ionicons name={icon} size={iconSize} color={palette.white} style={styles.icon} />
+        <Ionicons name={icon} size={iconSize} color={iconColor} style={!isIcon && styles.icon} />
       )}
-      <Text
-        style={[styles.label, size === 'small' ? styles.labelSmall : styles.labelDefault]}
-      >
-        {label}
-      </Text>
+      {!isIcon && (
+        <Text
+          style={[styles.label, size === 'small' ? styles.labelSmall : styles.labelDefault]}
+        >
+          {label}
+        </Text>
+      )}
     </Pressable>
   );
 }
@@ -95,6 +107,18 @@ const styles = StyleSheet.create({
     minHeight: 36,
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.lg,
+  },
+  iconButtonDefault: {
+    width: 44,
+    height: 44,
+    borderRadius: radii.lg,
+    alignSelf: 'flex-start',
+  },
+  iconButtonSmall: {
+    width: 36,
+    height: 36,
+    borderRadius: radii.md,
+    alignSelf: 'flex-start',
   },
   icon: {
     marginRight: spacing.sm,

@@ -104,6 +104,37 @@ describe('Button', () => {
     expect(screen.getByRole('button', { name: 'Directions' })).toBeOnTheScreen();
   });
 
+  it('renders only the icon for the icon variant', async () => {
+    await render(
+      <Button label="Share" onPress={jest.fn()} variant="icon" icon="share-outline" />,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share' })).toBeOnTheScreen();
+    expect(screen.queryByText('Share')).not.toBeOnTheScreen();
+  });
+
+  it('uses a white square for the icon variant', async () => {
+    await render(
+      <Button label="Share" onPress={jest.fn()} variant="icon" icon="share-outline" />,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({
+      backgroundColor: palette.white,
+      width: 44,
+      height: 44,
+    });
+  });
+
+  it('does not stretch full width for the icon variant', async () => {
+    await render(
+      <Button label="Share" onPress={jest.fn()} variant="icon" icon="share-outline" fullWidth />,
+    );
+
+    expect(screen.getByRole('button', { name: 'Share' })).toHaveStyle({
+      alignSelf: 'flex-start',
+    });
+  });
+
   it('falls back to accessibilityLabel over the visible label', async () => {
     await render(
       <Button
