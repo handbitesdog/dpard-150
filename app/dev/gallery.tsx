@@ -6,6 +6,7 @@ import { Divider } from '@/components/Divider';
 import { Icon } from '@/components/Icon';
 import PlaceholderIcon from '@/components/icons/placeholder.svg';
 import { LinkRow } from '@/components/LinkRow';
+import { MiniPlayer } from '@/components/MiniPlayer';
 import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
@@ -28,6 +29,7 @@ const typographyVariants: TypographyVariant[] = [
 
 export default function ComponentGallery() {
   const [loading, setLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const handleLoad = () => {
     setLoading(true);
@@ -92,6 +94,18 @@ export default function ComponentGallery() {
               <Icon icon={PlaceholderIcon} />
               <Icon icon={PlaceholderIcon} size={32} color={palette.pear} />
             </View>
+          </Section>
+
+          <Section title="MiniPlayer">
+            <MiniPlayer
+              title="Kiest Park History"
+              coverImage={require('../../assets/park-1.jpg')}
+              elapsedLabel="10:20"
+              progress={0.5}
+              isPlaying={isPlaying}
+              onTogglePlay={() => setIsPlaying((current) => !current)}
+              onExpand={() => {}}
+            />
           </Section>
 
           <Section title="Divider">
