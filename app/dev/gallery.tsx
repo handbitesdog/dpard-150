@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ImageBackground, ScrollView, StyleSheet, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { Button } from '@/components/Button';
 import { Carousel } from '@/components/Carousel';
@@ -11,11 +11,13 @@ import { LinkRow } from '@/components/LinkRow';
 import { MapCallout } from '@/components/MapCallout';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
+import { PassportSummary } from '@/components/PassportSummary';
 import { Screen } from '@/components/Screen';
 import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
+import { radii } from '@/design/radii';
 import { spacing } from '@/design/spacing';
 import type { TypographyVariant } from '@/design/typography';
 
@@ -180,6 +182,16 @@ export default function ComponentGallery() {
             />
           </Section>
 
+          <Section title="PassportSummary">
+            <ImageBackground
+              source={require('../../assets/city-1.jpg')}
+              style={styles.passportBackground}
+              imageStyle={styles.passportBackgroundImage}
+            >
+              <PassportSummary collected={1} total={25} />
+            </ImageBackground>
+          </Section>
+
           <Section title="Divider">
             <Text>Above the divider</Text>
             <Divider />
@@ -211,5 +223,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.base,
+  },
+  passportBackground: {
+    height: 220,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  passportBackgroundImage: {
+    borderRadius: radii.md,
   },
 });
