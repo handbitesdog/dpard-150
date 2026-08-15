@@ -111,6 +111,19 @@ export default function ComponentGallery() {
             />
           </Section>
 
+          <Section title="Button — icon">
+            <View style={styles.iconRow}>
+              <Button label="Share" onPress={() => {}} variant="icon" icon="share-outline" />
+              <Button
+                label="Share"
+                onPress={() => {}}
+                variant="icon"
+                icon="share-outline"
+                size="small"
+              />
+            </View>
+          </Section>
+
           <Section title="Icon">
             <View style={styles.iconRow}>
               <Icon icon={PlaceholderIcon} />
