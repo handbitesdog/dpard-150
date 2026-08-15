@@ -8,6 +8,7 @@ import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
 import { Icon } from '@/components/Icon';
 import PlaceholderIcon from '@/components/icons/placeholder.svg';
 import { LinkRow } from '@/components/LinkRow';
+import { MapCallout } from '@/components/MapCallout';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
 import { Screen } from '@/components/Screen';
@@ -153,6 +154,16 @@ export default function ComponentGallery() {
               renderItem={(figure) => (
                 <FigureCard name={figure.name} era={figure.era} onPress={() => {}} />
               )}
+            />
+          </Section>
+
+          <Section title="MapCallout">
+            <MapCallout
+              title="Fair Park"
+              subtitle="3809 Grand Ave, Dallas TX"
+              photo={require('../../assets/park-3.jpg')}
+              onLearnMore={() => {}}
+              onClose={() => {}}
             />
           </Section>
 
