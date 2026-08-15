@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { Button } from '@/components/Button';
+import { Carousel } from '@/components/Carousel';
 import { Divider } from '@/components/Divider';
+import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
 import { Icon } from '@/components/Icon';
 import PlaceholderIcon from '@/components/icons/placeholder.svg';
 import { LinkRow } from '@/components/LinkRow';
 import { MiniPlayer } from '@/components/MiniPlayer';
+import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
 import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
@@ -15,6 +18,18 @@ import { spacing } from '@/design/spacing';
 import type { TypographyVariant } from '@/design/typography';
 
 const secondaryColors = ['sky', 'pear'] as const;
+
+const parks = [
+  { id: 'p1', name: 'Kiest Park', neighborhood: 'Oak Cliff', photo: require('../../assets/park-1.jpg') },
+  { id: 'p2', name: 'Reverchon Park', neighborhood: 'Uptown', photo: require('../../assets/park-2.jpg') },
+  { id: 'p3', name: 'Fair Park', neighborhood: 'South Dallas', photo: require('../../assets/park-3.jpg') },
+];
+
+const figures = [
+  { id: 'f1', name: 'Name Here', era: 'Era Goes Here' },
+  { id: 'f2', name: 'Name Here', era: 'Era Goes Here' },
+  { id: 'f3', name: 'Name Here', era: 'Era Goes Here' },
+];
 
 const typographyVariants: TypographyVariant[] = [
   'display',
@@ -105,6 +120,33 @@ export default function ComponentGallery() {
               isPlaying={isPlaying}
               onTogglePlay={() => setIsPlaying((current) => !current)}
               onExpand={() => {}}
+            />
+          </Section>
+
+          <Section title="Discover Parks">
+            <Carousel
+              data={parks}
+              keyExtractor={(park) => park.id}
+              itemWidth={PARK_CARD_WIDTH}
+              renderItem={(park) => (
+                <ParkCard
+                  name={park.name}
+                  neighborhood={park.neighborhood}
+                  photo={park.photo}
+                  onPress={() => {}}
+                />
+              )}
+            />
+          </Section>
+
+          <Section title="Discover Historic Figures">
+            <Carousel
+              data={figures}
+              keyExtractor={(figure) => figure.id}
+              itemWidth={FIGURE_CARD_WIDTH}
+              renderItem={(figure) => (
+                <FigureCard name={figure.name} era={figure.era} onPress={() => {}} />
+              )}
             />
           </Section>
 
