@@ -21,7 +21,7 @@ function renderMiniPlayer(overrides: Partial<ComponentProps<typeof MiniPlayer>> 
         progress={0.5}
         isPlaying={false}
         onTogglePlay={jest.fn()}
-        onExpand={jest.fn()}
+        onPress={jest.fn()}
         onSeek={jest.fn()}
         {...overrides}
       />
@@ -44,24 +44,24 @@ describe('MiniPlayer', () => {
     expect(screen.getByText('Narrated Walk')).toBeOnTheScreen();
   });
 
-  it('fires onExpand when the card is tapped', async () => {
-    const onExpand = jest.fn();
-    await renderMiniPlayer({ onExpand });
+  it('fires onPress when the card is tapped', async () => {
+    const onPress = jest.fn();
+    await renderMiniPlayer({ onPress });
 
     fireEvent.press(screen.getByRole('button', { name: /Now playing/ }));
 
-    expect(onExpand).toHaveBeenCalledTimes(1);
+    expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  it('fires onTogglePlay when the play button is tapped, not onExpand', async () => {
+  it('fires onTogglePlay when the play button is tapped, not onPress', async () => {
     const onTogglePlay = jest.fn();
-    const onExpand = jest.fn();
-    await renderMiniPlayer({ onTogglePlay, onExpand });
+    const onPress = jest.fn();
+    await renderMiniPlayer({ onTogglePlay, onPress });
 
     fireEvent.press(screen.getByRole('button', { name: 'Play' }));
 
     expect(onTogglePlay).toHaveBeenCalledTimes(1);
-    expect(onExpand).not.toHaveBeenCalled();
+    expect(onPress).not.toHaveBeenCalled();
   });
 
   it('shows a pause control and label while playing', async () => {
@@ -142,5 +142,61 @@ describe('MiniPlayer', () => {
 
     await fireEvent(trackHitArea, 'accessibilityAction', { nativeEvent: { actionName: 'decrement' } });
     expect(onSeek).toHaveBeenCalledWith(0.45);
+  });
+
+  describe('row variant', () => {
+    type RowOverrides = Partial<
+      Omit<Extract<ComponentProps<typeof MiniPlayer>, { variant: 'row' }>, 'variant'>
+    >;
+
+    function renderRow(overrides: RowOverrides = {}) {
+      return render(
+        <GestureHandlerRootView>
+          <MiniPlayer
+            variant="row"
+            title="Kiest Park History"
+            coverImage={coverImage}
+            elapsedLabel="10:20"
+            progress={0}
+            isPlaying={false}
+            onTogglePlay={jest.fn()}
+            onPress={jest.fn()}
+            {...overrides}
+          />
+        </GestureHandlerRootView>,
+      );
+    }
+
+    it('renders without a scrubber', async () => {
+      await renderRow();
+
+      expect(screen.queryByTestId('mini-player-track-hit-area')).not.toBeOnTheScreen();
+    });
+
+    it('fires onPress when the row is tapped', async () => {
+      const onPress = jest.fn();
+      await renderRow({ onPress });
+
+      fireEvent.press(screen.getByRole('button', { name: 'Kiest Park History' }));
+
+      expect(onPress).toHaveBeenCalledTimes(1);
+    });
+
+    it('fires onTogglePlay when the play button is tapped, not onPress', async () => {
+      const onTogglePlay = jest.fn();
+      const onPress = jest.fn();
+      await renderRow({ onTogglePlay, onPress });
+
+      fireEvent.press(screen.getByRole('button', { name: 'Play' }));
+
+      expect(onTogglePlay).toHaveBeenCalledTimes(1);
+      expect(onPress).not.toHaveBeenCalled();
+    });
+
+    it('shows a pause control while playing', async () => {
+      await renderRow({ isPlaying: true });
+
+      expect(screen.getByRole('button', { name: 'Pause' })).toBeOnTheScreen();
+    });
   });
 });

@@ -11,7 +11,7 @@ import { typography } from '@/design/typography';
 // Accessibility increment/decrement step for VoiceOver/TalkBack seek actions.
 const SEEK_STEP = 0.05;
 
-type MiniPlayerProps = {
+type MiniPlayerBaseProps = {
   title: string;
   category?: string;
   coverImage: ImageSourcePropType;
@@ -19,21 +19,29 @@ type MiniPlayerProps = {
   progress: number;
   isPlaying: boolean;
   onTogglePlay: () => void;
-  onExpand: () => void;
-  onSeek: (progress: number) => void;
+  /** Fired when the cover/title area is tapped — expands the full player in `bar`, selects the track in `row`. */
+  onPress: () => void;
 };
 
-export function MiniPlayer({
-  title,
-  category = 'Audio Tour',
-  coverImage,
-  elapsedLabel,
-  progress,
-  isPlaying,
-  onTogglePlay,
-  onExpand,
-  onSeek,
-}: MiniPlayerProps) {
+type MiniPlayerProps =
+  | (MiniPlayerBaseProps & { variant?: 'bar'; onSeek: (progress: number) => void })
+  | (MiniPlayerBaseProps & { variant: 'row' });
+
+export function MiniPlayer(props: MiniPlayerProps) {
+  const {
+    variant = 'bar',
+    title,
+    category = 'Audio Tour',
+    coverImage,
+    elapsedLabel,
+    progress,
+    isPlaying,
+    onTogglePlay,
+    onPress,
+  } = props;
+  const isRow = variant === 'row';
+  const onSeek = props.variant === 'row' ? undefined : props.onSeek;
+
   const [trackWidth, setTrackWidth] = useState(0);
   const [dragProgress, setDragProgress] = useState<number | null>(null);
 
@@ -51,7 +59,7 @@ export function MiniPlayer({
       setDragProgress(clamp(event.x / trackWidth));
     })
     .onEnd((event) => {
-      if (trackWidth <= 0) return;
+      if (trackWidth <= 0 || !onSeek) return;
       onSeek(clamp(event.x / trackWidth));
     })
     .onFinalize(() => {
@@ -60,6 +68,7 @@ export function MiniPlayer({
 
   const handleSeekAccessibilityAction = useCallback(
     (event: AccessibilityActionEvent) => {
+      if (!onSeek) return;
       if (event.nativeEvent.actionName === 'increment') {
         onSeek(clamp(progress + SEEK_STEP));
       } else if (event.nativeEvent.actionName === 'decrement') {
@@ -74,9 +83,9 @@ export function MiniPlayer({
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={onExpand}
+        onPress={onPress}
         accessibilityRole="button"
-        accessibilityLabel={`Now playing: ${title}. Expand player.`}
+        accessibilityLabel={isRow ? title : `Now playing: ${title}. Expand player.`}
         style={({ pressed }) => [styles.content, { opacity: pressed ? 0.9 : 1 }]}
       >
         <Image source={coverImage} style={styles.cover} />
@@ -109,25 +118,27 @@ export function MiniPlayer({
         </Pressable>
       </Pressable>
 
-      <GestureDetector gesture={scrubGesture}>
-        <View
-          testID="mini-player-track-hit-area"
-          onLayout={handleTrackLayout}
-          style={styles.trackHitArea}
-          accessibilityRole="adjustable"
-          accessibilityLabel="Seek"
-          accessibilityValue={{ min: 0, max: 100, now: Math.round(displayedProgress * 100) }}
-          accessibilityActions={[{ name: 'increment' }, { name: 'decrement' }]}
-          onAccessibilityAction={handleSeekAccessibilityAction}
-        >
-          <View style={styles.track}>
-            <View
-              testID="mini-player-fill"
-              style={[styles.fill, { width: `${Math.round(displayedProgress * 100)}%` }]}
-            />
+      {!isRow && (
+        <GestureDetector gesture={scrubGesture}>
+          <View
+            testID="mini-player-track-hit-area"
+            onLayout={handleTrackLayout}
+            style={styles.trackHitArea}
+            accessibilityRole="adjustable"
+            accessibilityLabel="Seek"
+            accessibilityValue={{ min: 0, max: 100, now: Math.round(displayedProgress * 100) }}
+            accessibilityActions={[{ name: 'increment' }, { name: 'decrement' }]}
+            onAccessibilityAction={handleSeekAccessibilityAction}
+          >
+            <View style={styles.track}>
+              <View
+                testID="mini-player-fill"
+                style={[styles.fill, { width: `${Math.round(displayedProgress * 100)}%` }]}
+              />
+            </View>
           </View>
-        </View>
-      </GestureDetector>
+        </GestureDetector>
+      )}
     </View>
   );
 }

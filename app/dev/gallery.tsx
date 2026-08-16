@@ -37,6 +37,12 @@ const figures = [
   { id: 'f3', name: 'Name Here', era: 'Era Goes Here' },
 ];
 
+const tracks = [
+  { id: 't1', title: 'Kiest Park History', coverImage: require('../../assets/park-1.jpg'), duration: '10:20' },
+  { id: 't2', title: 'Reverchon Park Walk', coverImage: require('../../assets/park-2.jpg'), duration: '8:45' },
+  { id: 't3', title: 'Fair Park Legacy', coverImage: require('../../assets/park-3.jpg'), duration: '14:02' },
+];
+
 const typographyVariants: TypographyVariant[] = [
   'display',
   'title1',
@@ -53,6 +59,7 @@ export default function ComponentGallery() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [playerProgress, setPlayerProgress] = useState(0.5);
   const [searchValue, setSearchValue] = useState('');
+  const [playingTrackId, setPlayingTrackId] = useState<string | null>(null);
 
   const handleLoad = () => {
     setLoading(true);
@@ -135,7 +142,7 @@ export default function ComponentGallery() {
           </View>
         </Section>
 
-        <Section title="MiniPlayer">
+        <Section title="MiniPlayer — Bar">
           <MiniPlayer
             title="Kiest Park History"
             coverImage={require('../../assets/park-1.jpg')}
@@ -143,9 +150,29 @@ export default function ComponentGallery() {
             progress={playerProgress}
             isPlaying={isPlaying}
             onTogglePlay={() => setIsPlaying((current) => !current)}
-            onExpand={() => {}}
+            onPress={() => {}}
             onSeek={setPlayerProgress}
           />
+        </Section>
+
+        <Section title="MiniPlayer — List">
+          <View style={styles.trackList}>
+            {tracks.map((track) => (
+              <MiniPlayer
+                key={track.id}
+                variant="row"
+                title={track.title}
+                coverImage={track.coverImage}
+                elapsedLabel={track.duration}
+                progress={0}
+                isPlaying={playingTrackId === track.id}
+                onTogglePlay={() =>
+                  setPlayingTrackId((current) => (current === track.id ? null : track.id))
+                }
+                onPress={() => setPlayingTrackId(track.id)}
+              />
+            ))}
+          </View>
         </Section>
 
         <Section title="Discover Parks">
@@ -242,6 +269,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.base,
+  },
+  trackList: {
+    gap: spacing.sm,
   },
   passportBackground: {
     height: 220,
