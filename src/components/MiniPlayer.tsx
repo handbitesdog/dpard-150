@@ -152,7 +152,8 @@ const TRACK_HEIGHT = 6;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: palette.navy,
-    borderRadius: 16,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
     overflow: 'hidden',
   },
   content: {
