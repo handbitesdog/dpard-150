@@ -61,10 +61,38 @@ export default function ComponentGallery() {
   const [playerProgress, setPlayerProgress] = useState(0.5);
   const [searchValue, setSearchValue] = useState('');
   const [playingTrackId, setPlayingTrackId] = useState<string | null>(null);
+  const [isDownloaded, setIsDownloaded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadedTrackId, setDownloadedTrackId] = useState<string | null>(null);
+  const [downloadingTrackId, setDownloadingTrackId] = useState<string | null>(null);
 
   const handleLoad = () => {
     setLoading(true);
     setTimeout(() => setLoading(false), 2000);
+  };
+
+  const handleToggleDownload = () => {
+    if (isDownloaded) {
+      setIsDownloaded(false);
+      return;
+    }
+    setIsDownloading(true);
+    setTimeout(() => {
+      setIsDownloading(false);
+      setIsDownloaded(true);
+    }, 2000);
+  };
+
+  const handleToggleTrackDownload = (trackId: string) => {
+    if (downloadedTrackId === trackId) {
+      setDownloadedTrackId(null);
+      return;
+    }
+    setDownloadingTrackId(trackId);
+    setTimeout(() => {
+      setDownloadingTrackId(null);
+      setDownloadedTrackId(trackId);
+    }, 2000);
   };
 
   return (
@@ -151,6 +179,9 @@ export default function ComponentGallery() {
             progress={playerProgress}
             isPlaying={isPlaying}
             onTogglePlay={() => setIsPlaying((current) => !current)}
+            isDownloaded={isDownloaded}
+            isDownloading={isDownloading}
+            onToggleDownload={handleToggleDownload}
             onPress={() => {}}
             onSeek={setPlayerProgress}
           />
@@ -170,6 +201,9 @@ export default function ComponentGallery() {
                 onTogglePlay={() =>
                   setPlayingTrackId((current) => (current === track.id ? null : track.id))
                 }
+                isDownloaded={downloadedTrackId === track.id}
+                isDownloading={downloadingTrackId === track.id}
+                onToggleDownload={() => handleToggleTrackDownload(track.id)}
                 onPress={() => setPlayingTrackId(track.id)}
               />
             ))}
