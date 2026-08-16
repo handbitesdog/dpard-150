@@ -1,17 +1,21 @@
-import { Ionicons } from '@expo/vector-icons';
 import { BottomTabBar, Tabs } from 'expo-router/js-tabs';
-import type { ColorValue } from 'react-native';
+import type { ComponentType } from 'react';
+import type { SvgProps } from 'react-native-svg';
+import { Icon } from '@/components/Icon';
+import CompassIcon from '@/components/icons/compass-icon.svg';
+import FlagIcon from '@/components/icons/flag-icon.svg';
+import FlowerIcon from '@/components/icons/flower-icon.svg';
+import PinIcon from '@/components/icons/pin-icon.svg';
+import SoundIcon from '@/components/icons/sound-icon.svg';
 import { MiniPlayerSlot } from '@/components/MiniPlayerSlot';
 import { navyMuted, palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 import { typography } from '@/design/typography';
 
-type IconName = keyof typeof Ionicons.glyphMap;
-
-/** Builds a tab bar icon renderer for the given Ionicons glyph. */
-function tabIcon(name: IconName) {
-  return function TabBarIcon({ color, size }: { color: ColorValue; size: number }) {
-    return <Ionicons name={name} color={color} size={size} />;
+/** Builds a tab bar icon renderer for the given SVG icon. */
+function tabIcon(SvgIcon: ComponentType<SvgProps>) {
+  return function TabBarIcon({ size }: { size: number }) {
+    return <Icon icon={SvgIcon} size={size} />;
   };
 }
 
@@ -40,26 +44,14 @@ export default function TabsLayout() {
         </>
       )}
     >
-      <Tabs.Screen
-        name="discover"
-        options={{ title: 'Discover', tabBarIcon: tabIcon('compass-outline') }}
-      />
-      <Tabs.Screen
-        name="listen"
-        options={{ title: 'Listen', tabBarIcon: tabIcon('headset-outline') }}
-      />
+      <Tabs.Screen name="discover" options={{ title: 'Discover', tabBarIcon: tabIcon(PinIcon) }} />
+      <Tabs.Screen name="listen" options={{ title: 'Listen', tabBarIcon: tabIcon(SoundIcon) }} />
       <Tabs.Screen
         name="explore"
-        options={{ title: 'Explore', tabBarIcon: tabIcon('map-outline') }}
+        options={{ title: 'Explore', tabBarIcon: tabIcon(CompassIcon) }}
       />
-      <Tabs.Screen
-        name="passport"
-        options={{ title: 'Passport', tabBarIcon: tabIcon('ribbon-outline') }}
-      />
-      <Tabs.Screen
-        name="connect"
-        options={{ title: 'Connect', tabBarIcon: tabIcon('chatbubbles-outline') }}
-      />
+      <Tabs.Screen name="passport" options={{ title: 'Passport', tabBarIcon: tabIcon(FlagIcon) }} />
+      <Tabs.Screen name="connect" options={{ title: 'Connect', tabBarIcon: tabIcon(FlowerIcon) }} />
     </Tabs>
   );
 }
