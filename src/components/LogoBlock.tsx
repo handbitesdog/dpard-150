@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    gap: spacing['2xl'],
+    justifyContent: 'space-between',
     paddingVertical: spacing.xl,
     paddingHorizontal: spacing.xl,
     backgroundColor: palette.beige,
