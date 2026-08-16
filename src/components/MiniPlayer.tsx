@@ -45,6 +45,7 @@ export function MiniPlayer({
     .withTestId('mini-player-scrub')
     .runOnJS(true)
     .minDistance(0)
+    .hitSlop({ vertical: spacing.sm })
     .onUpdate((event) => {
       if (trackWidth <= 0) return;
       setDragProgress(clamp(event.x / trackWidth));
@@ -71,12 +72,12 @@ export function MiniPlayer({
   const displayedProgress = dragProgress ?? clamp(progress);
 
   return (
-    <View style={styles.wrapper}>
+    <View style={styles.container}>
       <Pressable
         onPress={onExpand}
         accessibilityRole="button"
         accessibilityLabel={`Now playing: ${title}. Expand player.`}
-        style={({ pressed }) => [styles.card, { opacity: pressed ? 0.9 : 1 }]}
+        style={({ pressed }) => [styles.content, { opacity: pressed ? 0.9 : 1 }]}
       >
         <Image source={coverImage} style={styles.cover} />
 
@@ -125,11 +126,6 @@ export function MiniPlayer({
               style={[styles.fill, { width: `${Math.round(displayedProgress * 100)}%` }]}
             />
           </View>
-          <View
-            testID="mini-player-thumb"
-            pointerEvents="none"
-            style={[styles.thumb, { left: `${Math.round(displayedProgress * 100)}%` }]}
-          />
         </View>
       </GestureDetector>
     </View>
@@ -140,19 +136,17 @@ function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
 }
 
-const TRACK_HEIGHT = 4;
-const THUMB_SIZE = 12;
-const TRACK_HIT_AREA_PADDING_VERTICAL = spacing.sm;
+const TRACK_HEIGHT = 6;
 
 const styles = StyleSheet.create({
-  wrapper: {
-    gap: spacing.sm,
-  },
-  card: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  container: {
     backgroundColor: palette.navy,
     borderRadius: 16,
+    overflow: 'hidden',
+  },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: spacing.md,
     gap: spacing.md,
   },
@@ -178,26 +172,14 @@ const styles = StyleSheet.create({
   },
   trackHitArea: {
     justifyContent: 'center',
-    paddingVertical: TRACK_HIT_AREA_PADDING_VERTICAL,
   },
   track: {
     height: TRACK_HEIGHT,
-    borderRadius: 2,
     backgroundColor: palette.grey,
     overflow: 'hidden',
   },
   fill: {
     height: '100%',
-    borderRadius: 2,
     backgroundColor: palette.pear,
-  },
-  thumb: {
-    position: 'absolute',
-    top: TRACK_HIT_AREA_PADDING_VERTICAL + TRACK_HEIGHT / 2 - THUMB_SIZE / 2,
-    width: THUMB_SIZE,
-    height: THUMB_SIZE,
-    borderRadius: THUMB_SIZE / 2,
-    backgroundColor: palette.white,
-    transform: [{ translateX: -THUMB_SIZE / 2 }],
   },
 });
