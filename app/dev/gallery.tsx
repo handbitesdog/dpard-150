@@ -7,6 +7,7 @@ import { Divider } from '@/components/Divider';
 import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
 import { Icon } from '@/components/Icon';
 import PlaceholderIcon from '@/components/icons/placeholder.svg';
+import { LinkImage } from '@/components/LinkImage';
 import { LinkRow } from '@/components/LinkRow';
 import { LogoBlock } from '@/components/LogoBlock';
 import { MapCallout } from '@/components/MapCallout';
@@ -206,6 +207,16 @@ export default function ComponentGallery() {
               <LogoBlock />
               <LogoBlock variant="anniversary" />
             </View>
+          </Section>
+
+          <Section title="LinkImage">
+            <LinkImage
+              source={require('../../assets/park-2.jpg')}
+              url="https://dallasparks.org/store"
+              width={160}
+              height={160}
+              accessibilityLabel="Shop the Dallas Park store"
+            />
           </Section>
 
           <Section title="LinkRow" onSeeAllPress={() => {}}>
