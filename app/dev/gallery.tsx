@@ -49,6 +49,7 @@ const typographyVariants: TypographyVariant[] = [
 export default function ComponentGallery() {
   const [loading, setLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [playerProgress, setPlayerProgress] = useState(0.5);
   const [searchValue, setSearchValue] = useState('');
 
   const handleLoad = () => {
@@ -138,10 +139,11 @@ export default function ComponentGallery() {
               title="Kiest Park History"
               coverImage={require('../../assets/park-1.jpg')}
               elapsedLabel="10:20"
-              progress={0.5}
+              progress={playerProgress}
               isPlaying={isPlaying}
               onTogglePlay={() => setIsPlaying((current) => !current)}
               onExpand={() => {}}
+              onSeek={setPlayerProgress}
             />
           </Section>
 

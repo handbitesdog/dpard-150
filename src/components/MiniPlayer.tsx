@@ -1,10 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useCallback, useState } from 'react';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import type { AccessibilityActionEvent, ImageSourcePropType, LayoutChangeEvent } from 'react-native';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 import { typography } from '@/design/typography';
+
+// Accessibility increment/decrement step for VoiceOver/TalkBack seek actions.
+const SEEK_STEP = 0.05;
 
 type MiniPlayerProps = {
   title: string;
@@ -15,6 +20,7 @@ type MiniPlayerProps = {
   isPlaying: boolean;
   onTogglePlay: () => void;
   onExpand: () => void;
+  onSeek: (progress: number) => void;
 };
 
 export function MiniPlayer({
@@ -26,7 +32,44 @@ export function MiniPlayer({
   isPlaying,
   onTogglePlay,
   onExpand,
+  onSeek,
 }: MiniPlayerProps) {
+  const [trackWidth, setTrackWidth] = useState(0);
+  const [dragProgress, setDragProgress] = useState<number | null>(null);
+
+  const handleTrackLayout = useCallback((event: LayoutChangeEvent) => {
+    setTrackWidth(event.nativeEvent.layout.width);
+  }, []);
+
+  const scrubGesture = Gesture.Pan()
+    .withTestId('mini-player-scrub')
+    .runOnJS(true)
+    .minDistance(0)
+    .onUpdate((event) => {
+      if (trackWidth <= 0) return;
+      setDragProgress(clamp(event.x / trackWidth));
+    })
+    .onEnd((event) => {
+      if (trackWidth <= 0) return;
+      onSeek(clamp(event.x / trackWidth));
+    })
+    .onFinalize(() => {
+      setDragProgress(null);
+    });
+
+  const handleSeekAccessibilityAction = useCallback(
+    (event: AccessibilityActionEvent) => {
+      if (event.nativeEvent.actionName === 'increment') {
+        onSeek(clamp(progress + SEEK_STEP));
+      } else if (event.nativeEvent.actionName === 'decrement') {
+        onSeek(clamp(progress - SEEK_STEP));
+      }
+    },
+    [onSeek, progress],
+  );
+
+  const displayedProgress = dragProgress ?? clamp(progress);
+
   return (
     <View style={styles.wrapper}>
       <Pressable
@@ -65,12 +108,30 @@ export function MiniPlayer({
         </Pressable>
       </Pressable>
 
-      <View style={styles.track}>
+      <GestureDetector gesture={scrubGesture}>
         <View
-          testID="mini-player-fill"
-          style={[styles.fill, { width: `${Math.round(clamp(progress) * 100)}%` }]}
-        />
-      </View>
+          testID="mini-player-track-hit-area"
+          onLayout={handleTrackLayout}
+          style={styles.trackHitArea}
+          accessibilityRole="adjustable"
+          accessibilityLabel="Seek"
+          accessibilityValue={{ min: 0, max: 100, now: Math.round(displayedProgress * 100) }}
+          accessibilityActions={[{ name: 'increment' }, { name: 'decrement' }]}
+          onAccessibilityAction={handleSeekAccessibilityAction}
+        >
+          <View style={styles.track}>
+            <View
+              testID="mini-player-fill"
+              style={[styles.fill, { width: `${Math.round(displayedProgress * 100)}%` }]}
+            />
+          </View>
+          <View
+            testID="mini-player-thumb"
+            pointerEvents="none"
+            style={[styles.thumb, { left: `${Math.round(displayedProgress * 100)}%` }]}
+          />
+        </View>
+      </GestureDetector>
     </View>
   );
 }
@@ -78,6 +139,10 @@ export function MiniPlayer({
 function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
 }
+
+const TRACK_HEIGHT = 4;
+const THUMB_SIZE = 12;
+const TRACK_HIT_AREA_PADDING_VERTICAL = spacing.sm;
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -111,8 +176,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  trackHitArea: {
+    justifyContent: 'center',
+    paddingVertical: TRACK_HIT_AREA_PADDING_VERTICAL,
+  },
   track: {
-    height: 4,
+    height: TRACK_HEIGHT,
     borderRadius: 2,
     backgroundColor: palette.grey,
     overflow: 'hidden',
@@ -121,5 +190,14 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 2,
     backgroundColor: palette.pear,
+  },
+  thumb: {
+    position: 'absolute',
+    top: TRACK_HIT_AREA_PADDING_VERTICAL + TRACK_HEIGHT / 2 - THUMB_SIZE / 2,
+    width: THUMB_SIZE,
+    height: THUMB_SIZE,
+    borderRadius: THUMB_SIZE / 2,
+    backgroundColor: palette.white,
+    transform: [{ translateX: -THUMB_SIZE / 2 }],
   },
 });
