@@ -211,7 +211,7 @@ export default function ComponentGallery() {
 
           <Section title="LinkImage">
             <LinkImage
-              source={require('../../assets/park-2.jpg')}
+              source={require('../../assets/park-4.jpg')}
               url="https://dallasparks.org/store"
               width={160}
               height={160}
