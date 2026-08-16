@@ -308,8 +308,9 @@ export default function ComponentGallery() {
 
         <Section title="LogoBlock">
           <View style={styles.tightList}>
-            <LogoBlock />
+            <LogoBlock leftLogo="inline" />
             <LogoBlock variant="anniversary" />
+            <LogoBlock variant="anniversary" leftLogo="dark" />
           </View>
         </Section>
 
