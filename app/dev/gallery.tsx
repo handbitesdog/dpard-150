@@ -18,6 +18,8 @@ import { PhotoHeader } from '@/components/PhotoHeader';
 import { Screen } from '@/components/Screen';
 import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
+import { Stamp } from '@/components/Stamp';
+import { StampGrid } from '@/components/StampGrid';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
 import { radii } from '@/design/radii';
@@ -36,6 +38,13 @@ const figures = [
   { id: 'f1', name: 'Name Here', era: 'Era Goes Here' },
   { id: 'f2', name: 'Name Here', era: 'Era Goes Here' },
   { id: 'f3', name: 'Name Here', era: 'Era Goes Here' },
+];
+
+const stamps = [
+  { id: 's1', name: 'Fair Park', collected: true },
+  { id: 's2', name: 'Reverchon Park', collected: false },
+  { id: 's3', name: 'Klyde Warren Park', collected: false },
+  { id: 's4', name: 'Moore Park', collected: false },
 ];
 
 const tracks = [
@@ -266,6 +275,22 @@ export default function ComponentGallery() {
           >
             <PassportSummary collected={1} total={25} />
           </ImageBackground>
+        </Section>
+
+        <Section title="Stamp">
+          <StampGrid
+            data={stamps}
+            keyExtractor={(stamp) => stamp.id}
+            renderItem={(stamp, size) => (
+              <Stamp
+                name={stamp.name}
+                image={require('../../assets/stamps/fair-park-stamp.png')}
+                grayImage={require('../../assets/stamps/fair-park-stamp-gray.png')}
+                collected={stamp.collected}
+                size={size}
+              />
+            )}
+          />
         </Section>
 
         <Section title="Divider">
