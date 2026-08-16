@@ -19,6 +19,7 @@ import { Screen } from '@/components/Screen';
 import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
 import { Stamp } from '@/components/Stamp';
+import { StampAddedCard } from '@/components/StampAddedCard';
 import { StampGrid } from '@/components/StampGrid';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
@@ -291,6 +292,12 @@ export default function ComponentGallery() {
               />
             )}
           />
+        </Section>
+
+        <Section title="StampAddedCard">
+          <View style={styles.fullBleed}>
+            <StampAddedCard name="Fair Park" image={require('../../assets/stamps/fair-park-stamp.png')} />
+          </View>
         </Section>
 
         <Section title="Divider">
