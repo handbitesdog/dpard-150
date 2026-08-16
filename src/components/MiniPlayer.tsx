@@ -115,7 +115,7 @@ export function MiniPlayer(props: MiniPlayerProps) {
   const displayedProgress = dragProgress ?? clamp(progress);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, isRow && styles.containerRow]}>
       <Pressable
         onPress={onPress}
         accessibilityRole="button"
@@ -209,6 +209,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     overflow: 'hidden',
+  },
+  containerRow: {
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
   },
   content: {
     flexDirection: 'row',
