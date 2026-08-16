@@ -1,16 +1,43 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { Image, LayoutChangeEvent, StyleSheet, View, ViewStyle } from 'react-native';
 import { palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 
-const LOGO_HEIGHT = 48;
-const ANNIVERSARY_ASPECT_RATIO = 70 / 62;
-const WORDMARK_ASPECT_RATIO = 190 / 42;
+const ANNIVERSARY_LOGOS = {
+  default: require('../../assets/DPARD-150-logo.png'),
+  dark: require('../../assets/DPARD-150-logo-dark.png'),
+  inline: require('../../assets/DPARD-150-logo-inline.png'),
+};
+
+const WORDMARK_LOGO = require('../../assets/DPARD-logo.png');
+
+function aspectRatioOf(source: number) {
+  const { width, height } = Image.resolveAssetSource(source);
+  return width / height;
+}
+
+function FitWidthLogo({ source, style }: { source: number; style: ViewStyle }) {
+  const [width, setWidth] = useState(0);
+
+  const handleLayout = (event: LayoutChangeEvent) => {
+    setWidth(event.nativeEvent.layout.width);
+  };
+
+  return (
+    <View style={style} onLayout={handleLayout}>
+      {width > 0 && (
+        <Image source={source} style={{ width, height: width / aspectRatioOf(source) }} />
+      )}
+    </View>
+  );
+}
 
 type LogoBlockProps = {
   variant?: 'both' | 'anniversary';
+  leftLogo?: keyof typeof ANNIVERSARY_LOGOS;
 };
 
-export function LogoBlock({ variant = 'both' }: LogoBlockProps) {
+export function LogoBlock({ variant = 'both', leftLogo = 'default' }: LogoBlockProps) {
   const label =
     variant === 'both'
       ? 'Dallas Park and Recreation 150th anniversary logo, Dallas Park and Recreation logo'
@@ -23,18 +50,8 @@ export function LogoBlock({ variant = 'both' }: LogoBlockProps) {
       accessibilityLabel={label}
       style={styles.container}
     >
-      <Image
-        source={require('../../assets/DPARD-150-logo.png')}
-        style={[styles.logo, { aspectRatio: ANNIVERSARY_ASPECT_RATIO }]}
-        resizeMode="contain"
-      />
-      {variant === 'both' && (
-        <Image
-          source={require('../../assets/DPARD-logo.png')}
-          style={[styles.logo, { aspectRatio: WORDMARK_ASPECT_RATIO }]}
-          resizeMode="contain"
-        />
-      )}
+      <FitWidthLogo source={ANNIVERSARY_LOGOS[leftLogo]} style={styles.left} />
+      {variant === 'both' && <FitWidthLogo source={WORDMARK_LOGO} style={styles.right} />}
     </View>
   );
 }
@@ -43,12 +60,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    gap: spacing.base,
     paddingVertical: spacing.xl,
-    paddingHorizontal: spacing.xl,
     backgroundColor: palette.beige,
   },
-  logo: {
-    height: LOGO_HEIGHT,
+  left: {
+    width: '40%',
+  },
+  right: {
+    flex: 1,
   },
 });
