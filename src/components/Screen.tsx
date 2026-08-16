@@ -26,7 +26,7 @@ export function Screen({ children, scroll }: ScreenProps) {
       {scroll ? (
         <ScrollView
           style={styles.scroll}
-          contentContainerStyle={styles.content}
+          contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
           {children}
@@ -42,4 +42,5 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: palette.beige },
   content: { flex: 1, paddingHorizontal: spacing.base },
   scroll: { flex: 1 },
+  scrollContent: { flexGrow: 1, paddingHorizontal: spacing.base },
 });
