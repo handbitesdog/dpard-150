@@ -21,6 +21,9 @@ function renderMiniPlayer(overrides: Partial<ComponentProps<typeof MiniPlayer>> 
         progress={0.5}
         isPlaying={false}
         onTogglePlay={jest.fn()}
+        isDownloaded={false}
+        isDownloading={false}
+        onToggleDownload={jest.fn()}
         onPress={jest.fn()}
         onSeek={jest.fn()}
         {...overrides}
@@ -68,6 +71,34 @@ describe('MiniPlayer', () => {
     await renderMiniPlayer({ isPlaying: true });
 
     expect(screen.getByRole('button', { name: 'Pause' })).toBeOnTheScreen();
+  });
+
+  it('fires onToggleDownload when the download control is tapped, not onPress', async () => {
+    const onToggleDownload = jest.fn();
+    const onPress = jest.fn();
+    await renderMiniPlayer({ onToggleDownload, onPress });
+
+    fireEvent.press(screen.getByRole('button', { name: 'Download' }));
+
+    expect(onToggleDownload).toHaveBeenCalledTimes(1);
+    expect(onPress).not.toHaveBeenCalled();
+  });
+
+  it('shows a remove-download label once the track is downloaded', async () => {
+    await renderMiniPlayer({ isDownloaded: true });
+
+    expect(screen.getByRole('button', { name: 'Remove download' })).toBeOnTheScreen();
+  });
+
+  it('shows a downloading label and ignores taps while downloading', async () => {
+    const onToggleDownload = jest.fn();
+    await renderMiniPlayer({ isDownloading: true, onToggleDownload });
+
+    const downloadButton = screen.getByRole('button', { name: 'Downloading' });
+    expect(downloadButton).toBeOnTheScreen();
+
+    fireEvent.press(downloadButton);
+    expect(onToggleDownload).not.toHaveBeenCalled();
   });
 
   it('meets the minimum touch target size for the play button', async () => {
@@ -160,6 +191,9 @@ describe('MiniPlayer', () => {
             progress={0}
             isPlaying={false}
             onTogglePlay={jest.fn()}
+            isDownloaded={false}
+            isDownloading={false}
+            onToggleDownload={jest.fn()}
             onPress={jest.fn()}
             {...overrides}
           />

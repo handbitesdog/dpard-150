@@ -1,8 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useCallback, useState } from 'react';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Animated, Easing, Image, Pressable, StyleSheet, View } from 'react-native';
 import type { AccessibilityActionEvent, ImageSourcePropType, LayoutChangeEvent } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import { Icon } from '@/components/Icon';
+import CircleCheckIcon from '@/components/icons/circle-check.svg';
+import CloudDownloadIcon from '@/components/icons/cloud-download.svg';
+import LoaderCircleIcon from '@/components/icons/loader-circle.svg';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
@@ -19,6 +23,12 @@ type MiniPlayerBaseProps = {
   progress: number;
   isPlaying: boolean;
   onTogglePlay: () => void;
+  /** Whether this track's audio is saved on-device rather than streamed. */
+  isDownloaded: boolean;
+  /** Whether a download is currently in progress. */
+  isDownloading: boolean;
+  /** Fired when the download/remove control is tapped. */
+  onToggleDownload: () => void;
   /** Fired when the cover/title area is tapped — expands the full player in `bar`, selects the track in `row`. */
   onPress: () => void;
 };
@@ -37,6 +47,9 @@ export function MiniPlayer(props: MiniPlayerProps) {
     progress,
     isPlaying,
     onTogglePlay,
+    isDownloaded,
+    isDownloading,
+    onToggleDownload,
     onPress,
   } = props;
   const isRow = variant === 'row';
@@ -44,6 +57,27 @@ export function MiniPlayer(props: MiniPlayerProps) {
 
   const [trackWidth, setTrackWidth] = useState(0);
   const [dragProgress, setDragProgress] = useState<number | null>(null);
+
+  const spinValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (!isDownloading) {
+      spinValue.setValue(0);
+      return;
+    }
+    const animation = Animated.loop(
+      Animated.timing(spinValue, {
+        toValue: 1,
+        duration: 800,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }),
+    );
+    animation.start();
+    return () => animation.stop();
+  }, [isDownloading, spinValue]);
+
+  const spin = spinValue.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
 
   const handleTrackLayout = useCallback((event: LayoutChangeEvent) => {
     setTrackWidth(event.nativeEvent.layout.width);
@@ -98,8 +132,28 @@ export function MiniPlayer(props: MiniPlayerProps) {
             <Text variant="body" color="white">
               {category}
             </Text>
-            <Ionicons name="volume-medium-outline" size={typography.body.size} color={palette.white} />
-            <Ionicons name="link-outline" size={typography.body.size} color={palette.white} />
+            <Pressable
+              onPress={onToggleDownload}
+              disabled={isDownloading}
+              hitSlop={spacing.sm}
+              accessibilityRole="button"
+              accessibilityLabel={
+                isDownloading ? 'Downloading' : isDownloaded ? 'Remove download' : 'Download'
+              }
+              style={styles.downloadButton}
+            >
+              {isDownloading ? (
+                <Animated.View style={{ transform: [{ rotate: spin }] }}>
+                  <Icon icon={LoaderCircleIcon} size={typography.body.size} color={palette.white} />
+                </Animated.View>
+              ) : (
+                <Icon
+                  icon={isDownloaded ? CircleCheckIcon : CloudDownloadIcon}
+                  size={typography.body.size}
+                  color={palette.white}
+                />
+              )}
+            </Pressable>
           </View>
         </View>
 
@@ -175,6 +229,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
+  },
+  downloadButton: {
+    marginLeft: spacing.sm,
   },
   playButton: {
     width: 44,
