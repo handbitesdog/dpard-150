@@ -8,6 +8,7 @@ import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
 import { Icon } from '@/components/Icon';
 import PlaceholderIcon from '@/components/icons/placeholder.svg';
 import { LinkRow } from '@/components/LinkRow';
+import { LogoBlock } from '@/components/LogoBlock';
 import { MapCallout } from '@/components/MapCallout';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
@@ -198,6 +199,13 @@ export default function ComponentGallery() {
             <Text>Above the divider</Text>
             <Divider />
             <Text>Below the divider</Text>
+          </Section>
+
+          <Section title="LogoBlock">
+            <View style={styles.tightList}>
+              <LogoBlock />
+              <LogoBlock variant="anniversary" />
+            </View>
           </Section>
 
           <Section title="LinkRow" onSeeAllPress={() => {}}>
