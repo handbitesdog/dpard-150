@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import ComponentGallery from '../../app/dev/gallery';
 import { typography } from '@/design/typography';
 import type { TypographyVariant } from '@/design/typography';
@@ -11,7 +12,11 @@ const typographyVariants = Object.keys(typography) as TypographyVariant[];
 
 describe('component gallery — Dynamic Type', () => {
   it.each(typographyVariants)('%s scales with the system font and is not clipped', async (variant) => {
-    await render(<ComponentGallery />);
+    await render(
+      <GestureHandlerRootView>
+        <ComponentGallery />
+      </GestureHandlerRootView>,
+    );
 
     const node = screen.getByText(variant);
 
