@@ -14,6 +14,7 @@ import { MapCallout } from '@/components/MapCallout';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
 import { PassportSummary } from '@/components/PassportSummary';
+import { PhotoHeader } from '@/components/PhotoHeader';
 import { Screen } from '@/components/Screen';
 import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
@@ -212,6 +213,17 @@ export default function ComponentGallery() {
           />
         </Section>
 
+        <Section title="PhotoHeader">
+          <View style={styles.fullBleed}>
+            <PhotoHeader
+              photo={require('../../assets/park-3.jpg')}
+              onBack={() => {}}
+              onShare={() => {}}
+              height={220}
+            />
+          </View>
+        </Section>
+
         <Section title="PassportSummary">
           <ImageBackground
             source={require('../../assets/city-1.jpg')}
@@ -272,6 +284,9 @@ const styles = StyleSheet.create({
   },
   trackList: {
     gap: spacing.sm,
+  },
+  fullBleed: {
+    marginHorizontal: -spacing.base,
   },
   passportBackground: {
     height: 220,
