@@ -257,7 +257,7 @@ export default function ComponentGallery() {
           />
         </Section>
 
-        <Section title="LinkRow" onSeeAllPress={() => {}}>
+        <Section title="LinkRow">
           <View style={styles.tightList}>
             <LinkRow icon="call-outline" label="123-456-7890" onPress={() => {}} />
             <LinkRow icon="globe-outline" label="dallasparks.org/" onPress={() => {}} />
