@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ImageBackground, ScrollView, StyleSheet, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { Button } from '@/components/Button';
 import { Carousel } from '@/components/Carousel';
@@ -62,175 +62,173 @@ export default function ComponentGallery() {
   return (
     <>
       <Stack.Screen options={{ title: 'Component gallery' }} />
-      <Screen>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Section title="Text">
-            <View style={styles.tightList}>
-              {typographyVariants.map((variant) => (
-                <Text key={variant} variant={variant}>
-                  {variant}
-                </Text>
-              ))}
-            </View>
-          </Section>
-
-          <Section title="SearchBar">
-            <SearchBar value={searchValue} onChangeText={setSearchValue} />
-          </Section>
-
-          <Section title="Button — primary">
-            <Button label="Directions" onPress={() => {}} icon="navigate-outline" />
-            <Button label="Click to load" onPress={handleLoad} loading={loading} />
-            <Button label="Directions" onPress={() => {}} disabled />
-          </Section>
-
-          <Section title="Button — secondary">
-            {secondaryColors.map((color) => (
-              <Button
-                key={color}
-                label="Learn more"
-                onPress={() => {}}
-                variant="secondary"
-                color={color}
-              />
+      <Screen scroll>
+        <Section title="Text">
+          <View style={styles.tightList}>
+            {typographyVariants.map((variant) => (
+              <Text key={variant} variant={variant}>
+                {variant}
+              </Text>
             ))}
-          </Section>
+          </View>
+        </Section>
 
-          <Section title="Button — small">
+        <Section title="SearchBar">
+          <SearchBar value={searchValue} onChangeText={setSearchValue} />
+        </Section>
+
+        <Section title="Button — primary">
+          <Button label="Directions" onPress={() => {}} icon="navigate-outline" />
+          <Button label="Click to load" onPress={handleLoad} loading={loading} />
+          <Button label="Directions" onPress={() => {}} disabled />
+        </Section>
+
+        <Section title="Button — secondary">
+          {secondaryColors.map((color) => (
             <Button
+              key={color}
               label="Learn more"
               onPress={() => {}}
               variant="secondary"
-              color="sky"
+              color={color}
+            />
+          ))}
+        </Section>
+
+        <Section title="Button — small">
+          <Button
+            label="Learn more"
+            onPress={() => {}}
+            variant="secondary"
+            color="sky"
+            size="small"
+          />
+        </Section>
+
+        <Section title="Button — inline">
+          <Button
+            label="Check in"
+            onPress={() => {}}
+            variant="secondary"
+            color="pear"
+            fullWidth={false}
+          />
+        </Section>
+
+        <Section title="Button — icon">
+          <View style={styles.iconRow}>
+            <Button label="Share" onPress={() => {}} variant="icon" icon="share-outline" />
+            <Button
+              label="Share"
+              onPress={() => {}}
+              variant="icon"
+              icon="share-outline"
               size="small"
             />
-          </Section>
+          </View>
+        </Section>
 
-          <Section title="Button — inline">
-            <Button
-              label="Check in"
+        <Section title="Icon">
+          <View style={styles.iconRow}>
+            <Icon icon={PlaceholderIcon} />
+            <Icon icon={PlaceholderIcon} size={32} color={palette.pear} />
+          </View>
+        </Section>
+
+        <Section title="MiniPlayer">
+          <MiniPlayer
+            title="Kiest Park History"
+            coverImage={require('../../assets/park-1.jpg')}
+            elapsedLabel="10:20"
+            progress={playerProgress}
+            isPlaying={isPlaying}
+            onTogglePlay={() => setIsPlaying((current) => !current)}
+            onExpand={() => {}}
+            onSeek={setPlayerProgress}
+          />
+        </Section>
+
+        <Section title="Discover Parks">
+          <Carousel
+            data={parks}
+            keyExtractor={(park) => park.id}
+            itemWidth={PARK_CARD_WIDTH}
+            renderItem={(park) => (
+              <ParkCard
+                name={park.name}
+                neighborhood={park.neighborhood}
+                photo={park.photo}
+                onPress={() => {}}
+              />
+            )}
+          />
+        </Section>
+
+        <Section title="Discover Historic Figures">
+          <Carousel
+            data={figures}
+            keyExtractor={(figure) => figure.id}
+            itemWidth={FIGURE_CARD_WIDTH}
+            renderItem={(figure) => (
+              <FigureCard name={figure.name} era={figure.era} onPress={() => {}} />
+            )}
+          />
+        </Section>
+
+        <Section title="MapCallout">
+          <MapCallout
+            title="Fair Park"
+            subtitle="3809 Grand Ave, Dallas TX"
+            photo={require('../../assets/park-3.jpg')}
+            onLearnMore={() => {}}
+            onClose={() => {}}
+          />
+        </Section>
+
+        <Section title="PassportSummary">
+          <ImageBackground
+            source={require('../../assets/city-1.jpg')}
+            style={styles.passportBackground}
+            imageStyle={styles.passportBackgroundImage}
+          >
+            <PassportSummary collected={1} total={25} />
+          </ImageBackground>
+        </Section>
+
+        <Section title="Divider">
+          <Text>Above the divider</Text>
+          <Divider />
+          <Text>Below the divider</Text>
+        </Section>
+
+        <Section title="LogoBlock">
+          <View style={styles.tightList}>
+            <LogoBlock />
+            <LogoBlock variant="anniversary" />
+          </View>
+        </Section>
+
+        <Section title="LinkImage">
+          <LinkImage
+            source={require('../../assets/park-4.jpg')}
+            url="https://dallasparks.org/store"
+            width={160}
+            height={160}
+            accessibilityLabel="Shop the Dallas Park store"
+          />
+        </Section>
+
+        <Section title="LinkRow" onSeeAllPress={() => {}}>
+          <View style={styles.tightList}>
+            <LinkRow icon="call-outline" label="123-456-7890" onPress={() => {}} />
+            <LinkRow icon="globe-outline" label="dallasparks.org/" onPress={() => {}} />
+            <LinkRow
+              icon="location-outline"
+              label="123 Sesame Street, Dallas TX 12345"
               onPress={() => {}}
-              variant="secondary"
-              color="pear"
-              fullWidth={false}
             />
-          </Section>
-
-          <Section title="Button — icon">
-            <View style={styles.iconRow}>
-              <Button label="Share" onPress={() => {}} variant="icon" icon="share-outline" />
-              <Button
-                label="Share"
-                onPress={() => {}}
-                variant="icon"
-                icon="share-outline"
-                size="small"
-              />
-            </View>
-          </Section>
-
-          <Section title="Icon">
-            <View style={styles.iconRow}>
-              <Icon icon={PlaceholderIcon} />
-              <Icon icon={PlaceholderIcon} size={32} color={palette.pear} />
-            </View>
-          </Section>
-
-          <Section title="MiniPlayer">
-            <MiniPlayer
-              title="Kiest Park History"
-              coverImage={require('../../assets/park-1.jpg')}
-              elapsedLabel="10:20"
-              progress={playerProgress}
-              isPlaying={isPlaying}
-              onTogglePlay={() => setIsPlaying((current) => !current)}
-              onExpand={() => {}}
-              onSeek={setPlayerProgress}
-            />
-          </Section>
-
-          <Section title="Discover Parks">
-            <Carousel
-              data={parks}
-              keyExtractor={(park) => park.id}
-              itemWidth={PARK_CARD_WIDTH}
-              renderItem={(park) => (
-                <ParkCard
-                  name={park.name}
-                  neighborhood={park.neighborhood}
-                  photo={park.photo}
-                  onPress={() => {}}
-                />
-              )}
-            />
-          </Section>
-
-          <Section title="Discover Historic Figures">
-            <Carousel
-              data={figures}
-              keyExtractor={(figure) => figure.id}
-              itemWidth={FIGURE_CARD_WIDTH}
-              renderItem={(figure) => (
-                <FigureCard name={figure.name} era={figure.era} onPress={() => {}} />
-              )}
-            />
-          </Section>
-
-          <Section title="MapCallout">
-            <MapCallout
-              title="Fair Park"
-              subtitle="3809 Grand Ave, Dallas TX"
-              photo={require('../../assets/park-3.jpg')}
-              onLearnMore={() => {}}
-              onClose={() => {}}
-            />
-          </Section>
-
-          <Section title="PassportSummary">
-            <ImageBackground
-              source={require('../../assets/city-1.jpg')}
-              style={styles.passportBackground}
-              imageStyle={styles.passportBackgroundImage}
-            >
-              <PassportSummary collected={1} total={25} />
-            </ImageBackground>
-          </Section>
-
-          <Section title="Divider">
-            <Text>Above the divider</Text>
-            <Divider />
-            <Text>Below the divider</Text>
-          </Section>
-
-          <Section title="LogoBlock">
-            <View style={styles.tightList}>
-              <LogoBlock />
-              <LogoBlock variant="anniversary" />
-            </View>
-          </Section>
-
-          <Section title="LinkImage">
-            <LinkImage
-              source={require('../../assets/park-4.jpg')}
-              url="https://dallasparks.org/store"
-              width={160}
-              height={160}
-              accessibilityLabel="Shop the Dallas Park store"
-            />
-          </Section>
-
-          <Section title="LinkRow" onSeeAllPress={() => {}}>
-            <View style={styles.tightList}>
-              <LinkRow icon="call-outline" label="123-456-7890" onPress={() => {}} />
-              <LinkRow icon="globe-outline" label="dallasparks.org/" onPress={() => {}} />
-              <LinkRow
-                icon="location-outline"
-                label="123 Sesame Street, Dallas TX 12345"
-                onPress={() => {}}
-              />
-            </View>
-          </Section>
-        </ScrollView>
+          </View>
+        </Section>
       </Screen>
     </>
   );
