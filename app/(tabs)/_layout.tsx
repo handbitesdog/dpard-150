@@ -35,6 +35,7 @@ export default function TabsLayout() {
         tabBarLabelStyle: {
           fontSize: typography.footnote.size,
           lineHeight: typography.footnote.lineHeight,
+          marginTop: spacing.xs,
         },
       }}
       tabBar={(props) => (
