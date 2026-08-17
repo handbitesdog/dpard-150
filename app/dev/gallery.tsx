@@ -366,7 +366,7 @@ export default function ComponentGallery() {
         </Section>
 
         <Section title="LinkRow">
-          <View style={styles.tightList}>
+          <View style={styles.linkRowList}>
             <LinkRow icon="call-outline" label="123-456-7890" onPress={() => {}} />
             <LinkRow icon="globe-outline" label="dallasparks.org/" onPress={() => {}} />
             <LinkRow
@@ -440,6 +440,9 @@ export default function ComponentGallery() {
 const styles = StyleSheet.create({
   tightList: {
     gap: spacing.xs,
+  },
+  linkRowList: {
+    gap: 0,
   },
   iconRow: {
     flexDirection: 'row',
