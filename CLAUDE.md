@@ -8,6 +8,21 @@ Description: Cross platform mobile app where users can collect digital stamps fo
 ## Code style
 
 - Only use comments for properly documenting files/functions and explaining code that may be confusing. Never narrate your actions using comments.
+- Repo layout is enforced by ESLint, not just convention: `app/` is routing only. `src/components/**` must never import from `@/stores` — read state in a route/feature and pass it down as props. `src/services/**` and `src/lib/**` must never import `react` or `react-native` — they need to stay testable without a renderer. Import alias `@/*` maps to `src/*` (see `tsconfig.json`).
+
+## Testing
+
+- Development and testing happen on **Android only** right now — no paid Apple Developer account yet, and the stack uses MMKV plus (from Phase 6) `react-native-maps`, so Expo Go can't run this app either (see README). Don't reach for iOS Simulator tools on this project.
+- There's no dedicated Android emulator tool — drive it with raw `adb` via Bash. `adb` isn't on PATH by default:
+  ```
+  export PATH="$PATH:/Users/jackson/Library/Android/sdk/platform-tools"
+  ```
+  AVD name `dpard_pixel`, package `gov.dallascityhall.parks`, main activity `.MainActivity`.
+- Screenshot: `adb exec-out screencap -p > file.png`, then read it with the Read tool. Tap: `adb shell input tap X Y` — use the PNG's **actual pixel resolution**, not the scaled "displayed at WxH" size the Read tool reports; mixing these up taps the wrong element.
+- `adb shell am force-stop <pkg>` clears the dev client's cached Metro connection (same effect as Maestro's `clearState`) — the app self-reconnects in ~4s without a manual tap.
+- Metro health: `curl http://localhost:8081/status`. To check for compile errors, fetch the actual bundle URL rather than `/index.bundle` (which 404s under expo-router) — read the real path out of the served HTML's `<script src=...bundle...>` tag; it's under `/node_modules/expo-router/entry.bundle?platform=...`.
+- Metro caches the transform that inlines `EXPO_PUBLIC_*` env vars — toggling one (e.g. `EXPO_PUBLIC_SKIP_ONBOARDING`) may need `expo start --clear` to take effect.
+- Maestro e2e flows (`maestro/`) are deliberately not in CI (see the note at the bottom of `.github/workflows/ci.yml`) — they need a built dev client on a macOS runner. Each flow's `clearState` step also wipes the dev client's saved Metro connection, so `launchApp` lands on the native "Development servers" picker instead of the app; tap the listed server by hand once the emulator screen is up, then the rest of the flow runs unattended.
 
 ## Git conventions
 
