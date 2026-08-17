@@ -4,6 +4,7 @@ import { Image, Pressable, StyleSheet, View } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { navyMuted, palette } from '@/design/colors';
 import { radii } from '@/design/radii';
+import { sizes } from '@/design/sizes';
 
 export const VIDEO_CARD_WIDTH = 240;
 
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   playIcon: {
-    width: 44,
-    height: 44,
+    width: sizes.touchTarget,
+    height: sizes.touchTarget,
     borderRadius: radii.lg,
     backgroundColor: navyMuted,
     textAlign: 'center',

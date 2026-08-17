@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
 import { palette } from '@/design/colors';
 import { radii } from '@/design/radii';
+import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
 
@@ -99,24 +100,24 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   buttonDefault: {
-    minHeight: 44,
+    minHeight: sizes.touchTarget,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.xl,
   },
   buttonSmall: {
-    minHeight: 36,
+    minHeight: sizes.touchTargetSmall,
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.lg,
   },
   iconButtonDefault: {
-    width: 44,
-    height: 44,
+    width: sizes.touchTarget,
+    height: sizes.touchTarget,
     borderRadius: radii.lg,
     alignSelf: 'flex-start',
   },
   iconButtonSmall: {
-    width: 36,
-    height: 36,
+    width: sizes.touchTargetSmall,
+    height: sizes.touchTargetSmall,
     borderRadius: radii.md,
     alignSelf: 'flex-start',
   },

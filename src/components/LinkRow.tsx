@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { palette } from '@/design/colors';
+import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
 
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    minHeight: 44,
+    minHeight: sizes.touchTarget,
   },
   icon: {
     width: typography.headline.size,

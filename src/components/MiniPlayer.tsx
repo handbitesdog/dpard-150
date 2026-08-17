@@ -10,6 +10,8 @@ import LoaderCircleIcon from '@/components/icons/loader-circle.svg';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
 import { durations } from '@/design/durations';
+import { radii } from '@/design/radii';
+import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 import { typography } from '@/design/typography';
 
@@ -207,13 +209,13 @@ const TRACK_HEIGHT = 6;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: palette.navy,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+    borderTopLeftRadius: radii.lg,
+    borderTopRightRadius: radii.lg,
     overflow: 'hidden',
   },
   containerRow: {
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16,
+    borderBottomLeftRadius: radii.lg,
+    borderBottomRightRadius: radii.lg,
   },
   content: {
     flexDirection: 'row',
@@ -224,7 +226,7 @@ const styles = StyleSheet.create({
   cover: {
     width: 56,
     height: 56,
-    borderRadius: 8,
+    borderRadius: radii.sm,
   },
   info: {
     flex: 1,
@@ -239,8 +241,8 @@ const styles = StyleSheet.create({
     marginLeft: spacing.sm,
   },
   playButton: {
-    width: 44,
-    height: 44,
+    width: sizes.touchTarget,
+    height: sizes.touchTarget,
     alignItems: 'center',
     justifyContent: 'center',
   },

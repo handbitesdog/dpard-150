@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Text } from '@/components/Text';
+import { spacing } from '@/design/spacing';
 
 type SectionHeaderProps = {
   title: string;
@@ -24,7 +25,7 @@ export function SectionHeader({
           onPress={onSeeAllPress}
           accessibilityRole="link"
           accessibilityLabel={accessibilityLabel ?? `${seeAllLabel} ${title}`}
-          hitSlop={12}
+          hitSlop={spacing.md}
           style={({ pressed }) => ({ opacity: pressed ? 0.6 : 1 })}
         >
           <Text variant="subhead">{seeAllLabel}</Text>
