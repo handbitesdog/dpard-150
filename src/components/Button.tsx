@@ -7,7 +7,7 @@ import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
 
-const BUTTON_RADIUS = 10;
+export const BUTTON_RADIUS = 10;
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
