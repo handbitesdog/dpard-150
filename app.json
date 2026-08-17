@@ -33,6 +33,14 @@
         {
           "locationWhenInUsePermission": "Allow Dallas Parks & Rec to use your location to confirm you're at the park you're collecting a stamp for."
         }
+      ],
+      [
+        "expo-audio",
+        {
+          "recordAudioAndroid": false,
+          "enableBackgroundRecording": false,
+          "enableBackgroundPlayback": true
+        }
       ]
     ],
     "experiments": {
