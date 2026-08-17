@@ -2,6 +2,7 @@ import type { ComponentType } from 'react';
 import * as Linking from 'expo-linking';
 import { Pressable, StyleSheet, View } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
+import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 
 type SocialLink = {
@@ -15,7 +16,7 @@ type SocialLinksProps = {
   size?: number;
 };
 
-export function SocialLinks({ links, size = 44 }: SocialLinksProps) {
+export function SocialLinks({ links, size = sizes.touchTarget }: SocialLinksProps) {
   return (
     <View style={styles.row}>
       {links.map(({ icon: SvgIcon, url, label }) => (
