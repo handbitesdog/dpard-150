@@ -1,0 +1,60 @@
+[
+  {
+    "id": "kwp-history",
+    "parkId": "klyde-warren-park",
+    "title": "Building a Park Over a Freeway",
+    "narrator": "Dana Ruiz",
+    "durationSeconds": 480,
+    "audioPath": { "en": "/guides/kwp-history/en.m4a" },
+    "transcript": {
+      "en": "Klyde Warren Park sits on a deck built over eight lanes of Woodall Rodgers Freeway..."
+    }
+  },
+  {
+    "id": "fair-park-art-deco",
+    "parkId": "fair-park",
+    "title": "Fair Park's Art Deco Architecture",
+    "narrator": "Marcus Webb",
+    "durationSeconds": 620,
+    "audioPath": { "en": "/guides/fair-park-art-deco/en.m4a" },
+    "transcript": {
+      "en": "Walking the esplanade, you're surrounded by the largest collection of Art Deco exposition buildings in the country..."
+    },
+    "chapters": [
+      { "title": "The Esplanade", "startSeconds": 0 },
+      { "title": "Hall of State", "startSeconds": 210 },
+      { "title": "The Centennial Building", "startSeconds": 410 }
+    ]
+  },
+  {
+    "id": "fair-park-midway",
+    "parkId": "fair-park",
+    "title": "The Texas Star and the Midway",
+    "durationSeconds": 360,
+    "audioPath": { "en": "/guides/fair-park-midway/en.m4a" },
+    "transcript": {
+      "en": "The Texas Star has stood over the Fair Park midway since 1985, once the tallest Ferris wheel in North America..."
+    }
+  },
+  {
+    "id": "wrl-nature-trail",
+    "parkId": "white-rock-lake-park",
+    "title": "The Lake Loop: A Nature Walk",
+    "narrator": "Priya Chandran",
+    "durationSeconds": 540,
+    "audioPath": { "en": "/guides/wrl-nature-trail/en.m4a" },
+    "transcript": {
+      "en": "The 9.3-mile trail around White Rock Lake passes through wetlands, wooded shoreline, and open prairie..."
+    }
+  },
+  {
+    "id": "wrl-bath-house",
+    "parkId": "white-rock-lake-park",
+    "title": "The Bath House Cultural Center",
+    "durationSeconds": 300,
+    "audioPath": { "en": "/guides/wrl-bath-house/en.m4a" },
+    "transcript": {
+      "en": "Built in 1930 as a bathhouse for lake swimmers, this building now houses a theater and gallery space..."
+    }
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "george-kessler",
+    "name": "George Kessler",
+    "lifespan": "1862-1923",
+    "portrait": {
+      "source": "/figures/george-kessler/portrait.jpg",
+      "alt": "Black and white portrait photograph of urban planner George Kessler",
+      "credit": "Dallas Public Library, Texas/Dallas History and Archives Division"
+    },
+    "biography": {
+      "en": "A landscape architect whose 1911 city plan for Dallas proposed a connected system of parks and boulevards, laying the groundwork for what later became Fair Park's expansion and the green spaces that eventually linked downtown to the Arts District."
+    },
+    "relatedParkIds": ["klyde-warren-park", "fair-park"]
+  },
+  {
+    "id": "robert-cullum",
+    "name": "Robert B. Cullum",
+    "lifespan": "1889-1959",
+    "portrait": {
+      "source": "/figures/robert-cullum/portrait.jpg",
+      "alt": "Black and white portrait photograph of civic leader Robert B. Cullum",
+      "credit": "Dallas Public Library, Texas/Dallas History and Archives Division"
+    },
+    "biography": {
+      "en": "A Dallas civic leader and longtime president of the State Fair of Texas who championed the expansion of Fair Park's grounds and later advocated for preserving the shoreline parkland around White Rock Lake."
+    },
+    "relatedParkIds": ["fair-park", "white-rock-lake-park"]
+  }
+]
