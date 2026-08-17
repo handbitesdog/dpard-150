@@ -419,7 +419,6 @@ export default function ComponentGallery() {
         <Section title="MapPin">
           <View style={styles.iconRow}>
             <MapPin accessibilityLabel="Kiest Park" />
-            <MapPin selected accessibilityLabel="Reverchon Park" />
           </View>
         </Section>
 

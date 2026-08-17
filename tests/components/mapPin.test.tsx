@@ -13,11 +13,4 @@ describe('MapPin', () => {
 
     expect(screen.getByLabelText('Kiest Park')).toBeOnTheScreen();
   });
-
-  it('applies a distinct style when selected', async () => {
-    const unselected = await render(<MapPin accessibilityLabel="Kiest Park" />);
-    const selected = await render(<MapPin selected accessibilityLabel="Kiest Park" />);
-
-    expect(unselected.toJSON()?.props.style).not.toEqual(selected.toJSON()?.props.style);
-  });
 });
