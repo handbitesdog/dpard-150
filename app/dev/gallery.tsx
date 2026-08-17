@@ -246,6 +246,23 @@ export default function ComponentGallery() {
           </View>
         </Section>
 
+        <Section title="MiniPlayer — Row (non-interactive)">
+          <View style={styles.trackList}>
+            {tracks.map((track) => (
+              <MiniPlayer
+                key={track.id}
+                variant="row"
+                title={track.title}
+                elapsedLabel={track.duration}
+                progress={0}
+                isPlaying={false}
+                isDownloaded={false}
+                isDownloading={false}
+              />
+            ))}
+          </View>
+        </Section>
+
         <Section title="Discover Parks">
           <Carousel
             data={parks}

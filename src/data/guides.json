@@ -46,15 +46,5 @@
     "transcript": {
       "en": "The 9.3-mile trail around White Rock Lake passes through wetlands, wooded shoreline, and open prairie..."
     }
-  },
-  {
-    "id": "wrl-bath-house",
-    "parkId": "white-rock-lake-park",
-    "title": "The Bath House Cultural Center",
-    "durationSeconds": 300,
-    "audioPath": { "en": "/guides/wrl-bath-house/en.m4a" },
-    "transcript": {
-      "en": "Built in 1930 as a bathhouse for lake swimmers, this building now houses a theater and gallery space..."
-    }
   }
 ]
