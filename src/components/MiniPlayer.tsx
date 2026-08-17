@@ -65,6 +65,10 @@ export function MiniPlayer(props: MiniPlayerProps) {
   } = props;
   const isRow = variant === 'row';
   const onSeek = props.variant === 'row' ? undefined : props.onSeek;
+  // Row sits on the Listen screen (beige card, navy text); the bar hangs off
+  // the navbar and inverts that so it reads against the tab bar's chrome.
+  const textColor = isRow ? 'navy' : 'beige';
+  const iconColor = isRow ? palette.navy : palette.beige;
 
   const [trackWidth, setTrackWidth] = useState(0);
   const [dragProgress, setDragProgress] = useState<number | null>(null);
@@ -127,13 +131,13 @@ export function MiniPlayer(props: MiniPlayerProps) {
 
   const downloadIcon = isDownloading ? (
     <Animated.View style={{ transform: [{ rotate: spin }] }}>
-      <Icon icon={LoaderCircleIcon} size={typography.body.size} color={palette.navy} />
+      <Icon icon={LoaderCircleIcon} size={typography.body.size} color={iconColor} />
     </Animated.View>
   ) : (
     <Icon
       icon={isDownloaded ? CircleCheckIcon : CloudDownloadIcon}
       size={typography.body.size}
-      color={palette.navy}
+      color={iconColor}
     />
   );
 
@@ -162,11 +166,11 @@ export function MiniPlayer(props: MiniPlayerProps) {
       accessibilityLabel={isPlaying ? 'Pause' : 'Play'}
       style={styles.playButton}
     >
-      <Ionicons name={isPlaying ? 'pause' : 'play'} size={PLAY_PAUSE_ICON_SIZE} color={palette.navy} />
+      <Ionicons name={isPlaying ? 'pause' : 'play'} size={PLAY_PAUSE_ICON_SIZE} color={iconColor} />
     </Pressable>
   ) : (
     <View style={styles.playButton} importantForAccessibility="no">
-      <Ionicons name={isPlaying ? 'pause' : 'play'} size={PLAY_PAUSE_ICON_SIZE} color={palette.navy} />
+      <Ionicons name={isPlaying ? 'pause' : 'play'} size={PLAY_PAUSE_ICON_SIZE} color={iconColor} />
     </View>
   );
 
@@ -179,18 +183,18 @@ export function MiniPlayer(props: MiniPlayerProps) {
       )}
 
       <View style={styles.info}>
-        <Text variant="headline" color="navy" numberOfLines={1} style={styles.title}>
+        <Text variant="headline" color={textColor} numberOfLines={1} style={styles.title}>
           {title}
         </Text>
         <View style={styles.metaRow}>
-          <Text variant="body" color="navy">
+          <Text variant="body" color={textColor}>
             {category}
           </Text>
           {downloadControl}
         </View>
       </View>
 
-      <Text variant="body" color="navy">
+      <Text variant="body" color={textColor}>
         {elapsedLabel}
       </Text>
 
@@ -202,7 +206,7 @@ export function MiniPlayer(props: MiniPlayerProps) {
   const staticAccessibilityLabel = `${title}, ${category}, ${elapsedLabel}, ${downloadStatusLabel}`;
 
   return (
-    <View style={[styles.container, isRow && styles.containerRow]}>
+    <View style={[styles.container, isRow ? styles.containerRow : styles.containerBar]}>
       {onPress ? (
         <Pressable
           onPress={onPress}
@@ -259,12 +263,15 @@ const TRACK_HEIGHT = 6;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: palette.beige,
     borderTopLeftRadius: radii.lg,
     borderTopRightRadius: radii.lg,
     overflow: 'hidden',
   },
+  containerBar: {
+    backgroundColor: palette.navy,
+  },
   containerRow: {
+    backgroundColor: palette.beige,
     borderBottomLeftRadius: radii.lg,
     borderBottomRightRadius: radii.lg,
   },

@@ -26,6 +26,7 @@ export const safeTextPairs: TextPair[] = [
   { foreground: 'navy', background: 'teal' },
   { foreground: 'navy', background: 'pear' },
   { foreground: 'white', background: 'navy' },
+  { foreground: 'beige', background: 'navy' },
 ];
 
 // Pairings a screen might reach for that fail WCAG AA outright, or are
