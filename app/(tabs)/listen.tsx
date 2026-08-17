@@ -1,28 +1,23 @@
 import { StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { Screen } from '@/components/Screen';
 import { Text } from '@/components/Text';
 import { guides, parks } from '@/data';
+import { PARK_PHOTOS } from '@/data/parkPhotos';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
 import { useDownloadStore } from '@/stores/downloadStore';
+import { usePlaybackStore } from '@/stores/playbackStore';
 import { useProgressStore } from '@/stores/progressStore';
-
-/**
- * The catalog's `park.photos[].source` values are CDN-relative paths with no
- * resolver yet (no CDN base URL, no local asset behind them) — Discover's
- * photo pipeline hasn't been built. These stand in until that lands.
- */
-const PARK_PHOTOS: Record<string, ImageSourcePropType> = {
-  'klyde-warren-park': require('../../assets/park-1.jpg'),
-  'fair-park': require('../../assets/park-2.jpg'),
-  'white-rock-lake-park': require('../../assets/park-3.jpg'),
-};
 
 export default function ListenScreen() {
   const downloads = useDownloadStore((s) => s.downloads);
   const progress = useProgressStore((s) => s.progress);
+  const currentGuideId = usePlaybackStore((s) => s.currentGuideId);
+  const isPlaying = usePlaybackStore((s) => s.isPlaying);
+  const positionSeconds = usePlaybackStore((s) => s.positionSeconds);
+  const play = usePlaybackStore((s) => s.play);
+  const pause = usePlaybackStore((s) => s.pause);
 
   return (
     <Screen scroll>
@@ -39,12 +34,17 @@ export default function ListenScreen() {
           const parkGuideCount = guides.filter((g) => g.parkId === park.id).length;
           const coverImage = PARK_PHOTOS[park.id];
 
+          const isActive = currentGuideId === guide.id;
           const guideProgress = progress[guide.id];
-          const fraction = guideProgress?.completedAt
-            ? 1
-            : guide.durationSeconds > 0
-              ? (guideProgress?.positionSeconds ?? 0) / guide.durationSeconds
-              : 0;
+          const fraction = isActive
+            ? guide.durationSeconds > 0
+              ? positionSeconds / guide.durationSeconds
+              : 0
+            : guideProgress?.completedAt
+              ? 1
+              : guide.durationSeconds > 0
+                ? (guideProgress?.positionSeconds ?? 0) / guide.durationSeconds
+                : 0;
 
           const downloadStatus = downloads[guide.id]?.status ?? 'not_downloaded';
 
@@ -55,9 +55,10 @@ export default function ListenScreen() {
               padded={false}
               title={parkGuideCount === 1 ? park.name : guide.title}
               coverImage={coverImage}
-              elapsedLabel={formatDuration(guide.durationSeconds)}
+              elapsedLabel={formatDuration(isActive ? positionSeconds : guide.durationSeconds)}
               progress={fraction}
-              isPlaying={false}
+              isPlaying={isActive && isPlaying}
+              onTogglePlay={() => (isActive && isPlaying ? pause() : play(guide.id))}
               isDownloaded={downloadStatus === 'downloaded'}
               isDownloading={downloadStatus === 'downloading'}
             />

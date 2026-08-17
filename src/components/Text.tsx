@@ -5,8 +5,9 @@ import { fontFamily, typography } from '@/design/typography';
 import type { TypographyVariant } from '@/design/typography';
 
 // Appendix A: navy is the only foreground that reliably passes WCAG across
-// the palette, and white only passes on navy. Text stays within that set.
-type TextColor = 'navy' | 'white';
+// the palette, white only passes on navy, and beige only passes on navy too.
+// Text stays within that set.
+type TextColor = 'navy' | 'white' | 'beige';
 
 type TextProps = RNTextProps & {
   variant?: TypographyVariant;
