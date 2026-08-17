@@ -2,6 +2,7 @@ import type { ComponentType } from 'react';
 import * as Linking from 'expo-linking';
 import { Pressable, StyleSheet, View } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
+import { opacity } from '@/design/opacity';
 import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 
@@ -25,7 +26,7 @@ export function SocialLinks({ links, size = sizes.touchTarget }: SocialLinksProp
           onPress={() => Linking.openURL(url)}
           accessibilityRole="link"
           accessibilityLabel={label}
-          style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
+          style={({ pressed }) => [{ opacity: pressed ? opacity.pressedHeavy : 1 }]}
         >
           <SvgIcon width={size} height={size} />
         </Pressable>

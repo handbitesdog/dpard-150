@@ -1,6 +1,7 @@
 import * as Linking from 'expo-linking';
 import { Image, Pressable, StyleSheet } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
+import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { shadows } from '@/design/shadows';
 
@@ -24,7 +25,7 @@ export function LinkImage({
       onPress={() => Linking.openURL(url)}
       accessibilityRole="link"
       accessibilityLabel={accessibilityLabel}
-      style={({ pressed }) => [styles.shadow, { opacity: pressed ? 0.85 : 1 }]}
+      style={({ pressed }) => [styles.shadow, { opacity: pressed ? opacity.pressed : 1 }]}
     >
       <Image
         source={source}

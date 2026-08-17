@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { palette } from '@/design/colors';
+import { opacity } from '@/design/opacity';
 import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
@@ -20,7 +21,7 @@ export function LinkRow({ icon, label, onPress, accessibilityLabel }: LinkRowPro
       onPress={onPress}
       accessibilityRole="link"
       accessibilityLabel={accessibilityLabel ?? label}
-      style={({ pressed }) => [styles.row, { opacity: pressed ? 0.6 : 1 }]}
+      style={({ pressed }) => [styles.row, { opacity: pressed ? opacity.pressedHeavy : 1 }]}
     >
       <Ionicons
         name={icon}

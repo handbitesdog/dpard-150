@@ -1,5 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import { Text } from '@/components/Text';
+import { borderWidths } from '@/design/borderWidths';
 import { spacing } from '@/design/spacing';
 
 const DEFAULT_SIZE = 160;
@@ -30,7 +31,7 @@ export function PassportSummary({ collected, total, size = DEFAULT_SIZE }: Passp
 
 const styles = StyleSheet.create({
   ring: {
-    borderWidth: 2,
+    borderWidth: borderWidths.strong,
     borderStyle: 'dashed',
     borderColor: 'rgba(255, 255, 255, 0.8)',
     padding: spacing.xs,

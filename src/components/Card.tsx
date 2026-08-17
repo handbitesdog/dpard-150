@@ -2,6 +2,7 @@ import { Image, Pressable, StyleSheet, View } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
+import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { spacing } from '@/design/spacing';
 
@@ -21,7 +22,7 @@ export function Card({ image, imageSize, width, title, subtitle, onPress }: Card
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={`${title}, ${subtitle}`}
-      style={({ pressed }) => [{ width, opacity: pressed ? 0.85 : 1 }]}
+      style={({ pressed }) => [{ width, opacity: pressed ? opacity.pressed : 1 }]}
     >
       {image ? (
         <Image source={image} style={[styles.image, { width: imageSize, height: imageSize }]} />

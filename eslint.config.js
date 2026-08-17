@@ -68,4 +68,45 @@ module.exports = defineConfig([
       ],
     },
   },
+  {
+    // Scoped to StyleSheet.create objects and JSX `style` props specifically,
+    // not the whole file — business logic (pagination, schema versions, WCAG
+    // math in src/lib/contrastRatio.ts) has numbers with nothing to do with
+    // design tokens, and a file-wide ban flags those too. 0 and 1 stay
+    // allowed (flex: 1, zero offsets, ternary fallbacks like `pressed ? x :
+    // 1`). This doesn't reach numeric literals in other JSX props (e.g. a
+    // bare `size={20}`) — those still need a local named constant by hand,
+    // same as the values already promoted to src/design/ tokens.
+    files: ['src/**/*.tsx'],
+    ignores: ['src/design/**'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "CallExpression[callee.object.name='StyleSheet'][callee.property.name='create'] Property > Literal[raw=/^\\d+(\\.\\d+)?$/][raw!='0'][raw!='1']",
+          message:
+            'Raw numeric literals are banned in StyleSheet.create outside src/design/. Add the value to a src/design/ token, or a local named constant if it only applies here.',
+        },
+        {
+          selector:
+            "CallExpression[callee.object.name='StyleSheet'][callee.property.name='create'] Property > ConditionalExpression > Literal[raw=/^\\d+(\\.\\d+)?$/][raw!='0'][raw!='1']",
+          message:
+            'Raw numeric literals are banned in StyleSheet.create outside src/design/. Add the value to a src/design/ token, or a local named constant if it only applies here.',
+        },
+        {
+          selector:
+            "JSXAttribute[name.name='style'] Property > Literal[raw=/^\\d+(\\.\\d+)?$/][raw!='0'][raw!='1']",
+          message:
+            'Raw numeric literals are banned in style props outside src/design/. Add the value to a src/design/ token, or a local named constant if it only applies here.',
+        },
+        {
+          selector:
+            "JSXAttribute[name.name='style'] Property > ConditionalExpression > Literal[raw=/^\\d+(\\.\\d+)?$/][raw!='0'][raw!='1']",
+          message:
+            'Raw numeric literals are banned in style props outside src/design/. Add the value to a src/design/ token, or a local named constant if it only applies here.',
+        },
+      ],
+    },
+  },
 ]);
