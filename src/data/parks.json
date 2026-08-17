@@ -1,0 +1,71 @@
+[
+  {
+    "id": "klyde-warren-park",
+    "name": "Klyde Warren Park",
+    "neighborhood": "Uptown / Arts District",
+    "description": {
+      "en": "A 5.2-acre deck park built over Woodall Rodgers Freeway, connecting Uptown to the Dallas Arts District with lawns, food trucks, and a children's park."
+    },
+    "amenities": ["Dog park", "Children's play area", "Reading room", "Food trucks", "Great lawn"],
+    "hours": "6:00 AM - 11:00 PM daily",
+    "photos": [
+      {
+        "source": "/parks/klyde-warren-park/great-lawn.jpg",
+        "alt": "Visitors relaxing on the great lawn at Klyde Warren Park with downtown Dallas skyscrapers in the background",
+        "credit": "City of Dallas Park and Recreation"
+      }
+    ],
+    "location": { "latitude": 32.789, "longitude": -96.8016 },
+    "stampRadiusMeters": 120,
+    "stamp": {
+      "image": "/stamps/klyde-warren-park.png",
+      "label": "Deck Park Pioneer"
+    }
+  },
+  {
+    "id": "fair-park",
+    "name": "Fair Park",
+    "neighborhood": "South Dallas",
+    "description": {
+      "en": "A 277-acre National Historic Landmark and the largest collection of Art Deco exposition architecture in the United States, home to the State Fair of Texas."
+    },
+    "amenities": ["Texas Star Ferris wheel", "Cotton Bowl", "Museums", "Band shell", "Esplanade"],
+    "hours": "5:00 AM - 10:00 PM daily",
+    "photos": [
+      {
+        "source": "/parks/fair-park/esplanade.jpg",
+        "alt": "The Fair Park esplanade lined with Art Deco buildings and reflecting pools at dusk",
+        "credit": "City of Dallas Park and Recreation"
+      }
+    ],
+    "location": { "latitude": 32.7815, "longitude": -96.7597 },
+    "stampRadiusMeters": 200,
+    "stamp": {
+      "image": "/stamps/fair-park.png",
+      "label": "Art Deco Explorer"
+    }
+  },
+  {
+    "id": "white-rock-lake-park",
+    "name": "White Rock Lake Park",
+    "neighborhood": "East Dallas",
+    "description": {
+      "en": "A 1,254-acre park surrounding a reservoir lake, with a 9.3-mile trail loop, the historic Bath House Cultural Center, and views of the downtown skyline."
+    },
+    "amenities": ["Hike and bike trail", "Boat launch", "Bath House Cultural Center", "Sailboat rentals"],
+    "hours": "5:00 AM - 12:00 AM daily",
+    "photos": [
+      {
+        "source": "/parks/white-rock-lake-park/trail.jpg",
+        "alt": "Cyclists on the paved trail along the shoreline of White Rock Lake at sunrise",
+        "credit": "City of Dallas Park and Recreation"
+      }
+    ],
+    "location": { "latitude": 32.8271, "longitude": -96.7167 },
+    "stampRadiusMeters": 250,
+    "stamp": {
+      "image": "/stamps/white-rock-lake-park.png",
+      "label": "Lake Loop Finisher"
+    }
+  }
+]
