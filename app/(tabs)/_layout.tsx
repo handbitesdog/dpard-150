@@ -28,8 +28,8 @@ export default function TabsLayout() {
         tabBarInactiveTintColor: navyMuted,
         tabBarStyle: {
           backgroundColor: palette.beige,
-          paddingTop: spacing.md,
-          paddingBottom: spacing.lg,
+          paddingTop: spacing.xs,
+          paddingBottom: spacing['2xl'],
           paddingHorizontal: spacing.sm,
         },
         tabBarLabelStyle: {
