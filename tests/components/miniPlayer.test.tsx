@@ -232,5 +232,20 @@ describe('MiniPlayer', () => {
 
       expect(screen.getByRole('button', { name: 'Pause' })).toBeOnTheScreen();
     });
+
+    it('renders a placeholder when no coverImage is given', async () => {
+      await renderRow({ coverImage: undefined });
+
+      expect(screen.getByTestId('mini-player-cover-placeholder')).toBeOnTheScreen();
+    });
+
+    it('renders without interactive controls when handlers are omitted', async () => {
+      await renderRow({ onPress: undefined, onTogglePlay: undefined, onToggleDownload: undefined });
+
+      expect(screen.queryByRole('button')).not.toBeOnTheScreen();
+      expect(
+        screen.getByLabelText('Kiest Park History, Audio Tour, 10:20, Not downloaded'),
+      ).toBeOnTheScreen();
+    });
   });
 });
