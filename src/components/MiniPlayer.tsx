@@ -9,6 +9,7 @@ import CloudDownloadIcon from '@/components/icons/cloud-download.svg';
 import LoaderCircleIcon from '@/components/icons/loader-circle.svg';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
+import { durations } from '@/design/durations';
 import { spacing } from '@/design/spacing';
 import { typography } from '@/design/typography';
 
@@ -68,7 +69,7 @@ export function MiniPlayer(props: MiniPlayerProps) {
     const animation = Animated.loop(
       Animated.timing(spinValue, {
         toValue: 1,
-        duration: 800,
+        duration: durations.spin,
         easing: Easing.linear,
         useNativeDriver: true,
       }),
