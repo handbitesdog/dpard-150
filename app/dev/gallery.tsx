@@ -24,6 +24,7 @@ import { Stamp } from '@/components/Stamp';
 import { StampAddedCard } from '@/components/StampAddedCard';
 import { StampGrid } from '@/components/StampGrid';
 import { Text } from '@/components/Text';
+import { VideoCard, VIDEO_CARD_WIDTH } from '@/components/VideoCard';
 import { palette } from '@/design/colors';
 import { radii } from '@/design/radii';
 import { spacing } from '@/design/spacing';
@@ -54,6 +55,12 @@ const posts: Post[] = Array.from({ length: 9 }, (_, i) => ({
   id: `post-${i}`,
   permalink: 'https://www.instagram.com/',
 }));
+
+const videos = [
+  { id: 'v1', title: 'Kiest Park History', thumbnail: require('../../assets/park-1.jpg'), permalink: 'https://www.instagram.com/' },
+  { id: 'v2', title: 'Reverchon Park Walk', thumbnail: require('../../assets/park-2.jpg'), permalink: 'https://www.instagram.com/' },
+  { id: 'v3', title: 'Fair Park Legacy', thumbnail: require('../../assets/park-3.jpg'), permalink: 'https://www.instagram.com/' },
+];
 
 const tracks = [
   { id: 't1', title: 'Kiest Park History', coverImage: require('../../assets/park-1.jpg'), duration: '10:20' },
@@ -277,6 +284,17 @@ export default function ComponentGallery() {
 
         <Section title="PostGrid">
           <PostGrid posts={posts} />
+        </Section>
+
+        <Section title="Discover Videos">
+          <Carousel
+            data={videos}
+            keyExtractor={(video) => video.id}
+            itemWidth={VIDEO_CARD_WIDTH}
+            renderItem={(video) => (
+              <VideoCard title={video.title} thumbnail={video.thumbnail} permalink={video.permalink} />
+            )}
+          />
         </Section>
 
         <Section title="PassportSummary">
