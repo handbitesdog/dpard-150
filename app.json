@@ -27,7 +27,13 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow Dallas Parks & Rec to use your location to confirm you're at the park you're collecting a stamp for."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import type { Coordinates } from '@/lib/geo';
 import { mmkvStorage } from './storage';
 
 /**
@@ -10,11 +11,6 @@ import { mmkvStorage } from './storage';
  * local-only and unrecoverable, so a missing migration loses real data.
  */
 export const STAMP_SCHEMA_VERSION = 1;
-
-type Coordinates = {
-  latitude: number;
-  longitude: number;
-};
 
 /** A single collected stamp: which park, when, and where the collection happened. */
 export type Stamp = {
