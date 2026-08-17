@@ -10,6 +10,7 @@ import LoaderCircleIcon from '@/components/icons/loader-circle.svg';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
 import { durations } from '@/design/durations';
+import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
@@ -17,6 +18,8 @@ import { typography } from '@/design/typography';
 
 // Accessibility increment/decrement step for VoiceOver/TalkBack seek actions.
 const SEEK_STEP = 0.05;
+const COVER_SIZE = 56;
+const PLAY_PAUSE_ICON_SIZE = 28;
 
 type MiniPlayerBaseProps = {
   title: string;
@@ -123,7 +126,7 @@ export function MiniPlayer(props: MiniPlayerProps) {
         onPress={onPress}
         accessibilityRole="button"
         accessibilityLabel={isRow ? title : `Now playing: ${title}. Expand player.`}
-        style={({ pressed }) => [styles.content, { opacity: pressed ? 0.9 : 1 }]}
+        style={({ pressed }) => [styles.content, { opacity: pressed ? opacity.pressedLight : 1 }]}
       >
         <Image source={coverImage} style={styles.cover} />
 
@@ -171,7 +174,7 @@ export function MiniPlayer(props: MiniPlayerProps) {
           accessibilityLabel={isPlaying ? 'Pause' : 'Play'}
           style={styles.playButton}
         >
-          <Ionicons name={isPlaying ? 'pause' : 'play'} size={28} color={palette.white} />
+          <Ionicons name={isPlaying ? 'pause' : 'play'} size={PLAY_PAUSE_ICON_SIZE} color={palette.white} />
         </Pressable>
       </Pressable>
 
@@ -224,8 +227,8 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   cover: {
-    width: 56,
-    height: 56,
+    width: COVER_SIZE,
+    height: COVER_SIZE,
     borderRadius: radii.sm,
   },
   info: {

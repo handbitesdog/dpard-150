@@ -5,6 +5,7 @@ import { Button } from '@/components/Button';
 import { Carousel } from '@/components/Carousel';
 import { Divider } from '@/components/Divider';
 import { EmptyState } from '@/components/EmptyState';
+import { ErrorState } from '@/components/ErrorState';
 import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
 import { Icon } from '@/components/Icon';
 import CompassIcon from '@/components/icons/compass-icon.svg';
@@ -17,6 +18,7 @@ import { LinkImage } from '@/components/LinkImage';
 import { LinkRow } from '@/components/LinkRow';
 import { LogoBlock } from '@/components/LogoBlock';
 import { MapCallout } from '@/components/MapCallout';
+import { MapPin } from '@/components/MapPin';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
 import { PassportSummary } from '@/components/PassportSummary';
@@ -26,11 +28,13 @@ import type { Post } from '@/components/PostGrid';
 import { Screen } from '@/components/Screen';
 import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
+import { Skeleton } from '@/components/Skeleton';
 import { SocialLinks } from '@/components/SocialLinks';
 import { Stamp } from '@/components/Stamp';
 import { StampAddedCard } from '@/components/StampAddedCard';
 import { StampGrid } from '@/components/StampGrid';
 import { Text } from '@/components/Text';
+import { Toast } from '@/components/Toast';
 import { VideoCard, VIDEO_CARD_WIDTH } from '@/components/VideoCard';
 import { palette } from '@/design/colors';
 import { radii } from '@/design/radii';
@@ -96,6 +100,7 @@ export default function ComponentGallery() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadedTrackId, setDownloadedTrackId] = useState<string | null>(null);
   const [downloadingTrackId, setDownloadingTrackId] = useState<string | null>(null);
+  const [toastVisible, setToastVisible] = useState(true);
 
   const handleLoad = () => {
     setLoading(true);
@@ -361,7 +366,7 @@ export default function ComponentGallery() {
         </Section>
 
         <Section title="LinkRow">
-          <View style={styles.tightList}>
+          <View style={styles.linkRowList}>
             <LinkRow icon="call-outline" label="123-456-7890" onPress={() => {}} />
             <LinkRow icon="globe-outline" label="dallasparks.org/" onPress={() => {}} />
             <LinkRow
@@ -382,6 +387,41 @@ export default function ComponentGallery() {
           />
         </Section>
 
+        <Section title="ErrorState">
+          <ErrorState
+            icon={CompassIcon}
+            title="Couldn't load parks"
+            message="Check your connection and try again."
+            actionLabel="Retry"
+            onAction={() => {}}
+          />
+        </Section>
+
+        <Section title="Skeleton">
+          <View style={styles.tightList}>
+            <Skeleton width="100%" height={20} />
+            <Skeleton width="60%" height={20} />
+          </View>
+        </Section>
+
+        <Section title="Toast">
+          {toastVisible ? (
+            <Toast
+              message="Stamp added to your passport"
+              variant="success"
+              onDismiss={() => setToastVisible(false)}
+            />
+          ) : (
+            <Button label="Show toast" onPress={() => setToastVisible(true)} fullWidth={false} />
+          )}
+        </Section>
+
+        <Section title="MapPin">
+          <View style={styles.iconRow}>
+            <MapPin accessibilityLabel="Kiest Park" />
+          </View>
+        </Section>
+
         <Section title="SocialLinks">
           <SocialLinks
             links={[
@@ -400,6 +440,9 @@ export default function ComponentGallery() {
 const styles = StyleSheet.create({
   tightList: {
     gap: spacing.xs,
+  },
+  linkRowList: {
+    gap: 0,
   },
   iconRow: {
     flexDirection: 'row',

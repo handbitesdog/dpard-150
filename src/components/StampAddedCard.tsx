@@ -1,6 +1,7 @@
 import { Image, StyleSheet, View } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { Text } from '@/components/Text';
+import { borderWidths } from '@/design/borderWidths';
 import { navyMuted, palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     height: PEEK_SIZE,
     borderRadius: PEEK_SIZE / 2,
     backgroundColor: palette.grey,
-    borderWidth: 2,
+    borderWidth: borderWidths.strong,
     borderStyle: 'dashed',
     borderColor: palette.navy,
   },

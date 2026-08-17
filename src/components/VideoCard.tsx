@@ -3,10 +3,13 @@ import * as Linking from 'expo-linking';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { navyMuted, palette } from '@/design/colors';
+import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { sizes } from '@/design/sizes';
 
 export const VIDEO_CARD_WIDTH = 240;
+const PLAY_ICON_GLYPH_SIZE = 20;
+const PLAY_ICON_NUDGE = 2;
 
 type VideoCardProps = {
   title: string;
@@ -21,7 +24,7 @@ export function VideoCard({ title, thumbnail, permalink }: VideoCardProps) {
       onPress={() => Linking.openURL(permalink)}
       accessibilityRole="link"
       accessibilityLabel={`${title}, opens on Instagram`}
-      style={({ pressed }) => [{ width: VIDEO_CARD_WIDTH, opacity: pressed ? 0.85 : 1 }]}
+      style={({ pressed }) => [{ width: VIDEO_CARD_WIDTH, opacity: pressed ? opacity.pressed : 1 }]}
     >
       <View>
         {thumbnail ? (
@@ -30,7 +33,7 @@ export function VideoCard({ title, thumbnail, permalink }: VideoCardProps) {
           <View style={[styles.image, styles.placeholder]} />
         )}
         <View style={styles.playButton}>
-          <Ionicons name="play" size={20} color={palette.white} style={styles.playIcon} />
+          <Ionicons name="play" size={PLAY_ICON_GLYPH_SIZE} color={palette.white} style={styles.playIcon} />
         </View>
       </View>
     </Pressable>
@@ -62,6 +65,6 @@ const styles = StyleSheet.create({
     backgroundColor: navyMuted,
     textAlign: 'center',
     textAlignVertical: 'center',
-    marginLeft: 2,
+    marginLeft: PLAY_ICON_NUDGE,
   },
 });

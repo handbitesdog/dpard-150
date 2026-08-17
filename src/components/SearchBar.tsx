@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, TextInput, View } from 'react-native';
 import { navyMuted, palette } from '@/design/colors';
+import { radii } from '@/design/radii';
 import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     minHeight: sizes.touchTarget,
     backgroundColor: palette.white,
-    borderRadius: 999,
+    borderRadius: radii.full,
     paddingHorizontal: spacing.base,
   },
   icon: {

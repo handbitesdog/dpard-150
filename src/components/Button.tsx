@@ -1,10 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import { ActivityIndicator, Pressable, StyleSheet, Text } from 'react-native';
 import { palette } from '@/design/colors';
+import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
+
+const BUTTON_RADIUS = 10;
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
@@ -66,7 +69,7 @@ export function Button({
             ? styles.buttonSmall
             : styles.buttonDefault,
         !isIcon && (fullWidth ? styles.fullWidth : styles.inline),
-        { backgroundColor, opacity: disabled ? 0.5 : pressed ? 0.85 : 1 },
+        { backgroundColor, opacity: disabled ? opacity.disabled : pressed ? opacity.pressed : 1 },
       ]}
     >
       {loading && (
@@ -91,7 +94,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: BUTTON_RADIUS,
   },
   fullWidth: {
     width: '100%',

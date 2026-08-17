@@ -4,12 +4,14 @@ import type { ImageSourcePropType } from 'react-native';
 import { Button } from '@/components/Button';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
+import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { shadows } from '@/design/shadows';
 import { spacing } from '@/design/spacing';
 import { typography } from '@/design/typography';
 
 const PHOTO_SIZE = 96;
+const CLOSE_BUTTON_SIZE = 32;
 
 type MapCalloutProps = {
   title: string;
@@ -28,7 +30,7 @@ export function MapCallout({ title, subtitle, photo, onLearnMore, onClose }: Map
         accessibilityRole="button"
         accessibilityLabel="Close"
         hitSlop={spacing.sm}
-        style={({ pressed }) => [styles.closeButton, { opacity: pressed ? 0.6 : 1 }]}
+        style={({ pressed }) => [styles.closeButton, { opacity: pressed ? opacity.pressedHeavy : 1 }]}
       >
         <Ionicons name="close" size={typography.headline.size} color={palette.slate} />
       </Pressable>
@@ -66,8 +68,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: spacing.md,
     right: spacing.md,
-    width: 32,
-    height: 32,
+    width: CLOSE_BUTTON_SIZE,
+    height: CLOSE_BUTTON_SIZE,
     borderRadius: radii.lg,
     borderWidth: 1,
     borderColor: palette.grey,
