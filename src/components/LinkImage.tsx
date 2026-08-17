@@ -2,6 +2,7 @@ import * as Linking from 'expo-linking';
 import { Image, Pressable, StyleSheet } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { radii } from '@/design/radii';
+import { shadows } from '@/design/shadows';
 
 type LinkImageProps = {
   source: ImageSourcePropType;
@@ -38,10 +39,6 @@ const styles = StyleSheet.create({
   shadow: {
     alignSelf: 'flex-start',
     borderRadius: radii.lg,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 8,
+    ...shadows.elevated,
   },
 });

@@ -5,6 +5,7 @@ import { Button } from '@/components/Button';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
 import { radii } from '@/design/radii';
+import { shadows } from '@/design/shadows';
 import { spacing } from '@/design/spacing';
 import { typography } from '@/design/typography';
 
@@ -59,11 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: radii.lg,
     padding: spacing.lg,
     gap: spacing.base,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 8,
+    ...shadows.elevated,
   },
   closeButton: {
     position: 'absolute',

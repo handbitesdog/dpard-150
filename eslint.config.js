@@ -52,4 +52,20 @@ module.exports = defineConfig([
       ],
     },
   },
+  {
+    // Colors live in src/design/colors.ts (and shadow definitions in
+    // src/design/shadows.ts) so contrast stays auditable in one place —
+    // see tests/unit/contrast.test.ts.
+    files: ['src/**/*.{ts,tsx}'],
+    ignores: ['src/design/**'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'Literal[value=/^#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/]',
+          message: 'Raw hex colors are banned outside src/design/. Add the color to src/design/ and import it.',
+        },
+      ],
+    },
+  },
 ]);

@@ -4,8 +4,10 @@ import { Stack } from 'expo-router';
 import { Button } from '@/components/Button';
 import { Carousel } from '@/components/Carousel';
 import { Divider } from '@/components/Divider';
+import { EmptyState } from '@/components/EmptyState';
 import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
 import { Icon } from '@/components/Icon';
+import CompassIcon from '@/components/icons/compass-icon.svg';
 import FacebookIcon from '@/components/icons/facebook-logo-icon.svg';
 import InstagramIcon from '@/components/icons/instagram-logo-icon.svg';
 import PlaceholderIcon from '@/components/icons/placeholder.svg';
@@ -368,6 +370,16 @@ export default function ComponentGallery() {
               onPress={() => {}}
             />
           </View>
+        </Section>
+
+        <Section title="EmptyState">
+          <EmptyState
+            icon={CompassIcon}
+            title="No results"
+            message="Try a different search term."
+            actionLabel="Clear search"
+            onAction={() => {}}
+          />
         </Section>
 
         <Section title="SocialLinks">
