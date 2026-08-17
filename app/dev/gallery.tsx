@@ -15,6 +15,8 @@ import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
 import { PassportSummary } from '@/components/PassportSummary';
 import { PhotoHeader } from '@/components/PhotoHeader';
+import { PostGrid } from '@/components/PostGrid';
+import type { Post } from '@/components/PostGrid';
 import { Screen } from '@/components/Screen';
 import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
@@ -47,6 +49,11 @@ const stamps = [
   { id: 's3', name: 'Klyde Warren Park', collected: false },
   { id: 's4', name: 'Moore Park', collected: false },
 ];
+
+const posts: Post[] = Array.from({ length: 9 }, (_, i) => ({
+  id: `post-${i}`,
+  permalink: 'https://www.instagram.com/',
+}));
 
 const tracks = [
   { id: 't1', title: 'Kiest Park History', coverImage: require('../../assets/park-1.jpg'), duration: '10:20' },
@@ -266,6 +273,10 @@ export default function ComponentGallery() {
               height={220}
             />
           </View>
+        </Section>
+
+        <Section title="PostGrid">
+          <PostGrid posts={posts} />
         </Section>
 
         <Section title="PassportSummary">
