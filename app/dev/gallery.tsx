@@ -6,7 +6,11 @@ import { Carousel } from '@/components/Carousel';
 import { Divider } from '@/components/Divider';
 import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
 import { Icon } from '@/components/Icon';
+import FacebookIcon from '@/components/icons/facebook-logo-icon.svg';
+import InstagramIcon from '@/components/icons/instagram-logo-icon.svg';
 import PlaceholderIcon from '@/components/icons/placeholder.svg';
+import XIcon from '@/components/icons/x-logo-icon.svg';
+import YoutubeIcon from '@/components/icons/youtube-logo-icon.svg';
 import { LinkImage } from '@/components/LinkImage';
 import { LinkRow } from '@/components/LinkRow';
 import { LogoBlock } from '@/components/LogoBlock';
@@ -20,6 +24,7 @@ import type { Post } from '@/components/PostGrid';
 import { Screen } from '@/components/Screen';
 import { SearchBar } from '@/components/SearchBar';
 import { Section } from '@/components/Section';
+import { SocialLinks } from '@/components/SocialLinks';
 import { Stamp } from '@/components/Stamp';
 import { StampAddedCard } from '@/components/StampAddedCard';
 import { StampGrid } from '@/components/StampGrid';
@@ -363,6 +368,17 @@ export default function ComponentGallery() {
               onPress={() => {}}
             />
           </View>
+        </Section>
+
+        <Section title="SocialLinks">
+          <SocialLinks
+            links={[
+              { icon: FacebookIcon, url: 'https://www.facebook.com/dallasparks', label: 'Facebook' },
+              { icon: InstagramIcon, url: 'https://www.instagram.com/dallasparks', label: 'Instagram' },
+              { icon: XIcon, url: 'https://www.x.com/dallasparks', label: 'X' },
+              { icon: YoutubeIcon, url: 'https://www.youtube.com/dallasparks', label: 'YouTube' },
+            ]}
+          />
         </Section>
       </Screen>
     </>
