@@ -130,17 +130,21 @@ Dev client runs on both platforms. Intro appears exactly once. Skip flag works a
 
    | Group | Components |
    |---|---|
-   | Layout | `Screen`, `Section`, `SectionHeader` (title + "See all"), `Divider`, `Sheet` |
+   | Layout | `Screen`, `Section`, `SectionHeader` (title + "See all"), `Divider`, ~~`Sheet`~~ |
    | Typography | `Text` with variants; scales with Dynamic Type |
-   | Actions | `Button` (primary/secondary/tertiary, 3 sizes, loading/disabled/icon), `IconButton`, `LinkRow` |
-   | Content | `Card`, `ParkCard`, `FigureCard`, `Carousel` (snap-scrolling), `Chip` |
+   | Actions | `Button` (primary/secondary/tertiary, 3 sizes, loading/disabled/icon), ~~`IconButton`~~, `LinkRow` |
+   | Content | `Card`, `ParkCard`, `FigureCard`, `Carousel` (snap-scrolling), ~~`Chip`~~ |
    | Input | `SearchBar` (debounced, clearable) |
-   | Audio | `GuideRow`, `MiniPlayer`, `FullPlayer`, `Scrubber`, `DownloadButton` |
-   | Stamps | `StampBadge` (collected/uncollected/locked), `PassportSummary`, `CompletionBadge` |
+   | Audio | ~~`GuideRow`~~, `MiniPlayer`, ~~`FullPlayer`~~, ~~`Scrubber`~~, ~~`DownloadButton`~~ |
+   | Stamps | `StampBadge` (collected/uncollected/locked), `PassportSummary`, ~~`CompletionBadge`~~ |
    | Feedback | `EmptyState`, `ErrorState`, `Skeleton`, `Toast` |
    | Map | `MapPin`, `MapCallout` |
 
+   Struck-through items were descoped from this phase — see the note below.
+
 5. Every component takes an `accessibilityLabel`, has a ≥44×44pt touch target, and renders correctly at the largest Dynamic Type setting.
+
+> **Descoped from Phase 2.** `Sheet`, `IconButton`, `Chip`, `GuideRow`, `FullPlayer`, `Scrubber`, `DownloadButton`, and `CompletionBadge` were cut from this phase. Each is chrome for a screen or flow that doesn't exist yet, so building it now means guessing at its API instead of deriving it from a real caller. They move to whichever phase actually consumes them: `GuideRow`, `FullPlayer`, `Scrubber`, and `DownloadButton` to Phase 4 (Listen tab — see that phase's note, since its deliverables originally assumed these shipped here), `CompletionBadge` to whichever phase renders full-passport completion, and `Sheet`/`IconButton`/`Chip` wherever the first consuming screen needs them. `ErrorState`, `Skeleton`, `Toast`, and `MapPin` — also absent from the original table pass — were added and built in this phase; `MapPin` renders `map-pin-icon.svg` directly (full-color art with its own drop shadow) rather than a recolored glyph in a highlight container, so it has no `selected` variant.
 
 ### Tests
 - Component tests per component: renders, honors `disabled`, fires handlers, exposes an accessible role and label.
@@ -149,7 +153,7 @@ Dev client runs on both platforms. Intro appears exactly once. Skip flag works a
 - `StampBadge` uncollected state exposes a **non-color** indicator (per the overview's accessibility rule).
 
 ### Exit criteria
-Gallery renders every component in every state. Contrast test passes for every declared pair, and the pairs blocked on the designer decision are listed rather than silently omitted. Spacing and type reconciled against at least one real Figma screen.
+Gallery renders every component built in this phase, in every state. Contrast test passes for every declared pair, and the pairs blocked on the designer decision are listed rather than silently omitted. Spacing and type reconciled against at least one real Figma screen.
 
 ---
 
@@ -253,7 +257,7 @@ Every page phase assumes bundled fixture audio, not the CDN. Phase 9 swaps in re
 6. Resume position persisted per guide via `progressStore`, restored on replay.
 7. Download UI wired to `downloadService` — progress, cancel, delete, and total storage used. Against local files for now.
 
-`MiniPlayer`, `FullPlayer`, `Scrubber`, and `DownloadButton` are not rebuilt here — Phase 2 already built them as presentational components. This phase mounts them and wires them to `playbackService`, per the layering rule above.
+`MiniPlayer` is not rebuilt here — Phase 2 already built it as a presentational component. `GuideRow`, `FullPlayer`, `Scrubber`, and `DownloadButton` were descoped from Phase 2 (see that phase's note) and get built fresh here as presentational components first, then wired to `playbackService`, per the layering rule above.
 
 ### Tests
 - Component: search filters correctly and handles no-match; `GuideRow` renders all download states; `MiniPlayer` hides when nothing is playing and survives tab switches.
