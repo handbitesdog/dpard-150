@@ -1,0 +1,27 @@
+[
+  {
+    "id": "park150-tee",
+    "name": "Park150 Anniversary Tee",
+    "productUrl": "https://dallasparks.org/store/products/park150-anniversary-tee"
+  },
+  {
+    "id": "park150-cap",
+    "name": "Park150 Trucker Cap",
+    "productUrl": "https://dallasparks.org/store/products/park150-trucker-cap"
+  },
+  {
+    "id": "park150-tote",
+    "name": "Park150 Canvas Tote",
+    "productUrl": "https://dallasparks.org/store/products/park150-canvas-tote"
+  },
+  {
+    "id": "park150-water-bottle",
+    "name": "Park150 Water Bottle",
+    "productUrl": "https://dallasparks.org/store/products/park150-water-bottle"
+  },
+  {
+    "id": "park150-enamel-pin",
+    "name": "Park150 Enamel Pin",
+    "productUrl": "https://dallasparks.org/store/products/park150-enamel-pin"
+  }
+]

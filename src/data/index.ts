@@ -1,9 +1,10 @@
 import type { z } from 'zod';
 import figuresData from './figures.json';
 import guidesData from './guides.json';
+import merchData from './merch.json';
 import parksData from './parks.json';
-import { audioGuideSchema, historicFigureSchema, parkSchema } from './schemas';
-import type { AudioGuide, HistoricFigure, Park } from './schemas';
+import { audioGuideSchema, historicFigureSchema, merchItemSchema, parkSchema } from './schemas';
+import type { AudioGuide, HistoricFigure, MerchItem, Park } from './schemas';
 import { validateCatalog } from './validateCatalog';
 
 function parseAll<T>(schema: z.ZodType<T>, raw: unknown[], label: string): T[] {
@@ -28,6 +29,7 @@ export const figures: HistoricFigure[] = parseAll(
   figuresData,
   'historic figure',
 );
+export const merch: MerchItem[] = parseAll(merchItemSchema, merchData, 'merch item');
 
 const catalogErrors = validateCatalog(parks, guides, figures);
 if (catalogErrors.length > 0) {
