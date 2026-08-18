@@ -33,7 +33,7 @@ function FitWidthLogo({ source, style }: { source: number; style: ViewStyle }) {
 }
 
 type LogoBlockProps = {
-  variant?: 'both' | 'anniversary';
+  variant?: 'both' | 'anniversary' | 'anniversary-compact';
   leftLogo?: keyof typeof ANNIVERSARY_LOGOS;
 };
 
@@ -50,7 +50,10 @@ export function LogoBlock({ variant = 'both', leftLogo = 'default' }: LogoBlockP
       accessibilityLabel={label}
       style={styles.container}
     >
-      <FitWidthLogo source={ANNIVERSARY_LOGOS[leftLogo]} style={styles.left} />
+      <FitWidthLogo
+        source={ANNIVERSARY_LOGOS[leftLogo]}
+        style={variant === 'anniversary-compact' ? styles.leftCompact : styles.left}
+      />
       {variant === 'both' && <FitWidthLogo source={WORDMARK_LOGO} style={styles.right} />}
     </View>
   );
@@ -66,6 +69,9 @@ const styles = StyleSheet.create({
   },
   left: {
     width: '40%',
+  },
+  leftCompact: {
+    width: '30%',
   },
   right: {
     flex: 1,

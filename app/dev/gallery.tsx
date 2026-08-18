@@ -369,6 +369,7 @@ export default function ComponentGallery() {
             <LogoBlock leftLogo="inline" />
             <LogoBlock variant="anniversary" />
             <LogoBlock variant="anniversary" leftLogo="dark" />
+            <LogoBlock variant="anniversary-compact" leftLogo="dark" />
           </View>
         </Section>
 
