@@ -3,13 +3,15 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
 import { Divider } from '@/components/Divider';
 import { LinkRow } from '@/components/LinkRow';
+import { MiniPlayer } from '@/components/MiniPlayer';
 import { PhotoHeader } from '@/components/PhotoHeader';
 import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
-import { parks } from '@/data';
+import { guides, parks } from '@/data';
 import { PARK_PHOTOS } from '@/data/parkPhotos';
 import { spacing } from '@/design/spacing';
+import { formatDuration } from '@/lib/formatDuration';
 import type { Park } from '@/data/schemas';
 
 function mapsUrl(park: Park): string {
@@ -23,6 +25,8 @@ export default function ParkDetailScreen() {
   const park = parks.find((candidate) => candidate.id === id);
 
   if (!park) return null;
+
+  const parkGuides = guides.filter((guide) => guide.parkId === park.id);
 
   return (
     <Screen scroll>
@@ -78,6 +82,25 @@ export default function ParkDetailScreen() {
           color="teal"
         />
       </View>
+
+      {parkGuides.length > 0 && (
+        <Section title="Audio Guides">
+          {parkGuides.map((guide) => (
+            <MiniPlayer
+              key={guide.id}
+              variant="row"
+              title={guide.title}
+              coverImage={PARK_PHOTOS[guide.parkId]}
+              elapsedLabel={formatDuration(guide.durationSeconds)}
+              progress={0}
+              isPlaying={false}
+              isDownloaded={false}
+              isDownloading={false}
+              onPress={() => {}}
+            />
+          ))}
+        </Section>
+      )}
     </Screen>
   );
 }
