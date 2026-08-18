@@ -42,6 +42,10 @@ function getService(
   service = createPlaybackService({
     player,
     resolveSource: () => AUDIO_FIXTURE,
+    getResumePosition: (guideId) => {
+      const progress = useProgressStore.getState().progress[guideId];
+      return progress && !progress.completedAt ? progress.positionSeconds : undefined;
+    },
     onStatusChange: (status: PlaybackStatus) => {
       const previous = get();
       const stoppedOrSwitched =

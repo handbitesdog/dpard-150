@@ -38,6 +38,7 @@ function makeDeps(overrides: Partial<PlaybackServiceDeps> = {}): {
   const deps: PlaybackServiceDeps = {
     player,
     resolveSource: jest.fn((guideId: string) => ({ uri: `fixture://${guideId}` })),
+    getResumePosition: jest.fn(() => undefined),
     onStatusChange,
     ...overrides,
   };
@@ -75,6 +76,37 @@ describe('createPlaybackService', () => {
     await service.play('fair-park-midway');
 
     expect(player.replace).toHaveBeenNthCalledWith(2, { uri: 'fixture://fair-park-midway' });
+  });
+
+  it('seeks to the saved position when resuming a guide after a restart', async () => {
+    const { deps, player } = makeDeps({ getResumePosition: jest.fn(() => 23) });
+    const service = createPlaybackService(deps);
+
+    await service.play('kwp-history');
+
+    expect(player.replace).toHaveBeenCalledWith({ uri: 'fixture://kwp-history' });
+    expect(player.seekTo).toHaveBeenCalledWith(23);
+    expect(player.play).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not seek when there is no saved position for the guide', async () => {
+    const { deps, player } = makeDeps({ getResumePosition: jest.fn(() => undefined) });
+    const service = createPlaybackService(deps);
+
+    await service.play('kwp-history');
+
+    expect(player.seekTo).not.toHaveBeenCalled();
+  });
+
+  it('does not re-seek when resuming the same guide without switching', async () => {
+    const { deps, player } = makeDeps({ getResumePosition: jest.fn(() => 23) });
+    const service = createPlaybackService(deps);
+
+    await service.play('kwp-history');
+    (player.seekTo as jest.Mock).mockClear();
+    await service.play('kwp-history');
+
+    expect(player.seekTo).not.toHaveBeenCalled();
   });
 
   it('pauses without touching the source', async () => {
