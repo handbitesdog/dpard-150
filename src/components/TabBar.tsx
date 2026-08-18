@@ -1,14 +1,28 @@
 import type { BottomTabBarProps } from 'expo-router/js-tabs';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Defs, LinearGradient, Rect, Stop, Svg } from 'react-native-svg';
 import { navyMuted, palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 import { fontFamily, typography } from '@/design/typography';
 
 const ICON_SIZE = 25;
+const SHADOW_HEIGHT = 5;
 
 export function TabBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
   return (
-    <View style={[styles.container, { paddingBottom: spacing['2xl'] + insets.bottom }]}>
+    <View style={[styles.container, { paddingBottom: spacing.sm + insets.bottom }]}>
+      {/* Android clips a native elevation shadow at this edge (react-native-screens
+          renders each tab's content in a Fragment that clips sibling overdraw), so the
+          shadow is faked with a gradient instead of shadow/elevation style props. */}
+      <Svg style={styles.shadow}>
+        <Defs>
+          <LinearGradient id="tabBarShadow" x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor="#000" stopOpacity={0} />
+            <Stop offset="1" stopColor="#000" stopOpacity={0.05} />
+          </LinearGradient>
+        </Defs>
+        <Rect x={0} y={0} width="100%" height="100%" fill="url(#tabBarShadow)" />
+      </Svg>
       {state.routes.map((route, index) => {
         const descriptor = descriptors[route.key];
         if (!descriptor) return null;
@@ -48,8 +62,15 @@ const styles = StyleSheet.create({
     backgroundColor: palette.beige,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: palette.grey,
-    paddingTop: spacing.xs,
+    paddingTop: spacing.sm,
     paddingHorizontal: spacing.sm,
+  },
+  shadow: {
+    position: 'absolute',
+    top: -SHADOW_HEIGHT,
+    left: 0,
+    right: 0,
+    height: SHADOW_HEIGHT,
   },
   tab: {
     flex: 1,
@@ -58,9 +79,9 @@ const styles = StyleSheet.create({
     padding: spacing.xs,
   },
   label: {
-    fontFamily: fontFamily.regular,
+    fontFamily: fontFamily.bold,
     fontSize: typography.footnote.size,
     lineHeight: typography.footnote.lineHeight,
-    marginTop: spacing.xs,
+    marginTop: spacing.sm,
   },
 });
