@@ -5,10 +5,14 @@ import ExploreScreen from '../../app/(tabs)/explore';
 import ListenScreen from '../../app/(tabs)/listen';
 import PassportScreen from '../../app/(tabs)/passport';
 
+jest.mock('expo-router', () => ({
+  useFocusEffect: () => {},
+}));
+
 describe('tab screens', () => {
   const screens = [
     ['Discover', DiscoverScreen],
-    ['Listen', ListenScreen],
+    ['Audio Tour Guides', ListenScreen],
     ['Explore', ExploreScreen],
     ['Passport', PassportScreen],
     ['Connect', ConnectScreen],
