@@ -60,7 +60,14 @@ export const historicFigureSchema = z.object({
   relatedParkIds: z.array(z.string().min(1)),
 });
 
+export const merchItemSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  productUrl: z.string().url(),
+});
+
 export type PhotoRef = z.infer<typeof photoRefSchema>;
 export type Park = z.infer<typeof parkSchema>;
 export type AudioGuide = z.infer<typeof audioGuideSchema>;
 export type HistoricFigure = z.infer<typeof historicFigureSchema>;
+export type MerchItem = z.infer<typeof merchItemSchema>;

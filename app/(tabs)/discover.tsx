@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native';
+import * as Linking from 'expo-linking';
 import { useRouter } from 'expo-router';
+import { StyleSheet } from 'react-native';
 import { Button } from '@/components/Button';
 import { Carousel } from '@/components/Carousel';
 import { FigureCard, FIGURE_CARD_WIDTH } from '@/components/FigureCard';
@@ -8,13 +9,16 @@ import { MiniPlayer } from '@/components/MiniPlayer';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
 import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
+import { ShopItem, SHOP_ITEM_WIDTH } from '@/components/ShopItem';
 import { Text } from '@/components/Text';
-import { figures, guides, parks } from '@/data';
+import { figures, guides, merch, parks } from '@/data';
+import { MERCH_PHOTOS } from '@/data/merchPhotos';
 import { PARK_PHOTOS } from '@/data/parkPhotos';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
 
 const AUDIO_TOUR_PREVIEW_COUNT = 5;
+const SHOP_URL = 'https://dallasparks.org/store';
 
 export default function DiscoverScreen() {
   const router = useRouter();
@@ -74,6 +78,18 @@ export default function DiscoverScreen() {
           />
         ))}
         <Button label="See more" onPress={() => router.push('/listen')} />
+      </Section>
+
+      <Section title="Shop">
+        <Carousel
+          data={merch}
+          keyExtractor={(item) => item.id}
+          itemWidth={SHOP_ITEM_WIDTH}
+          renderItem={(item) => (
+            <ShopItem name={item.name} productUrl={item.productUrl} photo={MERCH_PHOTOS[item.id]} />
+          )}
+        />
+        <Button label="Shop Park150 Merch" onPress={() => Linking.openURL(SHOP_URL)} />
       </Section>
 
       <LogoBlock leftLogo="inline" />
