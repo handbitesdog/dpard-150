@@ -1,5 +1,6 @@
-import { BottomTabBar, Tabs } from 'expo-router/js-tabs';
+import { Tabs } from 'expo-router/js-tabs';
 import type { ComponentType } from 'react';
+import type { ColorValue } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 import { Icon } from '@/components/Icon';
 import CompassIcon from '@/components/icons/compass-icon.svg';
@@ -9,19 +10,17 @@ import PinIcon from '@/components/icons/pin-icon.svg';
 import SoundIcon from '@/components/icons/sound-icon.svg';
 import { MiniPlayerSlot } from '@/components/MiniPlayerSlot';
 import type { MiniPlayerSlotTrack } from '@/components/MiniPlayerSlot';
+import { TabBar } from '@/components/TabBar';
 import { guides } from '@/data';
 import { PARK_PHOTOS } from '@/data/parkPhotos';
-import { navyMuted, palette } from '@/design/colors';
-import { spacing } from '@/design/spacing';
-import { typography } from '@/design/typography';
 import { formatDuration } from '@/lib/formatDuration';
 import { useDownloadStore } from '@/stores/downloadStore';
 import { usePlaybackStore } from '@/stores/playbackStore';
 
 /** Builds a tab bar icon renderer for the given SVG icon. */
 function tabIcon(SvgIcon: ComponentType<SvgProps>) {
-  return function TabBarIcon({ size }: { size: number }) {
-    return <Icon icon={SvgIcon} size={size} />;
+  return function TabBarIcon({ size, color }: { size: number; color: ColorValue }) {
+    return <Icon icon={SvgIcon} size={size} color={color as string} />;
   };
 }
 
@@ -57,26 +56,11 @@ export default function TabsLayout() {
 
   return (
     <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: palette.navy,
-        tabBarInactiveTintColor: navyMuted,
-        tabBarStyle: {
-          backgroundColor: palette.beige,
-          paddingTop: spacing.xs,
-          paddingBottom: spacing['2xl'],
-          paddingHorizontal: spacing.sm,
-        },
-        tabBarLabelStyle: {
-          fontSize: typography.footnote.size,
-          lineHeight: typography.footnote.lineHeight,
-          marginTop: spacing.xs,
-        },
-      }}
+      screenOptions={{ headerShown: false }}
       tabBar={(props) => (
         <>
           <MiniPlayerSlot track={miniPlayerTrack} />
-          <BottomTabBar {...props} />
+          <TabBar {...props} />
         </>
       )}
     >
