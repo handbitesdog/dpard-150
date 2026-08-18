@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import type { PropsWithChildren } from 'react';
+import { BottomTabBarHeightContext } from 'expo-router/js-tabs';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { palette } from '@/design/colors';
@@ -21,8 +23,16 @@ type ScreenProps = PropsWithChildren<{
  * that bleeds into the gutter, like a drop shadow.
  */
 export function Screen({ children, scroll }: ScreenProps) {
+  // Undefined outside the tab navigator (no Provider) vs. a number inside it.
+  // The tab bar renders in normal flow, not as an overlay, so React
+  // Navigation already excludes its height from this screen's space — only
+  // its own paddingBottom (which includes insets.bottom) must not be
+  // reserved a second time here.
+  const insideTabNavigator = useContext(BottomTabBarHeightContext) != null;
+  const edges = insideTabNavigator ? (['top', 'left', 'right'] as const) : undefined;
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} edges={edges}>
       {scroll ? (
         <ScrollView
           style={styles.scroll}
