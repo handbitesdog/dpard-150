@@ -13,7 +13,7 @@ import { spacing } from '@/design/spacing';
 export default function DiscoverScreen() {
   return (
     <Screen scroll>
-      <LogoBlock variant="anniversary" leftLogo="dark" />
+      <LogoBlock variant="anniversary-compact" leftLogo="dark" />
 
       <Text variant="title1" accessibilityRole="header" style={styles.title}>
         Discover
