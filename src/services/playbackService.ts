@@ -35,6 +35,8 @@ export type PlaybackServiceDeps = {
   player: PlaybackPlayer;
   /** Resolves a guide to its playable audio source. */
   resolveSource: (guideId: string) => unknown;
+  /** Last saved position to resume a guide from, if any. */
+  getResumePosition: (guideId: string) => number | undefined;
   /** Fired on every underlying player status event. */
   onStatusChange: (status: PlaybackStatus) => void;
 };
@@ -68,6 +70,11 @@ export function createPlaybackService(deps: PlaybackServiceDeps): PlaybackServic
       if (guideId !== currentGuideId) {
         currentGuideId = guideId;
         deps.player.replace(deps.resolveSource(guideId));
+
+        const resumePosition = deps.getResumePosition(guideId);
+        if (resumePosition) {
+          await deps.player.seekTo(resumePosition);
+        }
       }
       deps.player.play();
     },
