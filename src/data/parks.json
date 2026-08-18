@@ -6,8 +6,9 @@
     "description": {
       "en": "A 5.2-acre deck park built over Woodall Rodgers Freeway, connecting Uptown to the Dallas Arts District with lawns, food trucks, and a children's park."
     },
-    "amenities": ["Dog park", "Children's play area", "Reading room", "Food trucks", "Great lawn"],
-    "hours": "6:00 AM - 11:00 PM daily",
+    "phone": "(214) 716-4500",
+    "website": "https://www.klydewarrenpark.org",
+    "streetAddress": "2012 Woodall Rodgers Freeway, Dallas, TX 75201",
     "photos": [
       {
         "source": "/parks/klyde-warren-park/great-lawn.jpg",
@@ -29,8 +30,9 @@
     "description": {
       "en": "A 277-acre National Historic Landmark and the largest collection of Art Deco exposition architecture in the United States, home to the State Fair of Texas."
     },
-    "amenities": ["Texas Star Ferris wheel", "Cotton Bowl", "Museums", "Band shell", "Esplanade"],
-    "hours": "5:00 AM - 10:00 PM daily",
+    "phone": "(214) 670-8400",
+    "website": "https://www.fairparkdallas.com",
+    "streetAddress": "3809 Grand Avenue, Dallas, TX 75210",
     "photos": [
       {
         "source": "/parks/fair-park/esplanade.jpg",
@@ -52,8 +54,9 @@
     "description": {
       "en": "A 1,254-acre park surrounding a reservoir lake, with a 9.3-mile trail loop, the historic Bath House Cultural Center, and views of the downtown skyline."
     },
-    "amenities": ["Hike and bike trail", "Boat launch", "Bath House Cultural Center", "Sailboat rentals"],
-    "hours": "5:00 AM - 12:00 AM daily",
+    "phone": "(214) 670-1923",
+    "website": "https://www.dallasparks.org/235/White-Rock-Lake",
+    "streetAddress": "8300 Garland Road, Dallas, TX 75218",
     "photos": [
       {
         "source": "/parks/white-rock-lake-park/trail.jpg",

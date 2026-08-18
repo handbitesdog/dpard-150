@@ -45,7 +45,7 @@ export default function DiscoverScreen() {
               name={park.name}
               neighborhood={park.neighborhood}
               photo={PARK_PHOTOS[park.id]}
-              onPress={() => {}}
+              onPress={() => router.push(`/park/${park.id}`)}
             />
           )}
         />
