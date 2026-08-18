@@ -8,7 +8,6 @@ import FlagIcon from '@/components/icons/flag-icon.svg';
 import FlowerIcon from '@/components/icons/flower-icon.svg';
 import PinIcon from '@/components/icons/pin-icon.svg';
 import SoundIcon from '@/components/icons/sound-icon.svg';
-import { MiniPlayerSlot } from '@/components/MiniPlayerSlot';
 import type { MiniPlayerSlotTrack } from '@/components/MiniPlayerSlot';
 import { TabBar } from '@/components/TabBar';
 import { guides } from '@/data';
@@ -57,12 +56,7 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{ headerShown: false }}
-      tabBar={(props) => (
-        <>
-          <MiniPlayerSlot track={miniPlayerTrack} />
-          <TabBar {...props} />
-        </>
-      )}
+      tabBar={(props) => <TabBar {...props} miniPlayerTrack={miniPlayerTrack} />}
     >
       <Tabs.Screen name="discover" options={{ title: 'Discover', tabBarIcon: tabIcon(PinIcon) }} />
       <Tabs.Screen name="listen" options={{ title: 'Listen', tabBarIcon: tabIcon(SoundIcon) }} />
