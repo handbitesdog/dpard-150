@@ -12,19 +12,19 @@ export type OnboardingSlide = {
 
 export const ONBOARDING_SLIDES: readonly OnboardingSlide[] = [
   {
-    title: 'Learn',
-    body: 'Browse Dallas parks and the historic figures behind them — photos, amenities, hours, and the stories that go with them.',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    body: 'Lorem ipsum dolor sit amet consectetur adipiscing, elit fringilla ligula.',
   },
   {
-    title: 'Collect',
-    body: 'Visit a park in person and collect its stamp. Your phone confirms you are actually there, so bring it along.',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    body: 'Lorem ipsum dolor sit amet consectetur adipiscing, elit fringilla ligula.',
   },
   {
-    title: 'Listen',
-    body: 'Play a guided audio tour while you walk. Download one before you go if the signal is thin where you are headed.',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    body: 'Lorem ipsum dolor sit amet consectetur adipiscing, elit fringilla ligula.',
   },
   {
-    title: 'Connect',
-    body: 'See what the department is sharing, find the shop, and browse photos from around the city.',
+    title: 'Lorem ipsum dolor sit amet consectetur',
+    body: 'Lorem ipsum dolor sit amet consectetur adipiscing, elit fringilla ligula.',
   },
 ] as const;
