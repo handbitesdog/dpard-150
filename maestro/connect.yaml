@@ -1,0 +1,47 @@
+appId: gov.dallascityhall.parks
+name: Connect tab renders social links, hashtag, and Videos/Photos/Shop sections
+---
+# Requires a bundle built or served with EXPO_PUBLIC_SKIP_ONBOARDING=1
+# (`npm run start:skip-intro`) so the flow lands on Discover directly instead
+# of the onboarding intro.
+#
+# Against a dev-client build, clearState also wipes the dev client's saved
+# Metro connection, so launchApp lands on its native "Development servers"
+# picker instead of the app. Tap the listed server there manually before this
+# flow will find `screen-discover` -- Maestro can't do it (it's outside the
+# RN view tree). A standalone/preview build has no such screen and doesn't
+# need this. See README.md, "Tests".
+- clearState
+- launchApp
+
+- tapOn:
+    text: 'Close'
+    optional: true
+
+- assertVisible:
+    id: 'screen-discover'
+
+- tapOn: 'Connect'
+- assertVisible:
+    id: 'screen-connect'
+
+- assertVisible: 'Community Hub'
+- assertVisible: 'Facebook'
+- assertVisible: 'Instagram'
+- assertVisible: 'X'
+- assertVisible: 'YouTube'
+- assertVisible: 'Submit memories'
+- assertVisible: '#MyDallasParksMemories'
+
+- assertVisible: 'Videos'
+- assertVisible: 'Photos'
+
+- scrollUntilVisible:
+    element: 'Shop Park150 Merch'
+    direction: DOWN
+- assertVisible: 'Shop'
+- assertVisible: 'Shop Park150 Merch'
+
+# Videos/Photos are static fixtures until the feed.json CDN integration lands
+# (IMPLEMENTATION.md Phase 8, deliverable 2). The feed-renders/offline-cache
+# assertions from the phase spec belong here once that's wired up.
