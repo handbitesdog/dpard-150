@@ -2,8 +2,8 @@ import { StyleSheet, View } from 'react-native';
 import MapPinIconSvg from '@/components/icons/map-pin-icon.svg';
 import { sizes } from '@/design/sizes';
 
-const PIN_WIDTH = 22;
-const PIN_HEIGHT = 28;
+const PIN_WIDTH = 30;
+const PIN_HEIGHT = 38;
 
 type MapPinProps = {
   accessibilityLabel?: string;
