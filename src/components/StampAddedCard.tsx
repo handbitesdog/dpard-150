@@ -42,13 +42,14 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     paddingVertical: spacing['2xl'],
-    overflow: 'hidden',
   },
   stampArea: {
-    width: '100%',
+    alignSelf: 'stretch',
+    marginHorizontal: -spacing.base,
     height: STAMP_SIZE,
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
   },
   peek: {
     position: 'absolute',

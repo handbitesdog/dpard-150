@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Linking, Platform, Share, StyleSheet, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
@@ -9,11 +8,9 @@ import { MiniPlayer } from '@/components/MiniPlayer';
 import { PhotoHeader } from '@/components/PhotoHeader';
 import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
-import { StampAddedCard } from '@/components/StampAddedCard';
 import { Text } from '@/components/Text';
 import { guides, parks } from '@/data';
 import { PARK_PHOTOS } from '@/data/parkPhotos';
-import { STAMP_PHOTO_PLACEHOLDER } from '@/data/stampPhotos';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
 import { getCurrentLocation } from '@/services/locationService';
@@ -35,7 +32,6 @@ export default function ParkDetailScreen() {
   const park = parks.find((candidate) => candidate.id === id);
   const stamps = useStampStore((state) => state.stamps);
   const collectStamp = useStampStore((state) => state.collectStamp);
-  const [justCollected, setJustCollected] = useState(false);
 
   if (!park) return null;
 
@@ -69,15 +65,11 @@ export default function ParkDetailScreen() {
               getCurrentLocation,
             })
           }
-          onSuccess={() => setJustCollected(true)}
+          onSuccess={() =>
+            router.push({ pathname: '/stamp-collected', params: { parkId: park.id } })
+          }
         />
       </View>
-
-      {justCollected && (
-        <View style={styles.stampCelebration}>
-          <StampAddedCard name={park.name} image={STAMP_PHOTO_PLACEHOLDER} />
-        </View>
-      )}
 
       <View style={styles.divider}>
         <Divider />
@@ -146,9 +138,6 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   collectStamp: {
-    marginTop: spacing.xl,
-  },
-  stampCelebration: {
     marginTop: spacing.xl,
   },
   divider: {
