@@ -1,4 +1,4 @@
-import { distanceMeters } from '@/lib/geo';
+import { distanceMeters, regionForCoordinates } from '@/lib/geo';
 
 const EARTH_RADIUS_METERS = 6371000;
 
@@ -47,5 +47,50 @@ describe('distanceMeters', () => {
     const a = { latitude: 32.7767, longitude: -96.797 };
     const b = { latitude: 32.79, longitude: -96.81 };
     expect(distanceMeters(a, b)).toBeCloseTo(distanceMeters(b, a), 9);
+  });
+});
+
+describe('regionForCoordinates', () => {
+  it('centers on a single coordinate with a non-zero delta', () => {
+    const point = { latitude: 32.7767, longitude: -96.797 };
+    const region = regionForCoordinates([point]);
+    expect(region.latitude).toBeCloseTo(point.latitude, 9);
+    expect(region.longitude).toBeCloseTo(point.longitude, 9);
+    expect(region.latitudeDelta).toBeGreaterThan(0);
+    expect(region.longitudeDelta).toBeGreaterThan(0);
+  });
+
+  it('centers between two coordinates and covers both with padding', () => {
+    const a = { latitude: 32.789, longitude: -96.8016 };
+    const b = { latitude: 32.8209, longitude: -96.7502 };
+    const region = regionForCoordinates([a, b]);
+
+    expect(region.latitude).toBeCloseTo((a.latitude + b.latitude) / 2, 9);
+    expect(region.longitude).toBeCloseTo((a.longitude + b.longitude) / 2, 9);
+
+    const latSpan = Math.abs(a.latitude - b.latitude);
+    const lonSpan = Math.abs(a.longitude - b.longitude);
+    expect(region.latitudeDelta).toBeGreaterThan(latSpan);
+    expect(region.longitudeDelta).toBeGreaterThan(lonSpan);
+  });
+
+  it('covers every coordinate in a larger set, not just the extremes', () => {
+    const coordinates = [
+      { latitude: 32.789, longitude: -96.8016 },
+      { latitude: 32.8209, longitude: -96.7502 },
+      { latitude: 32.8354, longitude: -96.7147 },
+    ];
+    const region = regionForCoordinates(coordinates);
+
+    for (const { latitude, longitude } of coordinates) {
+      expect(latitude).toBeGreaterThanOrEqual(region.latitude - region.latitudeDelta / 2);
+      expect(latitude).toBeLessThanOrEqual(region.latitude + region.latitudeDelta / 2);
+      expect(longitude).toBeGreaterThanOrEqual(region.longitude - region.longitudeDelta / 2);
+      expect(longitude).toBeLessThanOrEqual(region.longitude + region.longitudeDelta / 2);
+    }
+  });
+
+  it('throws for an empty list', () => {
+    expect(() => regionForCoordinates([])).toThrow();
   });
 });

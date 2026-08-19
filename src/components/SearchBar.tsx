@@ -9,6 +9,7 @@ import { fontFamily, typography } from '@/design/typography';
 type SearchBarProps = {
   value: string;
   onChangeText: (text: string) => void;
+  onSubmitEditing?: () => void;
   placeholder?: string;
   accessibilityLabel?: string;
 };
@@ -16,6 +17,7 @@ type SearchBarProps = {
 export function SearchBar({
   value,
   onChangeText,
+  onSubmitEditing,
   placeholder = 'Search',
   accessibilityLabel,
 }: SearchBarProps) {
@@ -25,6 +27,7 @@ export function SearchBar({
       <TextInput
         value={value}
         onChangeText={onChangeText}
+        onSubmitEditing={onSubmitEditing}
         placeholder={placeholder}
         placeholderTextColor={navyMuted}
         returnKeyType="search"
