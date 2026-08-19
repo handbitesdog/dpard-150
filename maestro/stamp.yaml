@@ -1,0 +1,42 @@
+appId: gov.dallascityhall.parks
+name: Claim a stamp inside the radius, blocked outside it
+---
+# Requires a bundle built or served with EXPO_PUBLIC_SKIP_ONBOARDING=1
+# (`npm run start:skip-intro`) so the flow lands on Discover directly instead
+# of the onboarding intro.
+#
+# Against a dev-client build, clearState also wipes the dev client's saved
+# Metro connection, so launchApp lands on its native "Development servers"
+# picker instead of the app. Tap the listed server there manually before this
+# flow will find `screen-discover` -- Maestro can't do it (it's outside the
+# RN view tree). A standalone/preview build has no such screen and doesn't
+# need this. See README.md, "Tests".
+- clearState
+- launchApp:
+    permissions:
+      location: allow
+
+- assertVisible:
+    id: 'screen-discover'
+
+# Klyde Warren Park's exact coordinates -- well inside its 120m stamp radius.
+- setLocation:
+    latitude: 32.789
+    longitude: -96.8016
+
+- tapOn: 'Klyde Warren Park'
+- tapOn: 'Collect Stamp'
+- assertVisible: 'added to passport'
+- tapOn: 'Close'
+
+# ClaimStampButton disables itself once a park is collected rather than
+# waiting for a second tap to report "already collected" -- this is that
+# state, and it must survive the round trip back from stamp-collected.
+- assertVisible: 'Stamp Collected'
+- back
+
+# Still at Klyde Warren's coordinates, which sits well outside Fair Park's
+# 200m radius.
+- tapOn: 'Fair Park'
+- tapOn: 'Collect Stamp'
+- assertVisible: 'away'
