@@ -26,7 +26,7 @@ describe('onboarding slides', () => {
     await render(<OnboardingSlides />);
 
     expect(
-      screen.getByRole('header', { name: ONBOARDING_SLIDES[0]!.title }),
+      screen.getAllByRole('header', { name: ONBOARDING_SLIDES[0]!.title })[0],
     ).toBeOnTheScreen();
     expect(screen.getByTestId('onboarding-progress')).toHaveAccessibleName('Step 1 of 4');
     expect(screen.getByTestId('onboarding-advance')).toHaveAccessibleName('Next');
