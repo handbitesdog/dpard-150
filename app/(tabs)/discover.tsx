@@ -57,7 +57,11 @@ export default function DiscoverScreen() {
           keyExtractor={(figure) => figure.id}
           itemWidth={FIGURE_CARD_WIDTH}
           renderItem={(figure) => (
-            <FigureCard name={figure.name} era={figure.lifespan ?? ''} onPress={() => {}} />
+            <FigureCard
+              name={figure.name}
+              era={figure.lifespan ?? ''}
+              onPress={() => router.push(`/figure/${figure.id}`)}
+            />
           )}
         />
       </Section>
