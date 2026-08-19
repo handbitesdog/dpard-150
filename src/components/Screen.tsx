@@ -11,6 +11,7 @@ type ScreenProps = PropsWithChildren<{
   scroll?: boolean;
   /** Excludes the top safe-area inset, for screens whose full-bleed header (e.g. PhotoHeader) already accounts for it. */
   noTopInset?: boolean;
+  testID?: string;
 }>;
 
 /**
@@ -24,7 +25,7 @@ type ScreenProps = PropsWithChildren<{
  * to its own frame, so wrapping it in a padded View would clip anything
  * that bleeds into the gutter, like a drop shadow.
  */
-export function Screen({ children, scroll, noTopInset }: ScreenProps) {
+export function Screen({ children, scroll, noTopInset, testID }: ScreenProps) {
   // Undefined outside the tab navigator (no Provider) vs. a number inside it.
   // The tab bar renders in normal flow, not as an overlay, so React
   // Navigation already excludes its height from this screen's space — only
@@ -37,7 +38,7 @@ export function Screen({ children, scroll, noTopInset }: ScreenProps) {
   const safeAreaEdges = noTopInset ? edges.filter((edge) => edge !== 'top') : edges;
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={safeAreaEdges}>
+    <SafeAreaView style={styles.safeArea} edges={safeAreaEdges} testID={testID}>
       {scroll ? (
         <ScrollView
           style={styles.scroll}

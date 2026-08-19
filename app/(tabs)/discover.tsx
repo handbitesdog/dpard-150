@@ -28,7 +28,7 @@ export default function DiscoverScreen() {
     .slice(0, AUDIO_TOUR_PREVIEW_COUNT);
 
   return (
-    <Screen scroll>
+    <Screen scroll testID="screen-discover">
       <LogoBlock variant="anniversary-compact" leftLogo="dark" />
 
       <Text variant="title1" accessibilityRole="header" style={styles.title}>
