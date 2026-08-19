@@ -1,0 +1,45 @@
+appId: gov.dallascityhall.parks
+name: Collect a stamp and see it reflected in the passport
+---
+# Requires a bundle built or served with EXPO_PUBLIC_SKIP_ONBOARDING=1
+# (`npm run start:skip-intro`) so the flow lands on Discover directly instead
+# of the onboarding intro.
+#
+# Against a dev-client build, clearState also wipes the dev client's saved
+# Metro connection, so launchApp lands on its native "Development servers"
+# picker instead of the app. Tap the listed server there manually before this
+# flow will find `screen-discover` -- Maestro can't do it (it's outside the
+# RN view tree). A standalone/preview build has no such screen and doesn't
+# need this. See README.md, "Tests".
+- clearState
+- launchApp:
+    permissions:
+      location: allow
+
+- tapOn:
+    text: 'Close'
+    optional: true
+
+- assertVisible:
+    id: 'screen-discover'
+
+# Fair Park's exact coordinates -- well inside its 200m stamp radius.
+- setLocation:
+    latitude: 32.7815
+    longitude: -96.7597
+
+- tapOn: 'Fair Park'
+- tapOn: 'Collect Stamp'
+- assertVisible: 'Fair Park added to passport'
+- tapOn: 'Close'
+- assertVisible: 'Stamp Collected'
+- back
+
+- tapOn: 'Passport'
+- assertVisible:
+    id: 'screen-passport'
+- assertVisible: '1 of 3 stamps collected'
+
+- tapOn: 'View Collection'
+- assertVisible: '1/3 collected'
+- assertVisible: 'Fair Park stamp, collected'
