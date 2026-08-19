@@ -2,8 +2,8 @@ import { StyleSheet, View } from 'react-native';
 import MapPinIconSvg from '@/components/icons/map-pin-icon.svg';
 import { sizes } from '@/design/sizes';
 
-const PIN_WIDTH = 30;
-const PIN_HEIGHT = 38;
+const PIN_WIDTH = 38;
+const PIN_HEIGHT = 48;
 
 type MapPinProps = {
   accessibilityLabel?: string;
@@ -25,8 +25,8 @@ export function MapPin({ accessibilityLabel }: MapPinProps) {
 
 const styles = StyleSheet.create({
   container: {
-    width: sizes.touchTarget,
-    height: sizes.touchTarget,
+    width: Math.max(sizes.touchTarget, PIN_WIDTH),
+    height: Math.max(sizes.touchTarget, PIN_HEIGHT),
     alignItems: 'center',
     justifyContent: 'center',
   },
