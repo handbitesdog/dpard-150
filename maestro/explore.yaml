@@ -1,0 +1,51 @@
+appId: gov.dallascityhall.parks
+name: Search a park, tap its pin, and open detail from the map
+---
+# Requires a bundle built or served with EXPO_PUBLIC_SKIP_ONBOARDING=1
+# (`npm run start:skip-intro`) so the flow lands on Discover directly instead
+# of the onboarding intro.
+#
+# Against a dev-client build, clearState also wipes the dev client's saved
+# Metro connection, so launchApp lands on its native "Development servers"
+# picker instead of the app. Tap the listed server there manually before this
+# flow will find `screen-discover` -- Maestro can't do it (it's outside the
+# RN view tree). A standalone/preview build has no such screen and doesn't
+# need this. See README.md, "Tests".
+- clearState
+- launchApp:
+    permissions:
+      location: allow
+
+# The dev client shows a one-time "developer menu" tooltip the first time it
+# connects to a fresh bundle -- every clearState run hits this. It's rendered
+# in the RN tree, so Maestro can dismiss it normally (unlike the native
+# picker above).
+- tapOn:
+    text: 'Close'
+    optional: true
+
+- assertVisible:
+    id: 'screen-discover'
+
+- tapOn: 'Explore'
+- assertVisible:
+    id: 'screen-explore'
+
+# Narrows the rendered markers to just Fair Park so the tap below is
+# unambiguous.
+- tapOn: 'Search parks'
+- inputText: 'Fair'
+
+# Can't target the pin by text/id: react-native-maps flattens Marker
+# children into a bitmap snapshot on Android and doesn't forward `title`,
+# `identifier`, or accessibilityLabel to the native marker's
+# contentDescription, so it's invisible to the accessibility tree Maestro
+# (and TalkBack) reads. INITIAL_REGION is a fixed camera computed once from
+# static park data (not from search/animation state), so this pin's on-screen
+# position is deterministic across runs.
+- tapOn:
+    point: '50%, 52%'
+
+- tapOn: 'Learn more'
+- assertVisible: 'Fair Park'
+- assertVisible: 'South Dallas'
