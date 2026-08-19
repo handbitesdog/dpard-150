@@ -27,7 +27,11 @@ export default function ExploreScreen() {
   const matchingParks = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     if (!normalized) return parks;
-    return parks.filter((park) => park.name.toLowerCase().includes(normalized));
+    return parks.filter(
+      (park) =>
+        park.name.toLowerCase().includes(normalized) ||
+        park.neighborhood.toLowerCase().includes(normalized),
+    );
   }, [query]);
 
   function handleSearchSubmit() {
