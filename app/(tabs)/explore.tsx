@@ -67,6 +67,7 @@ export default function ExploreScreen() {
             key={park.id}
             coordinate={park.location}
             onPress={() => setSelectedParkId(park.id)}
+            stopPropagation
             tracksViewChanges={false}
           >
             <MapPin accessibilityLabel={park.name} />
