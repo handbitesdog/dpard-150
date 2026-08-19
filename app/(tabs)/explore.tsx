@@ -83,6 +83,12 @@ export default function ExploreScreen() {
             <Marker
               key={park.id}
               coordinate={park.location}
+              // On Android, react-native-maps flattens custom marker views (MapPin) into a
+              // bitmap and never forwards accessibilityLabel to the native marker, so TalkBack
+              // can't read them. `title` is the one prop Google Maps' own accessibility layer
+              // does read for markers, so it's set here purely for that — it also draws a small
+              // native label bubble on tap, on top of our MapCallout below.
+              title={park.name}
               onPress={() => setSelectedParkId(park.id)}
               stopPropagation
               tracksViewChanges={false}
