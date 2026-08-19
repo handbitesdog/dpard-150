@@ -43,7 +43,7 @@ export default function ParkDetailScreen() {
   const alreadyCollected = stamps.some((stamp) => stamp.parkId === park.id);
 
   return (
-    <Screen scroll>
+    <Screen scroll noTopInset>
       <View style={styles.fullBleed}>
         <PhotoHeader
           photo={PARK_PHOTOS[park.id]}

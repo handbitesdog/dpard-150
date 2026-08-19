@@ -22,7 +22,7 @@ export default function FigureDetailScreen() {
   const relatedParks = parks.filter((park) => figure.relatedParkIds.includes(park.id));
 
   return (
-    <Screen scroll>
+    <Screen scroll noTopInset>
       <View style={styles.fullBleed}>
         <PhotoHeader
           photo={FIGURE_PHOTOS[figure.id]}

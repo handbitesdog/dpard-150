@@ -9,6 +9,8 @@ import { spacing } from '@/design/spacing';
 type ScreenProps = PropsWithChildren<{
   /** Renders content in a ScrollView instead of a static View. */
   scroll?: boolean;
+  /** Excludes the top safe-area inset, for screens whose full-bleed header (e.g. PhotoHeader) already accounts for it. */
+  noTopInset?: boolean;
 }>;
 
 /**
@@ -22,17 +24,20 @@ type ScreenProps = PropsWithChildren<{
  * to its own frame, so wrapping it in a padded View would clip anything
  * that bleeds into the gutter, like a drop shadow.
  */
-export function Screen({ children, scroll }: ScreenProps) {
+export function Screen({ children, scroll, noTopInset }: ScreenProps) {
   // Undefined outside the tab navigator (no Provider) vs. a number inside it.
   // The tab bar renders in normal flow, not as an overlay, so React
   // Navigation already excludes its height from this screen's space — only
   // its own paddingBottom (which includes insets.bottom) must not be
   // reserved a second time here.
   const insideTabNavigator = useContext(BottomTabBarHeightContext) != null;
-  const edges = insideTabNavigator ? (['top', 'left', 'right'] as const) : undefined;
+  const edges = insideTabNavigator
+    ? (['top', 'left', 'right'] as const)
+    : (['top', 'bottom', 'left', 'right'] as const);
+  const safeAreaEdges = noTopInset ? edges.filter((edge) => edge !== 'top') : edges;
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={edges}>
+    <SafeAreaView style={styles.safeArea} edges={safeAreaEdges}>
       {scroll ? (
         <ScrollView
           style={styles.scroll}
