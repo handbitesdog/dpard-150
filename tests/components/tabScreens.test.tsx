@@ -7,6 +7,7 @@ import PassportScreen from '../../app/(tabs)/passport';
 
 jest.mock('expo-router', () => ({
   useFocusEffect: () => {},
+  useRouter: () => ({ push: jest.fn() }),
 }));
 
 describe('tab screens', () => {
