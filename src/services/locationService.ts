@@ -5,9 +5,15 @@ export type LocationResult =
   | { status: 'success'; coordinates: Coordinates; accuracyMeters: number }
   | { status: 'denied' };
 
+/** GPS can hang indefinitely with no fix (weak signal, cold start) — `getCurrentPositionAsync` has no built-in timeout. */
+const LOCATION_TIMEOUT_MS = 10_000;
+
 async function readLocation(): Promise<Location.LocationObject | null> {
   try {
-    return await Location.getCurrentPositionAsync();
+    return await Promise.race([
+      Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High }),
+      new Promise<null>((resolve) => setTimeout(() => resolve(null), LOCATION_TIMEOUT_MS)),
+    ]);
   } catch {
     return null;
   }
@@ -16,10 +22,10 @@ async function readLocation(): Promise<Location.LocationObject | null> {
 /**
  * Reads the device's current foreground location.
  *
- * `denied` covers both a rejected permission prompt and a reading that
- * couldn't be trusted (failed after one retry, or flagged as a mocked
- * Android location) — the finer-grained terminal states like "too far" or
- * "low accuracy" belong to `stampService`, one layer up.
+ * `denied` covers a rejected permission prompt, a reading that failed after
+ * one retry, and a reading that timed out waiting for a GPS fix — the
+ * finer-grained terminal states like "too far" or "low accuracy" belong to
+ * `stampService`, one layer up.
  */
 export async function getCurrentLocation(): Promise<LocationResult> {
   const { status } = await Location.requestForegroundPermissionsAsync();
@@ -28,7 +34,7 @@ export async function getCurrentLocation(): Promise<LocationResult> {
   }
 
   const reading = (await readLocation()) ?? (await readLocation());
-  if (!reading || reading.mocked) {
+  if (!reading) {
     return { status: 'denied' };
   }
 

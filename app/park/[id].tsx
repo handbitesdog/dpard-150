@@ -1,21 +1,31 @@
-import { Linking, Share, StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { Linking, Platform, Share, StyleSheet, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
+import { ClaimStampButton } from '@/components/ClaimStampButton';
 import { Divider } from '@/components/Divider';
 import { LinkRow } from '@/components/LinkRow';
 import { MiniPlayer } from '@/components/MiniPlayer';
 import { PhotoHeader } from '@/components/PhotoHeader';
 import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
+import { StampAddedCard } from '@/components/StampAddedCard';
 import { Text } from '@/components/Text';
 import { guides, parks } from '@/data';
 import { PARK_PHOTOS } from '@/data/parkPhotos';
+import { STAMP_PHOTO_PLACEHOLDER } from '@/data/stampPhotos';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
+import { getCurrentLocation } from '@/services/locationService';
+import { claimStamp } from '@/services/stampService';
+import { useStampStore } from '@/stores/stampStore';
 import type { Park } from '@/data/schemas';
 
 function mapsUrl(park: Park): string {
   const { latitude, longitude } = park.location;
+  if (Platform.OS === 'ios') {
+    return `https://maps.apple.com/?daddr=${latitude},${longitude}`;
+  }
   return `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
 }
 
@@ -23,10 +33,14 @@ export default function ParkDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const park = parks.find((candidate) => candidate.id === id);
+  const stamps = useStampStore((state) => state.stamps);
+  const collectStamp = useStampStore((state) => state.collectStamp);
+  const [justCollected, setJustCollected] = useState(false);
 
   if (!park) return null;
 
   const parkGuides = guides.filter((guide) => guide.parkId === park.id);
+  const alreadyCollected = stamps.some((stamp) => stamp.parkId === park.id);
 
   return (
     <Screen scroll>
@@ -46,8 +60,24 @@ export default function ParkDetailScreen() {
       </Text>
 
       <View style={styles.collectStamp}>
-        <Button label="Collect Stamp" onPress={() => {}} variant="secondary" color="pear" />
+        <ClaimStampButton
+          alreadyCollected={alreadyCollected}
+          onClaim={() =>
+            claimStamp(park, {
+              hasStamp: (parkId) => stamps.some((stamp) => stamp.parkId === parkId),
+              collectStamp,
+              getCurrentLocation,
+            })
+          }
+          onSuccess={() => setJustCollected(true)}
+        />
       </View>
+
+      {justCollected && (
+        <View style={styles.stampCelebration}>
+          <StampAddedCard name={park.name} image={STAMP_PHOTO_PLACEHOLDER} />
+        </View>
+      )}
 
       <View style={styles.divider}>
         <Divider />
@@ -116,6 +146,9 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   collectStamp: {
+    marginTop: spacing.xl,
+  },
+  stampCelebration: {
     marginTop: spacing.xl,
   },
   divider: {
