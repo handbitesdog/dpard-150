@@ -18,6 +18,13 @@ build plan.
 npm install
 ```
 
+Copy `.env.example` to `.env` and fill in `GOOGLE_MAPS_API_KEY` — a Google Cloud API
+key with the "Maps SDK for Android" enabled, restricted to this app's package name
+(`gov.dallascityhall.parks`) and signing certificate fingerprint. It's read by
+`app.config.ts` and baked into the native Android manifest at prebuild time, so a
+new key requires a native rebuild (`expo run:android` / a new dev client build), not
+just a Metro reload. iOS uses Apple Maps and needs no key.
+
 ## Running
 
 The dev client has to be built and installed once before `npm start` is useful.
