@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import { PassportCard } from '@/components/PassportCard';
 import { Screen } from '@/components/Screen';
@@ -6,6 +7,7 @@ import { parks } from '@/data';
 import { useStampStore } from '@/stores/stampStore';
 
 export default function PassportScreen() {
+  const router = useRouter();
   const collected = useStampStore((s) => s.stamps.length);
 
   return (
@@ -15,7 +17,11 @@ export default function PassportScreen() {
       </Text>
 
       <View style={styles.cardContainer}>
-        <PassportCard collected={collected} total={parks.length} />
+        <PassportCard
+          collected={collected}
+          total={parks.length}
+          onViewCollection={() => router.push('/passport-collection')}
+        />
       </View>
     </Screen>
   );

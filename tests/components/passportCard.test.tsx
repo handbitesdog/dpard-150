@@ -1,29 +1,38 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import { PassportCard } from '@/components/PassportCard';
 
 describe('PassportCard', () => {
   it('renders the stamp count and singular label', async () => {
-    await render(<PassportCard collected={1} total={25} />);
+    await render(<PassportCard collected={1} total={25} onViewCollection={jest.fn()} />);
 
     expect(screen.getByText('1')).toBeOnTheScreen();
     expect(screen.getByText('Stamp')).toBeOnTheScreen();
   });
 
   it('pluralizes the label when collected is not 1', async () => {
-    await render(<PassportCard collected={3} total={25} />);
+    await render(<PassportCard collected={3} total={25} onViewCollection={jest.fn()} />);
 
     expect(screen.getByText('Stamps')).toBeOnTheScreen();
   });
 
   it('exposes an accessible summary as a single label', async () => {
-    await render(<PassportCard collected={1} total={25} />);
+    await render(<PassportCard collected={1} total={25} onViewCollection={jest.fn()} />);
 
     expect(screen.getByLabelText('1 of 25 stamps collected')).toBeOnTheScreen();
   });
 
   it('renders the view collection link', async () => {
-    await render(<PassportCard collected={1} total={25} />);
+    await render(<PassportCard collected={1} total={25} onViewCollection={jest.fn()} />);
 
     expect(screen.getByText('View Collection')).toBeOnTheScreen();
+  });
+
+  it('fires onViewCollection when the link is tapped', async () => {
+    const onViewCollection = jest.fn();
+    await render(<PassportCard collected={1} total={25} onViewCollection={onViewCollection} />);
+
+    fireEvent.press(screen.getByRole('button', { name: 'View Collection' }));
+
+    expect(onViewCollection).toHaveBeenCalledTimes(1);
   });
 });

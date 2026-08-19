@@ -18,7 +18,9 @@ export function StampGrid<T>({ data, keyExtractor, renderItem }: StampGridProps<
   return (
     <View style={styles.grid}>
       {data.map((item) => (
-        <View key={keyExtractor(item)}>{renderItem(item, itemSize)}</View>
+        <View key={keyExtractor(item)} style={[styles.cell, { width: itemSize }]}>
+          {renderItem(item, itemSize)}
+        </View>
       ))}
     </View>
   );
@@ -29,5 +31,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: spacing.base,
+  },
+  cell: {
+    alignItems: 'center',
   },
 });

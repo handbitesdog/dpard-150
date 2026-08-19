@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import { Text } from 'react-native';
 import { PhotoHeader } from '@/components/PhotoHeader';
 
 describe('PhotoHeader', () => {
@@ -31,5 +32,22 @@ describe('PhotoHeader', () => {
     await render(<PhotoHeader onBack={jest.fn()} onShare={jest.fn()} height={200} />);
 
     expect(screen.getByTestId('photo-header')).toHaveStyle({ height: 200 });
+  });
+
+  it('omits the share button when onShare is not provided', async () => {
+    await render(<PhotoHeader onBack={jest.fn()} />);
+
+    expect(screen.getByRole('button', { name: 'Back' })).toBeOnTheScreen();
+    expect(screen.queryByRole('button', { name: 'Share' })).not.toBeOnTheScreen();
+  });
+
+  it('renders overlay content passed as children', async () => {
+    await render(
+      <PhotoHeader onBack={jest.fn()}>
+        <Text>Overlay</Text>
+      </PhotoHeader>,
+    );
+
+    expect(screen.getByText('Overlay')).toBeOnTheScreen();
   });
 });

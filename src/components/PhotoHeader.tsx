@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import type { ImageSourcePropType } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,12 +11,14 @@ const DEFAULT_HEIGHT = 320;
 type PhotoHeaderProps = {
   photo?: ImageSourcePropType;
   onBack: () => void;
-  onShare: () => void;
+  onShare?: () => void;
   height?: number;
+  /** Overlay content rendered over the photo, below the back/share controls. */
+  children?: ReactNode;
 };
 
 /** Full-bleed photo banner for detail screens, with back/share controls over the image. */
-export function PhotoHeader({ photo, onBack, onShare, height = DEFAULT_HEIGHT }: PhotoHeaderProps) {
+export function PhotoHeader({ photo, onBack, onShare, height = DEFAULT_HEIGHT, children }: PhotoHeaderProps) {
   const insets = useSafeAreaInsets();
 
   return (
@@ -26,9 +29,11 @@ export function PhotoHeader({ photo, onBack, onShare, height = DEFAULT_HEIGHT }:
         <View style={[styles.image, styles.placeholder]} />
       )}
 
+      {children}
+
       <View style={[styles.controls, { top: insets.top + spacing.base }]}>
         <Button variant="icon" icon="chevron-back" label="Back" onPress={onBack} />
-        <Button variant="icon" icon="share-outline" label="Share" onPress={onShare} />
+        {onShare && <Button variant="icon" icon="share-outline" label="Share" onPress={onShare} />}
       </View>
     </View>
   );
@@ -37,6 +42,8 @@ export function PhotoHeader({ photo, onBack, onShare, height = DEFAULT_HEIGHT }:
 const styles = StyleSheet.create({
   container: {
     width: '100%',
+    position: 'relative',
+    overflow: 'hidden',
   },
   image: {
     width: '100%',
