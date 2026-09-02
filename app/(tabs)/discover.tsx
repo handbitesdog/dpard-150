@@ -72,6 +72,7 @@ export default function DiscoverScreen() {
           <MiniPlayer
             key={guide.id}
             variant="row"
+            padded={false}
             title={guide.title}
             coverImage={parkPhotoById(guide.parkId)}
             elapsedLabel={formatDuration(guide.durationSeconds)}
