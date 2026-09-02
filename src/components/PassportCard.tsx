@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import type { LayoutChangeEvent } from 'react-native';
 import { Text } from '@/components/Text';
-import { STAMP_PHOTO_PLACEHOLDER } from '@/data/stampPhotos';
 import { palette } from '@/design/colors';
 import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
@@ -21,10 +20,14 @@ type PassportCardProps = {
 const COMPLETION_BADGE_ASPECT_RATIO = 2251 / 1811;
 
 /**
- * Passport cover — stamp count and a link to the full collection.
- * Stands in for the real cover art: the gold seal is `STAMP_PHOTO_PLACEHOLDER`
- * and the background is flat navy until the textured artwork lands.
+ * passport-cover.jpg ships pre-cropped: the supplied artwork has rounded
+ * corners baked into its alpha, so the transparent arcs are trimmed off and
+ * the card's own `radii.lg` does the rounding.
  */
+const COVER_ART = require('../../assets/passport-cover.jpg');
+const SEAL_ART = require('../../assets/passport-seal.png');
+
+/** Passport cover — stamp count and a link to the full collection. */
 export function PassportCard({ collected, total, onViewCollection }: PassportCardProps) {
   const [sealSize, setSealSize] = useState(0);
   const isComplete = total > 0 && collected >= total;
@@ -35,54 +38,58 @@ export function PassportCard({ collected, total, onViewCollection }: PassportCar
 
   return (
     <View style={styles.card}>
-      <View style={styles.sealWrapper} onLayout={handleSealWrapperLayout}>
-        <Image
-          source={STAMP_PHOTO_PLACEHOLDER}
-          style={{ width: sealSize, height: sealSize }}
-          resizeMode="contain"
-        />
-        {isComplete && (
+      <Image source={COVER_ART} style={styles.cover} resizeMode="cover" />
+
+      <View style={styles.content}>
+        <View style={styles.sealWrapper} onLayout={handleSealWrapperLayout}>
           <Image
-            source={require('../../assets/completion-stamp.png')}
-            accessible
-            accessibilityLabel="Passport completed"
+            source={SEAL_ART}
+            style={{ width: sealSize, height: sealSize }}
             resizeMode="contain"
-            style={[
-              styles.completionBadge,
-              { width: sealSize * 0.55, height: (sealSize * 0.55) / COMPLETION_BADGE_ASPECT_RATIO },
-            ]}
           />
-        )}
+          {isComplete && (
+            <Image
+              source={require('../../assets/completion-stamp.png')}
+              accessible
+              accessibilityLabel="Passport completed"
+              resizeMode="contain"
+              style={[
+                styles.completionBadge,
+                { width: sealSize * 0.55, height: (sealSize * 0.55) / COMPLETION_BADGE_ASPECT_RATIO },
+              ]}
+            />
+          )}
+        </View>
+
+        <View style={styles.spacer} />
+
+        <View
+          accessible
+          accessibilityRole="text"
+          accessibilityLabel={`${collected} of ${total} stamps collected`}
+        >
+          <Text variant="display" color="white">
+            {collected}
+          </Text>
+          <Text variant="body" color="white">
+            {collected === 1 ? 'Stamp' : 'Stamps'}
+          </Text>
+        </View>
+
+        <View style={styles.divider} />
+
+        <Pressable
+          onPress={onViewCollection}
+          accessibilityRole="button"
+          accessibilityLabel="View Collection"
+          style={({ pressed }) => [styles.linkRow, { opacity: pressed ? opacity.pressed : 1 }]}
+        >
+          <Text variant="headline" color="white">
+            View Collection
+          </Text>
+          <Ionicons name="chevron-forward" size={typography.headline.size} color={palette.white} />
+        </Pressable>
       </View>
-
-      <View style={styles.spacer} />
-
-      <View
-        accessible
-        accessibilityRole="text"
-        accessibilityLabel={`${collected} of ${total} stamps collected`}
-      >
-        <Text variant="display" color="white">
-          {collected}
-        </Text>
-        <Text variant="body" color="white">
-          {collected === 1 ? 'Stamp' : 'Stamps'}
-        </Text>
-      </View>
-
-      <View style={styles.divider} />
-
-      <Pressable
-        onPress={onViewCollection}
-        accessibilityRole="button"
-        accessibilityLabel="View Collection"
-        style={({ pressed }) => [styles.linkRow, { opacity: pressed ? opacity.pressed : 1 }]}
-      >
-        <Text variant="headline" color="white">
-          View Collection
-        </Text>
-        <Ionicons name="chevron-forward" size={typography.headline.size} color={palette.white} />
-      </Pressable>
     </View>
   );
 }
@@ -92,8 +99,23 @@ const styles = StyleSheet.create({
     height: '80%',
     backgroundColor: palette.navy,
     borderRadius: radii.lg,
-    padding: spacing.xl,
+    overflow: 'hidden',
     ...shadows.elevated,
+  },
+  // The cover art overhangs the card and is clipped to its radius by the card's
+  // `overflow: hidden`, so the padding that insets the content lives on the
+  // layer above it rather than on the same box as the image.
+  cover: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: radii.lg,
+  },
+  content: {
+    flex: 1,
+    padding: spacing.xl,
   },
   sealWrapper: {
     alignItems: 'center',
@@ -112,8 +134,7 @@ const styles = StyleSheet.create({
   divider: {
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    marginTop: spacing.xl,
-    marginBottom: spacing.lg,
+    marginVertical: spacing.base,
   },
   linkRow: {
     flexDirection: 'row',

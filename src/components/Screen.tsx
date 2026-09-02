@@ -56,7 +56,7 @@ export function Screen({ children, scroll, noTopInset, testID }: ScreenProps) {
 
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: palette.beige },
-  content: { flex: 1, paddingHorizontal: spacing.base },
+  content: { flex: 1, paddingHorizontal: spacing.base, paddingBottom: spacing.base },
   scroll: { flex: 1 },
-  scrollContent: { flexGrow: 1, paddingHorizontal: spacing.base },
+  scrollContent: { flexGrow: 1, paddingHorizontal: spacing.base, paddingBottom: spacing.base },
 });

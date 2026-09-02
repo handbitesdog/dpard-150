@@ -67,17 +67,15 @@ export default function ConnectScreen() {
         Community Hub
       </Text>
 
-      <View style={styles.socialRow}>
-        <SocialLinks links={socialLinks} />
-      </View>
+      <View style={styles.intro}>
+        <View style={styles.socialRow}>
+          <SocialLinks links={socialLinks} />
+        </View>
 
-      <View style={styles.submitButton}>
         <Button label="Submit memories" onPress={() => {}} />
-      </View>
 
-      <Text variant="title2" style={styles.hashtag}>
-        #MyDallasParksMemories
-      </Text>
+        <Text variant="title2">#MyDallasParksMemories</Text>
+      </View>
 
       <Section title="Videos">
         <Carousel
@@ -119,17 +117,14 @@ export default function ConnectScreen() {
 
 const styles = StyleSheet.create({
   title: {
-    marginTop: spacing.lg,
-    marginBottom: spacing.xl,
+    marginTop: spacing.sm,
+    marginBottom: spacing.base,
+  },
+  intro: {
+    gap: spacing.base,
+    marginBottom: spacing['2xl'],
   },
   socialRow: {
     alignItems: 'center',
-    marginBottom: spacing.xl,
-  },
-  submitButton: {
-    marginBottom: spacing.xl,
-  },
-  hashtag: {
-    marginBottom: spacing['2xl'],
   },
 });

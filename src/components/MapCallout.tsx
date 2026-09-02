@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: palette.white,
     borderRadius: radii.lg,
-    padding: spacing.lg,
+    padding: spacing.base,
     gap: spacing.base,
     ...shadows.elevated,
   },

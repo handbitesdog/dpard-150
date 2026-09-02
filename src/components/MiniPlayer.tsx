@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.md,
+    padding: spacing.base,
     gap: spacing.md,
   },
   contentUnpadded: {
