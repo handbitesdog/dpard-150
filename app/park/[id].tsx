@@ -10,7 +10,7 @@ import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
 import { guides, parks } from '@/data';
-import { PARK_PHOTOS } from '@/data/parkPhotos';
+import { parkPhoto, parkPhotoById } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
 import { getCurrentLocation } from '@/services/locationService';
@@ -42,7 +42,7 @@ export default function ParkDetailScreen() {
     <Screen scroll noTopInset>
       <View style={styles.fullBleed}>
         <PhotoHeader
-          photo={PARK_PHOTOS[park.id]}
+          photo={parkPhoto(park)}
           onBack={() => router.back()}
           onShare={() => Share.share({ message: park.name })}
         />
@@ -112,7 +112,7 @@ export default function ParkDetailScreen() {
               key={guide.id}
               variant="row"
               title={guide.title}
-              coverImage={PARK_PHOTOS[guide.parkId]}
+              coverImage={parkPhotoById(guide.parkId)}
               elapsedLabel={formatDuration(guide.durationSeconds)}
               progress={0}
               isPlaying={false}

@@ -11,7 +11,7 @@ import SoundIcon from '@/components/icons/sound-icon.svg';
 import type { MiniPlayerSlotTrack } from '@/components/MiniPlayerSlot';
 import { TabBar } from '@/components/TabBar';
 import { guides } from '@/data';
-import { PARK_PHOTOS } from '@/data/parkPhotos';
+import { parkPhotoById } from '@/data/assets';
 import { formatDuration } from '@/lib/formatDuration';
 import { useDownloadStore } from '@/stores/downloadStore';
 import { usePlaybackStore } from '@/stores/playbackStore';
@@ -39,7 +39,7 @@ function useMiniPlayerTrack(): MiniPlayerSlotTrack | null {
 
   return {
     title: guide.title,
-    coverImage: PARK_PHOTOS[guide.parkId],
+    coverImage: parkPhotoById(guide.parkId),
     elapsedLabel: formatDuration(positionSeconds),
     progress: guide.durationSeconds > 0 ? positionSeconds / guide.durationSeconds : 0,
     isPlaying,

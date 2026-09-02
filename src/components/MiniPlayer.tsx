@@ -1,13 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useCallback, useEffect, useState } from 'react';
-import { Animated, Easing, Image, Pressable, StyleSheet, View } from 'react-native';
-import type { AccessibilityActionEvent, ImageSourcePropType, LayoutChangeEvent } from 'react-native';
+import { Animated, Easing, Pressable, StyleSheet, View } from 'react-native';
+import type { AccessibilityActionEvent, LayoutChangeEvent } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Icon } from '@/components/Icon';
 import CircleCheckIcon from '@/components/icons/circle-check.svg';
 import CloudDownloadIcon from '@/components/icons/cloud-download.svg';
 import LoaderCircleIcon from '@/components/icons/loader-circle.svg';
+import { RemoteImage } from '@/components/RemoteImage';
 import { Text } from '@/components/Text';
+import type { ImageAsset } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { durations } from '@/design/durations';
 import { opacity } from '@/design/opacity';
@@ -25,7 +27,7 @@ type MiniPlayerBaseProps = {
   title: string;
   category?: string;
   /** Falls back to a placeholder box when not given (no artwork available yet). */
-  coverImage?: ImageSourcePropType;
+  coverImage?: ImageAsset;
   elapsedLabel: string;
   progress: number;
   isPlaying: boolean;
@@ -177,7 +179,7 @@ export function MiniPlayer(props: MiniPlayerProps) {
   const content = (
     <>
       {coverImage ? (
-        <Image source={coverImage} style={styles.cover} />
+        <RemoteImage source={coverImage} style={styles.cover} />
       ) : (
         <View testID="mini-player-cover-placeholder" style={[styles.cover, styles.coverPlaceholder]} />
       )}

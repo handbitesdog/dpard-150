@@ -13,7 +13,7 @@ import { ParkListRow } from '@/components/ParkListRow';
 import { SearchBar } from '@/components/SearchBar';
 import { Text } from '@/components/Text';
 import { parks } from '@/data';
-import { PARK_PHOTOS } from '@/data/parkPhotos';
+import { parkPhoto } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { sizes } from '@/design/sizes';
 import { spacing } from '@/design/spacing';
@@ -119,7 +119,7 @@ export default function ExploreScreen() {
                 <ParkListRow
                   name={park.name}
                   neighborhood={park.neighborhood}
-                  photo={PARK_PHOTOS[park.id]}
+                  photo={parkPhoto(park)}
                   onPress={() => router.push(`/park/${park.id}`)}
                 />
               </View>
@@ -151,7 +151,7 @@ export default function ExploreScreen() {
           <MapCallout
             title={selectedPark.name}
             subtitle={selectedPark.streetAddress}
-            photo={PARK_PHOTOS[selectedPark.id]}
+            photo={parkPhoto(selectedPark)}
             onLearnMore={() => router.push(`/park/${selectedPark.id}`)}
             onClose={() => setSelectedParkId(null)}
           />

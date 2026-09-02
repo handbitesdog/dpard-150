@@ -1,6 +1,7 @@
-import { Image, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { RemoteImage } from '@/components/RemoteImage';
 import { Text } from '@/components/Text';
+import type { ImageAsset } from '@/data/assets';
 import { borderWidths } from '@/design/borderWidths';
 import { navyMuted, palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
@@ -10,7 +11,7 @@ const PEEK_SIZE = 160;
 
 type StampAddedCardProps = {
   name: string;
-  image: ImageSourcePropType;
+  image: ImageAsset;
 };
 
 /** Full-bleed celebration card shown when a stamp is added to the user's passport. */
@@ -24,7 +25,7 @@ export function StampAddedCard({ name, image }: StampAddedCardProps) {
     >
       <View style={styles.stampArea}>
         <View style={[styles.peek, styles.peekLeft]} />
-        <Image source={image} style={styles.stamp} resizeMode="contain" />
+        <RemoteImage source={image} style={styles.stamp} resizeMode="contain" />
         <View style={[styles.peek, styles.peekRight]} />
       </View>
       <Text variant="title2" style={styles.title}>

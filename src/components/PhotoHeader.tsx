@@ -1,15 +1,16 @@
 import type { ReactNode } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button } from '@/components/Button';
+import { RemoteImage } from '@/components/RemoteImage';
+import type { ImageAsset } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 
 const DEFAULT_HEIGHT = 320;
 
 type PhotoHeaderProps = {
-  photo?: ImageSourcePropType;
+  photo?: ImageAsset;
   onBack: () => void;
   onShare?: () => void;
   height?: number;
@@ -24,7 +25,7 @@ export function PhotoHeader({ photo, onBack, onShare, height = DEFAULT_HEIGHT, c
   return (
     <View style={[styles.container, { height }]} testID="photo-header">
       {photo ? (
-        <Image source={photo} style={styles.image} />
+        <RemoteImage source={photo} style={styles.image} />
       ) : (
         <View style={[styles.image, styles.placeholder]} />
       )}

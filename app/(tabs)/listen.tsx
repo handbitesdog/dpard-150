@@ -10,7 +10,7 @@ import { MiniPlayer } from '@/components/MiniPlayer';
 import { SearchBar } from '@/components/SearchBar';
 import { Text } from '@/components/Text';
 import { guides, parks } from '@/data';
-import { PARK_PHOTOS } from '@/data/parkPhotos';
+import { parkPhoto } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { shadows } from '@/design/shadows';
 import { spacing } from '@/design/spacing';
@@ -105,7 +105,7 @@ export default function ListenScreen() {
 
                 // Most parks have a single guide — its row just carries the park's identity.
                 const parkGuideCount = guides.filter((g) => g.parkId === park.id).length;
-                const coverImage = PARK_PHOTOS[park.id];
+                const coverImage = parkPhoto(park);
 
                 const isActive = currentGuideId === guide.id;
                 const guideProgress = progress[guide.id];

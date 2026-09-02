@@ -1,6 +1,7 @@
 import * as Linking from 'expo-linking';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { RemoteImage } from '@/components/RemoteImage';
+import type { ImageAsset } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
@@ -10,7 +11,7 @@ export const SHOP_ITEM_WIDTH = 160;
 type ShopItemProps = {
   name: string;
   productUrl: string;
-  photo?: ImageSourcePropType;
+  photo?: ImageAsset;
 };
 
 /** Product card for the Shop carousel; opens the item's product page externally. */
@@ -23,7 +24,7 @@ export function ShopItem({ name, productUrl, photo }: ShopItemProps) {
       style={({ pressed }) => [{ width: SHOP_ITEM_WIDTH, opacity: pressed ? opacity.pressed : 1 }]}
     >
       {photo ? (
-        <Image source={photo} style={styles.image} />
+        <RemoteImage source={photo} style={styles.image} />
       ) : (
         <View style={[styles.image, styles.placeholder]} />
       )}

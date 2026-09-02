@@ -1,12 +1,12 @@
-import type { ImageSourcePropType } from 'react-native';
 import { Card } from '@/components/Card';
+import type { ImageAsset } from '@/data/assets';
 
 export const PARK_CARD_WIDTH = 240;
 
 type ParkCardProps = {
   name: string;
   neighborhood: string;
-  photo?: ImageSourcePropType;
+  photo?: ImageAsset;
   onPress: () => void;
 };
 

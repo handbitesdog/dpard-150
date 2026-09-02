@@ -8,7 +8,7 @@ import { Stamp } from '@/components/Stamp';
 import { StampGrid } from '@/components/StampGrid';
 import { Text } from '@/components/Text';
 import { parks } from '@/data';
-import { STAMP_PHOTO_PLACEHOLDER } from '@/data/stampPhotos';
+import { stampImage } from '@/data/assets';
 import { navyMuted } from '@/design/colors';
 import { spacing } from '@/design/spacing';
 import { useStampStore } from '@/stores/stampStore';
@@ -48,7 +48,7 @@ export default function PassportCollectionScreen() {
           renderItem={(park, size) => (
             <Stamp
               name={park.name}
-              image={STAMP_PHOTO_PLACEHOLDER}
+              image={stampImage(park)}
               grayImage={STAMP_PHOTO_PLACEHOLDER_GRAY}
               collected={stamps.some((stamp) => stamp.parkId === park.id)}
               size={size * STAMP_SCALE}

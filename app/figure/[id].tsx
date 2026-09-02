@@ -8,8 +8,7 @@ import { Screen } from '@/components/Screen';
 import { Section } from '@/components/Section';
 import { Text } from '@/components/Text';
 import { figures, parks } from '@/data';
-import { FIGURE_PHOTOS } from '@/data/figurePhotos';
-import { PARK_PHOTOS } from '@/data/parkPhotos';
+import { figurePortrait, parkPhoto } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 
 export default function FigureDetailScreen() {
@@ -25,7 +24,7 @@ export default function FigureDetailScreen() {
     <Screen scroll noTopInset>
       <View style={styles.fullBleed}>
         <PhotoHeader
-          photo={FIGURE_PHOTOS[figure.id]}
+          photo={figurePortrait(figure)}
           onBack={() => router.back()}
           onShare={() => Share.share({ message: figure.name })}
         />
@@ -58,7 +57,7 @@ export default function FigureDetailScreen() {
               <ParkCard
                 name={park.name}
                 neighborhood={park.neighborhood}
-                photo={PARK_PHOTOS[park.id]}
+                photo={parkPhoto(park)}
                 onPress={() => router.push(`/park/${park.id}`)}
               />
             )}

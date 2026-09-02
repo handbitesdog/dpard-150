@@ -13,7 +13,7 @@ import { ShopItem, SHOP_ITEM_WIDTH } from '@/components/ShopItem';
 import { Text } from '@/components/Text';
 import { figures, guides, merch, parks } from '@/data';
 import { MERCH_PHOTOS } from '@/data/merchPhotos';
-import { PARK_PHOTOS } from '@/data/parkPhotos';
+import { parkPhoto, parkPhotoById } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
 
@@ -44,7 +44,7 @@ export default function DiscoverScreen() {
             <ParkCard
               name={park.name}
               neighborhood={park.neighborhood}
-              photo={PARK_PHOTOS[park.id]}
+              photo={parkPhoto(park)}
               onPress={() => router.push(`/park/${park.id}`)}
             />
           )}
@@ -72,7 +72,7 @@ export default function DiscoverScreen() {
             key={guide.id}
             variant="row"
             title={guide.title}
-            coverImage={PARK_PHOTOS[guide.parkId]}
+            coverImage={parkPhotoById(guide.parkId)}
             elapsedLabel={formatDuration(guide.durationSeconds)}
             progress={0}
             isPlaying={false}

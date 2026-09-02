@@ -1,11 +1,12 @@
 import * as Linking from 'expo-linking';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { RemoteImage } from '@/components/RemoteImage';
+import type { ImageAsset } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { opacity } from '@/design/opacity';
 
 type PostTileProps = {
-  photo?: ImageSourcePropType;
+  photo?: ImageAsset;
   permalink: string;
   size: number;
   accessibilityLabel: string;
@@ -21,7 +22,7 @@ export function PostTile({ photo, permalink, size, accessibilityLabel }: PostTil
       style={({ pressed }) => [{ width: size, height: size, opacity: pressed ? opacity.pressed : 1 }]}
     >
       {photo ? (
-        <Image source={photo} style={styles.image} resizeMode="cover" />
+        <RemoteImage source={photo} style={styles.image} resizeMode="cover" />
       ) : (
         <View style={[styles.image, styles.placeholder]} />
       )}

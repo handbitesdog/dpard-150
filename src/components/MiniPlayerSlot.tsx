@@ -1,10 +1,10 @@
 import { View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
 import { MiniPlayer } from '@/components/MiniPlayer';
+import type { ImageAsset } from '@/data/assets';
 
 export type MiniPlayerSlotTrack = {
   title: string;
-  coverImage?: ImageSourcePropType;
+  coverImage?: ImageAsset;
   elapsedLabel: string;
   progress: number;
   isPlaying: boolean;

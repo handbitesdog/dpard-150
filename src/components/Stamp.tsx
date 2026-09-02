@@ -1,10 +1,10 @@
-import { Image } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { RemoteImage } from '@/components/RemoteImage';
+import type { ImageAsset } from '@/data/assets';
 
 type StampProps = {
   name: string;
-  image: ImageSourcePropType;
-  grayImage: ImageSourcePropType;
+  image: ImageAsset;
+  grayImage: ImageAsset;
   collected: boolean;
   size: number;
 };
@@ -12,7 +12,7 @@ type StampProps = {
 /** A single park stamp — full color when collected, grayed out otherwise. */
 export function Stamp({ name, image, grayImage, collected, size }: StampProps) {
   return (
-    <Image
+    <RemoteImage
       source={collected ? image : grayImage}
       accessible
       accessibilityRole="image"

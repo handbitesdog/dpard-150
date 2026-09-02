@@ -1,13 +1,14 @@
-import { Image, Pressable, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { RemoteImage } from '@/components/RemoteImage';
 import { Text } from '@/components/Text';
+import type { ImageAsset } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { spacing } from '@/design/spacing';
 
 type CardProps = {
-  image?: ImageSourcePropType;
+  image?: ImageAsset;
   imageSize: number;
   width: number;
   title: string;
@@ -25,7 +26,7 @@ export function Card({ image, imageSize, width, title, subtitle, onPress }: Card
       style={({ pressed }) => [{ width, opacity: pressed ? opacity.pressed : 1 }]}
     >
       {image ? (
-        <Image source={image} style={[styles.image, { width: imageSize, height: imageSize }]} />
+        <RemoteImage source={image} style={[styles.image, { width: imageSize, height: imageSize }]} />
       ) : (
         <View style={[styles.image, styles.placeholder, { width: imageSize, height: imageSize }]} />
       )}

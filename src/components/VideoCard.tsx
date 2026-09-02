@@ -1,7 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { RemoteImage } from '@/components/RemoteImage';
+import type { ImageAsset } from '@/data/assets';
 import { navyMuted, palette } from '@/design/colors';
 import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
@@ -13,7 +14,7 @@ const PLAY_ICON_NUDGE = 2;
 
 type VideoCardProps = {
   title: string;
-  thumbnail?: ImageSourcePropType;
+  thumbnail?: ImageAsset;
   permalink: string;
 };
 
@@ -28,7 +29,7 @@ export function VideoCard({ title, thumbnail, permalink }: VideoCardProps) {
     >
       <View>
         {thumbnail ? (
-          <Image source={thumbnail} style={styles.image} />
+          <RemoteImage source={thumbnail} style={styles.image} />
         ) : (
           <View style={[styles.image, styles.placeholder]} />
         )}

@@ -1,12 +1,13 @@
 import * as Linking from 'expo-linking';
-import { Image, Pressable, StyleSheet } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
+import { RemoteImage } from '@/components/RemoteImage';
+import type { ImageAsset } from '@/data/assets';
 import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
 import { shadows } from '@/design/shadows';
 
 type LinkImageProps = {
-  source: ImageSourcePropType;
+  source: ImageAsset;
   url: string;
   width: number;
   height: number;
@@ -27,7 +28,7 @@ export function LinkImage({
       accessibilityLabel={accessibilityLabel}
       style={({ pressed }) => [styles.shadow, { opacity: pressed ? opacity.pressed : 1 }]}
     >
-      <Image
+      <RemoteImage
         source={source}
         style={{ width, height, borderRadius: radii.lg }}
         resizeMode="cover"

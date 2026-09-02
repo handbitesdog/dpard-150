@@ -1,12 +1,12 @@
-import type { ImageSourcePropType } from 'react-native';
 import { Card } from '@/components/Card';
+import type { ImageAsset } from '@/data/assets';
 
 export const FIGURE_CARD_WIDTH = 128;
 
 type FigureCardProps = {
   name: string;
   era: string;
-  portrait?: ImageSourcePropType;
+  portrait?: ImageAsset;
   onPress: () => void;
 };
 

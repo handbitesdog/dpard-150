@@ -1,19 +1,43 @@
 import { createAudioPlayer } from 'expo-audio';
 import { create } from 'zustand';
+import { guides } from '@/data';
+import { resolveAudioUrl } from '@/lib/cdn';
+import { localize } from '@/lib/localize';
 import {
   createPlaybackService,
   type PlaybackPlayer,
   type PlaybackService,
   type PlaybackStatus,
 } from '@/services/playbackService';
+import { useDownloadStore } from './downloadStore';
+import { usePrefsStore } from './prefsStore';
 import { useProgressStore } from './progressStore';
 
 /**
- * Stand-in audio source for every guide, until a CDN resolver exists for
- * `AudioGuide.audioPath` — same gap `listen.tsx`'s `PARK_PHOTOS` map stands
- * in for on the image side.
+ * Played when a guide resolves to no audio at all — no completed download and
+ * no CDN configured, which is how the app ships until a host is provisioned.
+ * Every guide sounds identical in that state, deliberately: silence would look
+ * like a broken player.
  */
 const AUDIO_FIXTURE = require('../../assets/audio/test-tone.wav');
+
+/**
+ * Picks what a guide should play: its downloaded file if one completed,
+ * otherwise the CDN stream, otherwise the bundled fixture.
+ */
+export function resolveGuideSource(guideId: string): unknown {
+  const guide = guides.find((candidate) => candidate.id === guideId);
+  if (!guide) {
+    return AUDIO_FIXTURE;
+  }
+
+  const download = useDownloadStore.getState().downloads[guideId];
+  const localPath = download?.status === 'downloaded' ? download.localPath : null;
+  const audioPath = localize(guide.audioPath, usePrefsStore.getState().locale);
+
+  const url = resolveAudioUrl(audioPath, localPath);
+  return url === null ? AUDIO_FIXTURE : { uri: url };
+}
 
 type PlaybackState = {
   currentGuideId: string | null;
@@ -41,7 +65,7 @@ function getService(
 
   service = createPlaybackService({
     player,
-    resolveSource: () => AUDIO_FIXTURE,
+    resolveSource: resolveGuideSource,
     getResumePosition: (guideId) => {
       const progress = useProgressStore.getState().progress[guideId];
       return progress && !progress.completedAt ? progress.positionSeconds : undefined;

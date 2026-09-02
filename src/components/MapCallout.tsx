@@ -1,8 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Image, Pressable, StyleSheet, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { Button } from '@/components/Button';
+import { RemoteImage } from '@/components/RemoteImage';
 import { Text } from '@/components/Text';
+import type { ImageAsset } from '@/data/assets';
 import { palette } from '@/design/colors';
 import { opacity } from '@/design/opacity';
 import { radii } from '@/design/radii';
@@ -16,7 +17,7 @@ const CLOSE_BUTTON_SIZE = 32;
 type MapCalloutProps = {
   title: string;
   subtitle: string;
-  photo?: ImageSourcePropType;
+  photo?: ImageAsset;
   onLearnMore: () => void;
   onClose: () => void;
 };
@@ -37,7 +38,7 @@ export function MapCallout({ title, subtitle, photo, onLearnMore, onClose }: Map
 
       <View style={styles.row}>
         {photo ? (
-          <Image source={photo} style={styles.photo} />
+          <RemoteImage source={photo} style={styles.photo} />
         ) : (
           <View style={[styles.photo, styles.photoPlaceholder]} />
         )}

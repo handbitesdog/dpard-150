@@ -1,13 +1,13 @@
 import { StyleSheet, useWindowDimensions, View } from 'react-native';
-import type { ImageSourcePropType } from 'react-native';
 import { PostTile } from '@/components/PostTile';
+import type { ImageAsset } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 
 const COLUMNS = 3;
 
 export type Post = {
   id: string;
-  photo?: ImageSourcePropType;
+  photo?: ImageAsset;
   permalink: string;
 };
 

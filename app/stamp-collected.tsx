@@ -5,7 +5,7 @@ import { Screen } from '@/components/Screen';
 import { StampAddedCard } from '@/components/StampAddedCard';
 import { Text } from '@/components/Text';
 import { parks } from '@/data';
-import { STAMP_PHOTO_PLACEHOLDER } from '@/data/stampPhotos';
+import { stampImage } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 
 export default function StampCollectedScreen() {
@@ -18,7 +18,7 @@ export default function StampCollectedScreen() {
   return (
     <Screen>
       <View style={styles.body}>
-        <StampAddedCard name={park.name} image={STAMP_PHOTO_PLACEHOLDER} />
+        <StampAddedCard name={park.name} image={stampImage(park)} />
       </View>
 
       <View style={styles.actions}>
