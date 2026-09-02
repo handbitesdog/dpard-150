@@ -2,6 +2,7 @@ import * as Linking from 'expo-linking';
 import { StyleSheet, View } from 'react-native';
 import { Button } from '@/components/Button';
 import { Carousel } from '@/components/Carousel';
+import { ErrorState } from '@/components/ErrorState';
 import FacebookIcon from '@/components/icons/facebook-logo-icon.svg';
 import InstagramIcon from '@/components/icons/instagram-logo-icon.svg';
 import XIcon from '@/components/icons/x-logo-icon.svg';
@@ -16,8 +17,10 @@ import { SocialLinks } from '@/components/SocialLinks';
 import { Text } from '@/components/Text';
 import { VideoCard, VIDEO_CARD_WIDTH } from '@/components/VideoCard';
 import { merch } from '@/data';
+import { feedPhoto } from '@/data/assets';
 import { MERCH_PHOTOS } from '@/data/merchPhotos';
 import { spacing } from '@/design/spacing';
+import { useFeed } from '@/features/connect/useFeed';
 
 const SHOP_URL = 'https://dallasparks.org/store';
 const INSTAGRAM_URL = 'https://www.instagram.com/';
@@ -35,12 +38,28 @@ const videos = Array.from({ length: 3 }, (_, i) => ({
   permalink: INSTAGRAM_URL,
 }));
 
-const posts: Post[] = Array.from({ length: 9 }, (_, i) => ({
-  id: `post-${i}`,
+/**
+ * Stands in for the photo grid while the feed loads, and for as long as no CDN
+ * is configured to load one from — an empty grid reads as a broken tab, and
+ * there is nothing the user could do about a feed that doesn't exist yet.
+ */
+const placeholderPosts: Post[] = Array.from({ length: 9 }, (_, i) => ({
+  id: `placeholder-${i}`,
   permalink: INSTAGRAM_URL,
 }));
 
 export default function ConnectScreen() {
+  const feed = useFeed();
+
+  const posts: Post[] =
+    feed.status === 'ready'
+      ? feed.posts.map((post) => ({
+          id: post.id,
+          photo: feedPhoto(post.imageUrl),
+          permalink: post.permalink,
+        }))
+      : placeholderPosts;
+
   return (
     <Screen scroll testID="screen-connect">
       <LogoBlock variant="anniversary-compact" leftLogo="dark" />
@@ -71,7 +90,17 @@ export default function ConnectScreen() {
       </Section>
 
       <Section title="Photos">
-        <PostGrid posts={posts} />
+        {feed.status === 'error' ? (
+          <ErrorState
+            icon={InstagramIcon}
+            title="Couldn't load photos"
+            message="Check your connection and try again."
+            actionLabel="Retry"
+            onAction={feed.retry}
+          />
+        ) : (
+          <PostGrid posts={posts} />
+        )}
       </Section>
 
       <Section title="Shop">
