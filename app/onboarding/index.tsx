@@ -38,7 +38,7 @@ export default function OnboardingWelcome() {
         />
         <View style={styles.body}>
           <Text variant="display" accessibilityRole="header" color="white">
-            Dallas Parks & Rec
+            Welcome to Your DPARD 150 Parks Adventure
           </Text>
         </View>
         <View style={styles.spacer} />
