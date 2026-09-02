@@ -1,5 +1,6 @@
-import { Share, StyleSheet, View } from 'react-native';
+import { Linking, Share, StyleSheet, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Button } from '@/components/Button';
 import { Carousel } from '@/components/Carousel';
 import { Divider } from '@/components/Divider';
 import { ParkCard, PARK_CARD_WIDTH } from '@/components/ParkCard';
@@ -19,6 +20,7 @@ export default function FigureDetailScreen() {
   if (!figure) return null;
 
   const relatedParks = parks.filter((park) => figure.relatedParkIds.includes(park.id));
+  const learnMoreUrl = figure.learnMoreUrl;
 
   return (
     <Screen scroll noTopInset>
@@ -70,6 +72,17 @@ export default function FigureDetailScreen() {
           />
         </Section>
       )}
+
+      {learnMoreUrl && (
+        <View style={styles.learnMore}>
+          <Button
+            label="Learn More"
+            onPress={() => Linking.openURL(learnMoreUrl)}
+            variant="secondary"
+            color="teal"
+          />
+        </View>
+      )}
     </Screen>
   );
 }
@@ -90,5 +103,8 @@ const styles = StyleSheet.create({
   divider: {
     marginTop: spacing.xl,
     marginBottom: spacing.lg,
+  },
+  learnMore: {
+    marginTop: spacing.base,
   },
 });
