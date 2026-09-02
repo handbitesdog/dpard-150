@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import { parks } from '@/data';
 import DiscoverScreen from '../../app/(tabs)/discover';
 
 const mockPush = jest.fn();
@@ -12,18 +13,21 @@ describe('DiscoverScreen carousels', () => {
     mockPush.mockClear();
   });
 
-  it('renders every park from the catalog and routes to its detail page on press', async () => {
+  // The carousel is virtualized, so only the leading parks are mounted —
+  // asserting against the whole catalog would depend on the render window.
+  it('renders parks from the catalog and routes to a detail page on press', async () => {
+    const [first, second] = parks;
+
     await render(<DiscoverScreen />);
 
-    expect(screen.getByText('Klyde Warren Park')).toBeOnTheScreen();
-    expect(screen.getByText('Fair Park')).toBeOnTheScreen();
-    expect(screen.getByText('White Rock Lake Park')).toBeOnTheScreen();
+    expect(screen.getByText(first!.name)).toBeOnTheScreen();
+    expect(screen.getByText(second!.name)).toBeOnTheScreen();
 
     await fireEvent.press(
-      screen.getByRole('button', { name: 'Klyde Warren Park, Uptown / Arts District' }),
+      screen.getByRole('button', { name: `${first!.name}, ${first!.neighborhood}` }),
     );
 
-    expect(mockPush).toHaveBeenCalledWith('/park/klyde-warren-park');
+    expect(mockPush).toHaveBeenCalledWith(`/park/${first!.id}`);
   });
 
   it('renders every historic figure from the catalog and routes to its detail page on press', async () => {

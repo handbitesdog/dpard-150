@@ -1,50 +1,359 @@
 [
   {
-    "id": "klyde-warren-park",
-    "name": "Klyde Warren Park",
-    "neighborhood": "Uptown / Arts District",
-    "description": {
-      "en": "A 5.2-acre deck park built over Woodall Rodgers Freeway, connecting Uptown to the Dallas Arts District with lawns, food trucks, and a children's park."
-    },
-    "phone": "(214) 716-4500",
-    "website": "https://www.klydewarrenpark.org",
-    "streetAddress": "2012 Woodall Rodgers Freeway, Dallas, TX 75201",
-    "photos": [
-      {
-        "source": "/parks/klyde-warren-park/great-lawn.jpg",
-        "alt": "Visitors relaxing on the great lawn at Klyde Warren Park with downtown Dallas skyscrapers in the background",
-        "credit": "City of Dallas Park and Recreation"
-      }
-    ],
-    "location": { "latitude": 32.789, "longitude": -96.8016 },
-    "stampRadiusMeters": 120,
-    "stamp": {
-      "image": "/stamps/klyde-warren-park.png",
-      "label": "Deck Park Pioneer"
-    }
-  },
-  {
     "id": "fair-park",
     "name": "Fair Park",
     "neighborhood": "South Dallas",
     "description": {
-      "en": "A 277-acre National Historic Landmark and the largest collection of Art Deco exposition architecture in the United States, home to the State Fair of Texas."
+      "en": "One of Dallas's most iconic public spaces, Fair Park has served as a center for recreation, culture, and community since the city acquired it in 1904. Home to historic architecture, museums, and major events, the park continues to celebrate Dallas's rich history while welcoming generations of visitors."
     },
     "phone": "(214) 670-8400",
-    "website": "https://www.fairparkdallas.com",
-    "streetAddress": "3809 Grand Avenue, Dallas, TX 75210",
-    "photos": [
-      {
-        "source": "/parks/fair-park/esplanade.jpg",
-        "alt": "The Fair Park esplanade lined with Art Deco buildings and reflecting pools at dusk",
-        "credit": "City of Dallas Park and Recreation"
-      }
-    ],
-    "location": { "latitude": 32.7815, "longitude": -96.7597 },
+    "website": "https://www.dallasparks.org/242/Fair-Park",
+    "streetAddress": "3809 Grand Ave, Dallas, TX 75210",
+    "photos": [],
+    "location": {
+      "latitude": 32.7815,
+      "longitude": -96.7597
+    },
     "stampRadiusMeters": 200,
     "stamp": {
       "image": "/stamps/fair-park.png",
-      "label": "Art Deco Explorer"
+      "label": "Fair Park"
+    }
+  },
+  {
+    "id": "lake-cliff-park",
+    "name": "Lake Cliff Park",
+    "neighborhood": "Oak Cliff",
+    "description": {
+      "en": "Nestled in the historic Oak Cliff neighborhood, Lake Cliff Park has been a treasured gathering place since 1906. Known for its scenic lake, rose garden, historic pergola, and recreational amenities, the park blends natural beauty, thoughtful design, and more than a century of Dallas history."
+    },
+    "phone": "(214) 670-4100",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Lake-Cliff-Park-560",
+    "streetAddress": "1200 N. Zang Blvd., Dallas, TX, 75203",
+    "photos": [],
+    "location": {
+      "latitude": 32.7503,
+      "longitude": -96.8264
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/lake-cliff-park.png",
+      "label": "Lake Cliff Park"
+    }
+  },
+  {
+    "id": "samuell-grand-park",
+    "name": "Samuell Grand Park",
+    "neighborhood": "East Dallas",
+    "description": {
+      "en": "Established through the generosity of Dr. W.W. Samuell, Samuell Grand Park is one of East Dallas's premier recreation destinations. Featuring athletic fields, aquatic facilities, an amphitheater, and open green spaces, the park continues its legacy of bringing the community together through sports, events, and outdoor recreation."
+    },
+    "phone": "(214) 670-1383",
+    "website": "https://www.dallasparks.org/facilities/facility/details/SamuellGrand-Park-650",
+    "streetAddress": "6200 E Grand Ave, Dallas, TX 75223",
+    "photos": [],
+    "location": {
+      "latitude": 32.793,
+      "longitude": -96.7278
+    },
+    "stampRadiusMeters": 200,
+    "stamp": {
+      "image": "/stamps/samuell-grand-park.png",
+      "label": "Samuell Grand Park"
+    }
+  },
+  {
+    "id": "reverchon-park",
+    "name": "Reverchon Park",
+    "neighborhood": "Turtle Creek / Oak Lawn",
+    "description": {
+      "en": "Reverchon Park is one of Dallas's oldest public parks, offering a unique blend of history, recreation, and natural beauty. Nestled along Turtle Creek, it features historic WPA stonework, scenic trails, a beloved baseball field, and direct access to the Katy Trail, making it a favorite destination for outdoor enthusiasts."
+    },
+    "phone": "(214) 670-7720",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Reverchon-Park-635",
+    "streetAddress": "3505 Maple Ave, Dallas, TX 75219",
+    "photos": [],
+    "location": {
+      "latitude": 32.8035,
+      "longitude": -96.8135
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/reverchon-park.png",
+      "label": "Reverchon Park"
+    }
+  },
+  {
+    "id": "city-park",
+    "name": "City Park",
+    "neighborhood": "The Cedars",
+    "description": {
+      "en": "Established in 1876, City Park is Dallas's first municipal park and the birthplace of the city's park system. Originally designed as a scenic retreat, it has evolved into a vibrant community gathering place, reflecting nearly 150 years of Dallas history, recreation, and civic pride."
+    },
+    "phone": "(972) 482-3055",
+    "website": "https://www.dallasparks.org/684/City-Park",
+    "streetAddress": "1515 S. Harwood St., Dallas, TX 75215",
+    "photos": [],
+    "location": {
+      "latitude": 32.7742,
+      "longitude": -96.7897
+    },
+    "stampRadiusMeters": 120,
+    "stamp": {
+      "image": "/stamps/city-park.png",
+      "label": "City Park"
+    }
+  },
+  {
+    "id": "pike-park",
+    "name": "Pike Park",
+    "neighborhood": "Uptown",
+    "description": {
+      "en": "For more than a century, Pike Park has served as a cultural and community landmark just north of downtown Dallas. Closely tied to the city's Jewish and Mexican American heritage, the park has long provided a welcoming space for recreation, neighborhood gatherings, and community celebrations while preserving an important chapter of Dallas history."
+    },
+    "phone": "(214) 670-4100",
+    "website": "https://www.dallasparks.org/facilities/facility/details/pike-park-622",
+    "streetAddress": "2807 Harry Hines Blvd, Dallas, TX 75201",
+    "photos": [],
+    "location": {
+      "latitude": 32.793,
+      "longitude": -96.811
+    },
+    "stampRadiusMeters": 100,
+    "stamp": {
+      "image": "/stamps/pike-park.png",
+      "label": "Pike Park"
+    }
+  },
+  {
+    "id": "thurgood-marshall-park",
+    "name": "Thurgood Marshall Park",
+    "neighborhood": "Red Bird",
+    "description": {
+      "en": "Located in the Red Bird community, Thurgood Marshall Park has been a neighborhood gathering place since 1964. Home to Bahama Beach Family Water Park, a recreation center, athletic facilities, and Earl \"Coach\" Thompson Field, the park continues to foster recreation, youth development, and community connections."
+    },
+    "phone": "(214) 670-1928",
+    "website": "https://www.dallasparks.org/facilities/facility/details/thurgood-marshall-park-677",
+    "streetAddress": "5150 Mark Trail Way, Dallas, TX 75232",
+    "photos": [],
+    "location": {
+      "latitude": 32.665,
+      "longitude": -96.872
+    },
+    "stampRadiusMeters": 200,
+    "stamp": {
+      "image": "/stamps/thurgood-marshall-park.png",
+      "label": "Thurgood Marshall Park"
+    }
+  },
+  {
+    "id": "dallas-zoo",
+    "name": "Dallas Zoo",
+    "neighborhood": "Oak Cliff",
+    "description": {
+      "en": "The Dallas Zoo is Texas' oldest and largest zoological park, spanning 106 acres and housing more than 2,000 animals from around the world. Since 1888, it has inspired generations through immersive wildlife habitats, conservation efforts, educational programs, and unforgettable experiences that connect visitors with the natural world."
+    },
+    "phone": "(469) 554-7500",
+    "website": "https://www.dallasparks.org/218/Dallas-Zoo",
+    "streetAddress": "650 S. R.L. Thornton Fwy (I-35), Dallas, TX 75203",
+    "photos": [],
+    "location": {
+      "latitude": 32.7415,
+      "longitude": -96.8155
+    },
+    "stampRadiusMeters": 200,
+    "stamp": {
+      "image": "/stamps/dallas-zoo.png",
+      "label": "Dallas Zoo"
+    }
+  },
+  {
+    "id": "cedar-crest-golf-course",
+    "name": "Cedar Crest Golf Course",
+    "neighborhood": "Cedar Crest",
+    "description": {
+      "en": "Established in 1919, Cedar Crest Golf Course is one of Dallas's most historic public golf destinations. Designed by renowned architect A.W. Tillinghast, the course has hosted prestigious championships, including the 1927 PGA Championship. Today, it continues to welcome golfers of all skill levels while preserving more than a century of Dallas golf history."
+    },
+    "phone": "(214) 670-7615",
+    "website": "https://www.dallasparks.org/662/Cedar-Crest",
+    "streetAddress": "1800 Southerland Ave, Dallas, TX 75203",
+    "photos": [],
+    "location": {
+      "latitude": 32.729,
+      "longitude": -96.786
+    },
+    "stampRadiusMeters": 250,
+    "stamp": {
+      "image": "/stamps/cedar-crest-golf-course.png",
+      "label": "Cedar Crest Golf Course"
+    }
+  },
+  {
+    "id": "eloise-lundy-park",
+    "name": "Eloise Lundy Park",
+    "neighborhood": "Tenth Street",
+    "description": {
+      "en": "Established in 1915, Eloise Lundy Park is one of Dallas' oldest historic neighborhood parks and a landmark in the Tenth Street community. Once known as Oak Cliff Negro Park, it honors longtime Dallas Park and Recreation leader Eloise Lundy while continuing to serve as a center for recreation, culture, and community."
+    },
+    "phone": "(214) 670-6781",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Eloise-Lundy-Park-473",
+    "streetAddress": "1200 Sabine St, Dallas, TX 75203",
+    "photos": [],
+    "location": {
+      "latitude": 32.753,
+      "longitude": -96.8035
+    },
+    "stampRadiusMeters": 120,
+    "stamp": {
+      "image": "/stamps/eloise-lundy-park.png",
+      "label": "Eloise Lundy Park"
+    }
+  },
+  {
+    "id": "crawford-park",
+    "name": "Crawford Park",
+    "neighborhood": "Pleasant Grove",
+    "description": {
+      "en": "Crawford Memorial Park is a 266.2-acre southeast Dallas destination blending recreation, nature, and community connection. Featuring trails, athletic fields, picnic areas, public art, and preserved Blackland Prairie habitat, the park offers visitors opportunities to explore, gather, and experience the unique natural beauty of North Texas."
+    },
+    "phone": "(214) 670-4100",
+    "website": "https://www.dallasparks.org/facilities/facility/details/crawfordmemorialpark-454",
+    "streetAddress": "8700 Elam Rd, Dallas, TX 75217",
+    "photos": [],
+    "location": {
+      "latitude": 32.706,
+      "longitude": -96.656
+    },
+    "stampRadiusMeters": 250,
+    "stamp": {
+      "image": "/stamps/crawford-park.png",
+      "label": "Crawford Park"
+    }
+  },
+  {
+    "id": "bachman-lake-park",
+    "name": "Bachman Lake Park",
+    "neighborhood": "Northwest Dallas",
+    "description": {
+      "en": "Bachman Lake Park is a 205-acre urban oasis offering scenic trails, water views, recreation, public art, and community amenities. From hiking and bike riding around the lake to skateboarding, swimming, and plane watching near Love Field Airport, the park provides a range of activities for Dallas residents and visitors."
+    },
+    "phone": "(214) 670-4100",
+    "website": "https://www.dallasparks.org/230/Bachman-Lake",
+    "streetAddress": "3500 W Northwest Hwy, Dallas, TX 75220",
+    "photos": [],
+    "location": {
+      "latitude": 32.8555,
+      "longitude": -96.876
+    },
+    "stampRadiusMeters": 250,
+    "stamp": {
+      "image": "/stamps/bachman-lake-park.png",
+      "label": "Bachman Lake Park"
+    }
+  },
+  {
+    "id": "hattie-r-moore-park",
+    "name": "Hattie R. Moore Park",
+    "neighborhood": "West Dallas",
+    "description": {
+      "en": "Hattie R. Moore Park is a 3.6-acre West Dallas community space honoring the legacy of Hattie Rankin Moore, a dedicated advocate for children and families. The park reflects her commitment to service, providing a neighborhood gathering place focused on recreation, connection, and creating opportunities for future generations."
+    },
+    "phone": "(214) 670-1391",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Hattie-R-Moore-Park-520",
+    "streetAddress": "3122 N Winnetka Ave, Dallas, TX 75212",
+    "photos": [],
+    "location": {
+      "latitude": 32.786,
+      "longitude": -96.86
+    },
+    "stampRadiusMeters": 100,
+    "stamp": {
+      "image": "/stamps/hattie-r-moore-park.png",
+      "label": "Hattie R. Moore Park"
+    }
+  },
+  {
+    "id": "juanita-j-craft-park",
+    "name": "Juanita J. Craft Park",
+    "neighborhood": "South Dallas",
+    "description": {
+      "en": "Juanita J. Craft Park is a 21.5-acre community park honoring one of Dallas's most influential civil rights leaders. Named for Juanita J. Craft, the \"first lady of Dallas civil rights,\" the park celebrates her legacy of equality, inclusion, and community through recreation and shared public spaces."
+    },
+    "phone": "(214) 670-8391",
+    "website": "https://www.dallasparks.org/facilities/facility/details/JJ-Craft-Park-531",
+    "streetAddress": "4352 Spring Ave, Dallas, TX 75210",
+    "photos": [],
+    "location": {
+      "latitude": 32.772,
+      "longitude": -96.746
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/juanita-j-craft-park.png",
+      "label": "Juanita J. Craft Park"
+    }
+  },
+  {
+    "id": "singing-hills-park",
+    "name": "Singing Hills Park",
+    "neighborhood": "Southern Dallas",
+    "description": {
+      "en": "Singing Hills Park is a 14.3-acre community destination that has served southern Dallas residents since 1971. Featuring athletic fields, trails, playgrounds, and a state-of-the-art recreation center, the park connects generations through wellness, education, and community programs. Singing Hills represents a new model for accessible neighborhood spaces."
+    },
+    "phone": "(214) 670-7550",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Singing-Hills-Recreation-Center-742",
+    "streetAddress": "6805 Patrol Way, Dallas, TX 75241",
+    "photos": [],
+    "location": {
+      "latitude": 32.664,
+      "longitude": -96.781
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/singing-hills-park.png",
+      "label": "Singing Hills Park"
+    }
+  },
+  {
+    "id": "kleberg-park",
+    "name": "Kleberg Park",
+    "neighborhood": "Southeast Dallas",
+    "description": {
+      "en": "Kleberg Park is a 47.2-acre southeast Dallas community destination offering recreation, outdoor spaces, and neighborhood connection. With athletic fields, tennis courts, a recreation center, and scenic natural areas, the park serves as a gathering place for families while supporting being outdoors, community programs, and local events."
+    },
+    "phone": "(214) 670-8648",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Kleberg-Park-556",
+    "streetAddress": "1575 Edd Rd, Dallas, TX 75253",
+    "photos": [],
+    "location": {
+      "latitude": 32.68,
+      "longitude": -96.607
+    },
+    "stampRadiusMeters": 180,
+    "stamp": {
+      "image": "/stamps/kleberg-park.png",
+      "label": "Kleberg Park"
+    }
+  },
+  {
+    "id": "miller-family-park",
+    "name": "Miller Family Park",
+    "neighborhood": "Joppa",
+    "description": {
+      "en": "Miller Family Park is a 13-acre community park honoring the legacy of a historic farming community founded by formerly enslaved people. Today, the park provides a welcoming space for recreation and connection while preserving the stories of perseverance, family, and resilience that shaped the land."
+    },
+    "phone": "(518) 347-7076",
+    "website": "https://www.dallasparks.org/facilities/facility/details/miller-family-park-590",
+    "streetAddress": "2814 Persimmon Rd, Dallas, TX 75241",
+    "photos": [],
+    "location": {
+      "latitude": 32.702,
+      "longitude": -96.763
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/miller-family-park.png",
+      "label": "Miller Family Park"
     }
   },
   {
@@ -52,23 +361,167 @@
     "name": "White Rock Lake Park",
     "neighborhood": "East Dallas",
     "description": {
-      "en": "A 1,254-acre park surrounding a reservoir lake, with a 9.3-mile trail loop, the historic Bath House Cultural Center, and views of the downtown skyline."
+      "en": "White Rock Lake Park is a 1,015-acre Dallas landmark offering scenic landscapes, recreation, and opportunities to connect with nature. Originally created as a water source for the city of Dallas in 1911, the lake has become a beloved destination for trails, wildlife viewing, outdoor activities, community events, and generations of memories."
     },
     "phone": "(214) 670-1923",
     "website": "https://www.dallasparks.org/235/White-Rock-Lake",
-    "streetAddress": "8300 Garland Road, Dallas, TX 75218",
-    "photos": [
-      {
-        "source": "/parks/white-rock-lake-park/trail.jpg",
-        "alt": "Cyclists on the paved trail along the shoreline of White Rock Lake at sunrise",
-        "credit": "City of Dallas Park and Recreation"
-      }
-    ],
-    "location": { "latitude": 32.8271, "longitude": -96.7167 },
+    "streetAddress": "E Lawther Dr, Dallas, TX 75218",
+    "photos": [],
+    "location": {
+      "latitude": 32.8271,
+      "longitude": -96.7167
+    },
     "stampRadiusMeters": 250,
     "stamp": {
       "image": "/stamps/white-rock-lake-park.png",
-      "label": "Lake Loop Finisher"
+      "label": "White Rock Lake Park"
+    }
+  },
+  {
+    "id": "hamilton-park",
+    "name": "Hamilton Park",
+    "neighborhood": "Hamilton Park",
+    "description": {
+      "en": "Hamilton Park is a community park with tennis and basketball courts, a playground, and swimming pool. Established in the historic Hamilton Park neighborhood, the park honors generations of residents who built their neighborhood through leadership, recreation, and programs that continue supporting families and young people today."
+    },
+    "phone": "(214) 670-4100",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Hamilton-Park-516",
+    "streetAddress": "12225 Willowdell Dr, Dallas, TX 75243",
+    "photos": [],
+    "location": {
+      "latitude": 32.911,
+      "longitude": -96.735
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/hamilton-park.png",
+      "label": "Hamilton Park"
+    }
+  },
+  {
+    "id": "fretz-park",
+    "name": "Fretz Park",
+    "neighborhood": "North Dallas",
+    "description": {
+      "en": "Fretz Park carries the legacy of Dallas's first municipal playground, Trinity Play Park, which was established in 1909 to serve working families in the Cotton Mills District. Today, the park represents a century-long commitment to recreation, education, and community support, while preserving the history of creating spaces where children can thrive."
+    },
+    "phone": "(214) 670-6203",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Fretz-Park-500",
+    "streetAddress": "6994 Belt Line Rd, Dallas, TX 75254",
+    "photos": [],
+    "location": {
+      "latitude": 32.956,
+      "longitude": -96.793
+    },
+    "stampRadiusMeters": 180,
+    "stamp": {
+      "image": "/stamps/fretz-park.png",
+      "label": "Fretz Park"
+    }
+  },
+  {
+    "id": "campbell-green-park",
+    "name": "Campbell Green Park",
+    "neighborhood": "North Dallas",
+    "description": {
+      "en": "Campbell Green Park is a 17.5-acre community park established in 1974 that has served North Dallas residents for generations. Named after the historic Campbell family, the park offers tennis and pickleball courts, trails, a sprayground, bark park, recreation center, and gathering spaces that support recreation, wellness, and community connection."
+    },
+    "phone": "(214) 670-6314",
+    "website": "https://www.dallasparks.org/facilities/facility/details/campbell-green-park-435",
+    "streetAddress": "16600 Hillcrest Rd, Dallas, TX 75248",
+    "photos": [],
+    "location": {
+      "latitude": 32.993,
+      "longitude": -96.793
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/campbell-green-park.png",
+      "label": "Campbell Green Park"
+    }
+  },
+  {
+    "id": "marcus-park",
+    "name": "Marcus Park",
+    "neighborhood": "Northwest Dallas",
+    "description": {
+      "en": "Marcus Park is a 17.1-acre community park established in 1963 that has served North Dallas residents for decades. The park features athletic fields, a playground, picnic areas, trails, and recreation facilities, including programs for all ages. It remains a valued neighborhood gathering place promoting recreation, wellness, and community connection."
+    },
+    "phone": "(214) 670-6599",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Marcus-Park-575",
+    "streetAddress": "3000 Modella Ave, Dallas, TX 75229",
+    "photos": [],
+    "location": {
+      "latitude": 32.879,
+      "longitude": -96.842
+    },
+    "stampRadiusMeters": 150,
+    "stamp": {
+      "image": "/stamps/marcus-park.png",
+      "label": "Marcus Park"
+    }
+  },
+  {
+    "id": "tietze-park",
+    "name": "Tietze Park",
+    "neighborhood": "Lakewood",
+    "description": {
+      "en": "Tietze Park is an 8.2-acre East Dallas neighborhood treasure that has served local residents since 1924. Featuring historic architecture, mature trees, recreational amenities, and strong community stewardship, the park offers a welcoming space for sports, gatherings, relaxation, and connection throughout the Lakewood community."
+    },
+    "phone": "(214) 670-8740",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Tietze-Park-678",
+    "streetAddress": "2700 Skillman St, Dallas, TX 75214",
+    "photos": [],
+    "location": {
+      "latitude": 32.825,
+      "longitude": -96.762
+    },
+    "stampRadiusMeters": 130,
+    "stamp": {
+      "image": "/stamps/tietze-park.png",
+      "label": "Tietze Park"
+    }
+  },
+  {
+    "id": "freedmans-cemetery",
+    "name": "Freedman's Cemetery",
+    "neighborhood": "Uptown / State-Thomas",
+    "description": {
+      "en": "Freedman's Memorial Cemetery is a 1.7-acre historic park preserving the legacy of Dallas' Freedman's Town. Originally established in 1869, the site honors generations of Black residents through a powerful memorial featuring public art, historic markers, and spaces for reflection, education, and remembrance."
+    },
+    "phone": "(214) 670-3284",
+    "website": "https://www.dallasparks.org/facilities/facility/details/Freedmans-Memorial-Cemetery-769",
+    "streetAddress": "2521 N Central Expy, Dallas, TX 75204",
+    "photos": [],
+    "location": {
+      "latitude": 32.796,
+      "longitude": -96.79
+    },
+    "stampRadiusMeters": 100,
+    "stamp": {
+      "image": "/stamps/freedmans-cemetery.png",
+      "label": "Freedman's Cemetery"
+    }
+  },
+  {
+    "id": "klyde-warren-park",
+    "name": "Klyde Warren Park",
+    "neighborhood": "Uptown / Arts District",
+    "description": {
+      "en": "Klyde Warren Park is a 5.4-acre urban park built above the Woodall Rodgers Freeway, reconnecting Downtown Dallas neighborhoods through innovative design. Opened in 2012, the park offers gardens, playgrounds, events, dining, and recreational spaces that bring people together while showcasing the power of transformative urban planning."
+    },
+    "phone": "(214) 716-4500",
+    "website": "https://www.dallasparks.org/244/Klyde-Warren",
+    "streetAddress": "2012 Woodall Rodgers Fwy, Dallas, TX 75201",
+    "photos": [],
+    "location": {
+      "latitude": 32.789,
+      "longitude": -96.8016
+    },
+    "stampRadiusMeters": 120,
+    "stamp": {
+      "image": "/stamps/klyde-warren-park.png",
+      "label": "Klyde Warren Park"
     }
   }
 ]
