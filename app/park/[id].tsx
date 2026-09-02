@@ -78,21 +78,23 @@ export default function ParkDetailScreen() {
       <Section title="Overview">
         <Text variant="body">{park.description.en}</Text>
 
-        <LinkRow
-          icon="call-outline"
-          label={park.phone}
-          onPress={() => Linking.openURL(`tel:${park.phone}`)}
-        />
-        <LinkRow
-          icon="globe-outline"
-          label={park.website.replace(/^https?:\/\//, '')}
-          onPress={() => Linking.openURL(park.website)}
-        />
-        <LinkRow
-          icon="location-outline"
-          label={park.streetAddress}
-          onPress={() => Linking.openURL(mapsUrl(park))}
-        />
+        <View style={styles.links}>
+          <LinkRow
+            icon="call-outline"
+            label={park.phone}
+            onPress={() => Linking.openURL(`tel:${park.phone}`)}
+          />
+          <LinkRow
+            icon="globe-outline"
+            label={park.website.replace(/^https?:\/\//, '')}
+            onPress={() => Linking.openURL(park.website)}
+          />
+          <LinkRow
+            icon="location-outline"
+            label={park.streetAddress}
+            onPress={() => Linking.openURL(mapsUrl(park))}
+          />
+        </View>
       </Section>
 
       <Button label="Directions" onPress={() => Linking.openURL(mapsUrl(park))} icon="navigate-outline" />
@@ -111,6 +113,7 @@ export default function ParkDetailScreen() {
             <MiniPlayer
               key={guide.id}
               variant="row"
+              padded={false}
               title={guide.title}
               coverImage={parkPhotoById(guide.parkId)}
               elapsedLabel={formatDuration(guide.durationSeconds)}
@@ -145,5 +148,9 @@ const styles = StyleSheet.create({
   },
   learnMore: {
     marginTop: spacing.base,
+    marginBottom: spacing.xl,
+  },
+  links: {
+    gap: spacing.xs,
   },
 });
