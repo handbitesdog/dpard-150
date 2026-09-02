@@ -89,5 +89,6 @@ const styles = StyleSheet.create({
   },
   divider: {
     marginTop: spacing.xl,
+    marginBottom: spacing.lg,
   },
 });
