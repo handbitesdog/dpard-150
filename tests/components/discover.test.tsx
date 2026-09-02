@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { figures, parks } from '@/data';
+import { lifespanYears } from '@/lib/lifespanYears';
 import DiscoverScreen from '../../app/(tabs)/discover';
 
 const mockPush = jest.fn();
@@ -39,9 +40,19 @@ describe('DiscoverScreen carousels', () => {
     expect(screen.getByText(second!.name)).toBeOnTheScreen();
 
     await fireEvent.press(
-      screen.getByRole('button', { name: `${first!.name}, ${first!.lifespan}` }),
+      screen.getByRole('button', { name: `${first!.name}, ${lifespanYears(first!.lifespan!)}` }),
     );
 
     expect(mockPush).toHaveBeenCalledWith(`/figure/${first!.id}`);
+  });
+
+  // Cards are too narrow for the department's full dates, which truncate.
+  it('labels a figure card with years alone', async () => {
+    const dated = figures.find((figure) => figure.lifespan?.includes(','))!;
+
+    await render(<DiscoverScreen />);
+
+    expect(screen.getByText(lifespanYears(dated.lifespan!))).toBeOnTheScreen();
+    expect(screen.queryByText(dated.lifespan!)).not.toBeOnTheScreen();
   });
 });
