@@ -8,6 +8,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Defs, LinearGradient, Rect, Stop, Svg } from 'react-native-svg';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
 import { radii } from '@/design/radii';
@@ -28,6 +29,15 @@ export default function OnboardingWelcome() {
 
   return (
     <ImageBackground source={BACKGROUND} style={styles.background} resizeMode="cover">
+      <Svg style={StyleSheet.absoluteFill} pointerEvents="none">
+        <Defs>
+          <LinearGradient id="welcomeScrim" x1="0" y1="0" x2="0" y2="1">
+            <Stop offset="0" stopColor={palette.navy} stopOpacity={0.5} />
+            <Stop offset="1" stopColor={palette.navy} stopOpacity={1} />
+          </LinearGradient>
+        </Defs>
+        <Rect x={0} y={0} width="100%" height="100%" fill="url(#welcomeScrim)" />
+      </Svg>
       <SafeAreaView style={styles.screen} testID="onboarding-welcome">
         <Image
           source={TOP_LOGO}
@@ -37,7 +47,7 @@ export default function OnboardingWelcome() {
           accessibilityLabel="Dallas Park and Recreation 150th anniversary logo"
         />
         <View style={styles.body}>
-          <Text variant="display" accessibilityRole="header" color="white">
+          <Text variant="display" accessibilityRole="header" color="white" style={styles.headline}>
             Welcome to Your DPARD 150 Parks Adventure
           </Text>
         </View>
@@ -75,6 +85,7 @@ const styles = StyleSheet.create({
   background: { flex: 1 },
   screen: { flex: 1, padding: spacing.xl },
   body: { marginTop: spacing['4xl'] },
+  headline: { fontSize: 42, lineHeight: 54 },
   button: {
     minHeight: sizes.touchTarget,
     borderRadius: radii.md,
