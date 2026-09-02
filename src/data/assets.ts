@@ -2,8 +2,9 @@ import type { ImageSourcePropType, ImageURISource } from 'react-native';
 import { resolveCdnUrl } from '@/lib/cdn';
 import { parks } from './index';
 import { FIGURE_PHOTOS } from './figurePhotos';
+import { MERCH_PHOTOS } from './merchPhotos';
 import { PARK_PHOTOS } from './parkPhotos';
-import type { HistoricFigure, Park } from './schemas';
+import type { HistoricFigure, MerchItem, Park } from './schemas';
 import { STAMP_PHOTO_PLACEHOLDER } from './stampPhotos';
 
 /**
@@ -50,6 +51,11 @@ export function figurePortrait(figure: HistoricFigure): ImageAsset | undefined {
  */
 export function stampImage(park: Park): ImageAsset {
   return remoteImage(park.stamp.image, STAMP_PHOTO_PLACEHOLDER);
+}
+
+/** Product photograph for a Shop carousel item. */
+export function merchPhoto(item: MerchItem): ImageAsset | undefined {
+  return remoteImage(item.photo.source, MERCH_PHOTOS[item.id]);
 }
 
 /**

@@ -110,6 +110,7 @@ Expected layout on the host, matching the paths in `src/data/*.json`:
 | `/parks/{parkId}/{photo}.jpg` | Park photography (`park.photos[].source`) | Long |
 | `/figures/{figureId}/portrait.jpg` | Figure portraits (`figure.portrait.source`) | Long |
 | `/stamps/{parkId}.png` | Stamp art (`park.stamp.image`) | Long |
+| `/merch/{merchId}.jpg` | Product photography (`merchItem.photo.source`) | Long |
 | `/guides/{guideId}/{locale}.m4a` | Guide audio (`guide.audioPath`), AAC mono, range requests required for seeking | Long |
 | `/feed.json` | Curated Connect feed | Short |
 
@@ -119,9 +120,6 @@ each CDN URL with its bundled stand-in, and `RemoteImage` swaps that stand-in in
 remote image fails to load. Audio prefers a completed download, then the stream, then the
 fixture. Per-guide downloads themselves are still unimplemented (Phase 9), so the download
 branch is inert until `downloadService` writes real local paths.
-
-Merch photography is the one exception: `merch.json` has no image field, so shop items
-still use the bundled `MERCH_PHOTOS` map.
 
 ### `feed.json`
 

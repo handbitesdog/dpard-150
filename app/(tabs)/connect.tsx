@@ -17,8 +17,7 @@ import { SocialLinks } from '@/components/SocialLinks';
 import { Text } from '@/components/Text';
 import { VideoCard, VIDEO_CARD_WIDTH } from '@/components/VideoCard';
 import { merch } from '@/data';
-import { feedPhoto } from '@/data/assets';
-import { MERCH_PHOTOS } from '@/data/merchPhotos';
+import { feedPhoto, merchPhoto } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 import { useFeed } from '@/features/connect/useFeed';
 
@@ -109,7 +108,7 @@ export default function ConnectScreen() {
           keyExtractor={(item) => item.id}
           itemWidth={SHOP_ITEM_WIDTH}
           renderItem={(item) => (
-            <ShopItem name={item.name} productUrl={item.productUrl} photo={MERCH_PHOTOS[item.id]} />
+            <ShopItem name={item.name} productUrl={item.productUrl} photo={merchPhoto(item)} />
           )}
         />
         <Button label="Shop Park150 Merch" onPress={() => Linking.openURL(SHOP_URL)} />

@@ -1,12 +1,14 @@
-import { parks, figures } from '@/data';
+import { parks, figures, merch } from '@/data';
 import {
   feedPhoto,
   figurePortrait,
+  merchPhoto,
   parkPhoto,
   parkPhotoById,
   stampImage,
 } from '@/data/assets';
 import { FIGURE_PHOTOS } from '@/data/figurePhotos';
+import { MERCH_PHOTOS } from '@/data/merchPhotos';
 import { PARK_PHOTOS } from '@/data/parkPhotos';
 import { STAMP_PHOTO_PLACEHOLDER } from '@/data/stampPhotos';
 
@@ -14,6 +16,7 @@ const BASE = 'https://cdn.example.com';
 
 const park = parks[0]!;
 const figure = figures[0]!;
+const merchItem = merch[0]!;
 
 describe('catalog image assets', () => {
   afterEach(() => {
@@ -28,6 +31,10 @@ describe('catalog image assets', () => {
 
     it('resolves a figure portrait to its bundled stand-in', () => {
       expect(figurePortrait(figure)).toBe(FIGURE_PHOTOS[figure.id]);
+    });
+
+    it('resolves a merch photo to its bundled stand-in', () => {
+      expect(merchPhoto(merchItem)).toBe(MERCH_PHOTOS[merchItem.id]);
     });
 
     it('resolves every park stamp to the placeholder seal', () => {
@@ -62,6 +69,13 @@ describe('catalog image assets', () => {
       expect(figurePortrait(figure)).toEqual({
         uri: `${BASE}${figure.portrait.source}`,
         fallback: FIGURE_PHOTOS[figure.id],
+      });
+    });
+
+    it('resolves a merch photo to the CDN', () => {
+      expect(merchPhoto(merchItem)).toEqual({
+        uri: `${BASE}${merchItem.photo.source}`,
+        fallback: MERCH_PHOTOS[merchItem.id],
       });
     });
 

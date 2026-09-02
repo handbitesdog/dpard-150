@@ -12,8 +12,7 @@ import { Section } from '@/components/Section';
 import { ShopItem, SHOP_ITEM_WIDTH } from '@/components/ShopItem';
 import { Text } from '@/components/Text';
 import { figures, guides, merch, parks } from '@/data';
-import { MERCH_PHOTOS } from '@/data/merchPhotos';
-import { parkPhoto, parkPhotoById } from '@/data/assets';
+import { merchPhoto, parkPhoto, parkPhotoById } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
 
@@ -90,7 +89,7 @@ export default function DiscoverScreen() {
           keyExtractor={(item) => item.id}
           itemWidth={SHOP_ITEM_WIDTH}
           renderItem={(item) => (
-            <ShopItem name={item.name} productUrl={item.productUrl} photo={MERCH_PHOTOS[item.id]} />
+            <ShopItem name={item.name} productUrl={item.productUrl} photo={merchPhoto(item)} />
           )}
         />
         <Button label="Shop Park150 Merch" onPress={() => Linking.openURL(SHOP_URL)} />

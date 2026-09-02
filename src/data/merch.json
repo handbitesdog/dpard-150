@@ -2,26 +2,46 @@
   {
     "id": "park150-tee",
     "name": "Park150 Anniversary Tee",
-    "productUrl": "https://dallasparks.org/store/products/park150-anniversary-tee"
+    "productUrl": "https://dallasparks.org/store/products/park150-anniversary-tee",
+    "photo": {
+      "source": "/merch/park150-tee.jpg",
+      "alt": "Navy t-shirt printed with the Park150 anniversary logo"
+    }
   },
   {
     "id": "park150-cap",
     "name": "Park150 Trucker Cap",
-    "productUrl": "https://dallasparks.org/store/products/park150-trucker-cap"
+    "productUrl": "https://dallasparks.org/store/products/park150-trucker-cap",
+    "photo": {
+      "source": "/merch/park150-cap.jpg",
+      "alt": "Trucker cap with a mesh back and an embroidered Park150 patch"
+    }
   },
   {
     "id": "park150-tote",
     "name": "Park150 Canvas Tote",
-    "productUrl": "https://dallasparks.org/store/products/park150-canvas-tote"
+    "productUrl": "https://dallasparks.org/store/products/park150-canvas-tote",
+    "photo": {
+      "source": "/merch/park150-tote.jpg",
+      "alt": "Natural canvas tote bag screen printed with the Park150 logo"
+    }
   },
   {
     "id": "park150-water-bottle",
     "name": "Park150 Water Bottle",
-    "productUrl": "https://dallasparks.org/store/products/park150-water-bottle"
+    "productUrl": "https://dallasparks.org/store/products/park150-water-bottle",
+    "photo": {
+      "source": "/merch/park150-water-bottle.jpg",
+      "alt": "Stainless steel water bottle etched with the Park150 logo"
+    }
   },
   {
     "id": "park150-enamel-pin",
     "name": "Park150 Enamel Pin",
-    "productUrl": "https://dallasparks.org/store/products/park150-enamel-pin"
+    "productUrl": "https://dallasparks.org/store/products/park150-enamel-pin",
+    "photo": {
+      "source": "/merch/park150-enamel-pin.jpg",
+      "alt": "Enamel lapel pin shaped like the Park150 anniversary mark"
+    }
   }
 ]

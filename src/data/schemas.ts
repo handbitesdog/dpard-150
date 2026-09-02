@@ -65,6 +65,7 @@ export const merchItemSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   productUrl: z.string().url(),
+  photo: photoRefSchema,
 });
 
 export type PhotoRef = z.infer<typeof photoRefSchema>;
