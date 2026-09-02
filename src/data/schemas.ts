@@ -70,6 +70,8 @@ export const historicFigureSchema = z.object({
   /** Optional: some figures have no known portrait photograph. */
   portrait: photoRefSchema.optional(),
   biography: z.array(biographySectionSchema).min(1),
+  /** Optional: outside source the detail screen's "Learn More" button opens. */
+  learnMoreUrl: z.string().url().optional(),
   relatedParkIds: z.array(z.string().min(1)),
 });
 
