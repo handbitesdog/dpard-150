@@ -41,8 +41,9 @@ export function parkPhotoById(parkId: string): ImageAsset | undefined {
   return park ? parkPhoto(park) : undefined;
 }
 
+/** Portrait for a historic figure, or `undefined` when no photograph is known. */
 export function figurePortrait(figure: HistoricFigure): ImageAsset | undefined {
-  return remoteImage(figure.portrait.source, FIGURE_PHOTOS[figure.id]);
+  return remoteImage(figure.portrait?.source, FIGURE_PHOTOS[figure.id]);
 }
 
 /**

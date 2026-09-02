@@ -52,12 +52,24 @@ export const audioGuideSchema = z.object({
     .optional(),
 });
 
+/**
+ * One headed part of a figure's long-form writeup. The department authors
+ * these as a sequence of headed passages rather than one block of prose, and
+ * the detail screen renders each as its own section.
+ */
+const biographySectionSchema = z.object({
+  heading: localizedStringSchema,
+  body: localizedStringSchema,
+});
+
 export const historicFigureSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   lifespan: z.string().min(1).optional(),
-  portrait: photoRefSchema,
-  biography: localizedStringSchema,
+  summary: localizedStringSchema,
+  /** Optional: some figures have no known portrait photograph. */
+  portrait: photoRefSchema.optional(),
+  biography: z.array(biographySectionSchema).min(1),
   relatedParkIds: z.array(z.string().min(1)),
 });
 
@@ -69,6 +81,7 @@ export const merchItemSchema = z.object({
 });
 
 export type PhotoRef = z.infer<typeof photoRefSchema>;
+export type BiographySection = z.infer<typeof biographySectionSchema>;
 export type Park = z.infer<typeof parkSchema>;
 export type AudioGuide = z.infer<typeof audioGuideSchema>;
 export type HistoricFigure = z.infer<typeof historicFigureSchema>;

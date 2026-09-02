@@ -12,7 +12,7 @@ import { Section } from '@/components/Section';
 import { ShopItem, SHOP_ITEM_WIDTH } from '@/components/ShopItem';
 import { Text } from '@/components/Text';
 import { figures, guides, merch, parks } from '@/data';
-import { merchPhoto, parkPhoto, parkPhotoById } from '@/data/assets';
+import { figurePortrait, merchPhoto, parkPhoto, parkPhotoById } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
 
@@ -59,6 +59,7 @@ export default function DiscoverScreen() {
             <FigureCard
               name={figure.name}
               era={figure.lifespan ?? ''}
+              portrait={figurePortrait(figure)}
               onPress={() => router.push(`/figure/${figure.id}`)}
             />
           )}
