@@ -15,7 +15,9 @@ import { STAMP_PHOTO_PLACEHOLDER } from '@/data/stampPhotos';
 const BASE = 'https://cdn.example.com';
 
 const park = parks[0]!;
-const figure = figures[0]!;
+// Not every figure has a known portrait, and the CDN-resolution assertions
+// below need one that does.
+const figure = figures.find((candidate) => candidate.portrait !== undefined)!;
 const merchItem = merch[0]!;
 
 // No catalog park carries photography yet, so the CDN-resolution branch of
@@ -74,7 +76,7 @@ describe('catalog image assets', () => {
 
     it('resolves a figure portrait to the CDN', () => {
       expect(figurePortrait(figure)).toEqual({
-        uri: `${BASE}${figure.portrait.source}`,
+        uri: `${BASE}${figure.portrait!.source}`,
         fallback: FIGURE_PHOTOS[figure.id],
       });
     });

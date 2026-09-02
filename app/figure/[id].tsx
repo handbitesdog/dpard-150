@@ -39,13 +39,19 @@ export default function FigureDetailScreen() {
         </Text>
       )}
 
+      <Text variant="body" style={styles.summary}>
+        {figure.summary.en}
+      </Text>
+
       <View style={styles.divider}>
         <Divider />
       </View>
 
-      <Section title="Biography">
-        <Text variant="body">{figure.biography.en}</Text>
-      </Section>
+      {figure.biography.map((section) => (
+        <Section key={section.heading.en} title={section.heading.en}>
+          <Text variant="body">{section.body.en}</Text>
+        </Section>
+      ))}
 
       {relatedParks.length > 0 && (
         <Section title="Related Parks">
@@ -77,6 +83,9 @@ const styles = StyleSheet.create({
   },
   lifespan: {
     marginTop: spacing.xs,
+  },
+  summary: {
+    marginTop: spacing.md,
   },
   divider: {
     marginTop: spacing.xl,

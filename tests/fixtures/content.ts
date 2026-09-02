@@ -34,8 +34,14 @@ export const validFigure = {
   id: 'test-figure',
   name: 'Test Figure',
   lifespan: '1900-1980',
+  summary: { en: 'A figure used for tests.' },
   portrait: validPhoto,
-  biography: { en: 'A figure used for tests.' },
+  biography: [
+    {
+      heading: { en: 'Early Life' },
+      body: { en: 'A figure used for tests.' },
+    },
+  ],
   relatedParkIds: ['test-park'],
 };
 

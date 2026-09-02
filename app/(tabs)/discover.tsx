@@ -12,9 +12,10 @@ import { Section } from '@/components/Section';
 import { ShopItem, SHOP_ITEM_WIDTH } from '@/components/ShopItem';
 import { Text } from '@/components/Text';
 import { figures, guides, merch, parks } from '@/data';
-import { merchPhoto, parkPhoto, parkPhotoById } from '@/data/assets';
+import { figurePortrait, merchPhoto, parkPhoto, parkPhotoById } from '@/data/assets';
 import { spacing } from '@/design/spacing';
 import { formatDuration } from '@/lib/formatDuration';
+import { lifespanYears } from '@/lib/lifespanYears';
 
 const AUDIO_TOUR_PREVIEW_COUNT = 5;
 const SHOP_URL = 'https://dallasparks.org/store';
@@ -58,7 +59,8 @@ export default function DiscoverScreen() {
           renderItem={(figure) => (
             <FigureCard
               name={figure.name}
-              era={figure.lifespan ?? ''}
+              era={figure.lifespan ? lifespanYears(figure.lifespan) : ''}
+              portrait={figurePortrait(figure)}
               onPress={() => router.push(`/figure/${figure.id}`)}
             />
           )}

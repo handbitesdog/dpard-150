@@ -1,30 +1,383 @@
 [
   {
-    "id": "george-kessler",
-    "name": "George Kessler",
-    "lifespan": "1862-1923",
+    "id": "adella-k-turner",
+    "name": "Adella K. Turner",
+    "lifespan": "January 13, 1856 – June 6, 1938",
+    "summary": {
+      "en": "Dallas civic activist who championed libraries, education, and community improvement."
+    },
     "portrait": {
-      "source": "/figures/george-kessler/portrait.jpg",
-      "alt": "Black and white portrait photograph of urban planner George Kessler",
-      "credit": "Dallas Public Library, Texas/Dallas History and Archives Division"
+      "source": "/figures/adella-k-turner/portrait.jpg",
+      "alt": "Portrait photograph of Dallas civic activist Adella K. Turner"
     },
-    "biography": {
-      "en": "A landscape architect whose 1911 city plan for Dallas proposed a connected system of parks and boulevards, laying the groundwork for what later became Fair Park's expansion and the green spaces that eventually linked downtown to the Arts District."
-    },
-    "relatedParkIds": ["klyde-warren-park", "fair-park"]
+    "biography": [
+      {
+        "heading": { "en": "A Leader in Dallas' Women's Civic Movement" },
+        "body": {
+          "en": "Adella K. Turner was a prominent Dallas social activist whose civic involvement helped expand access to education, literature, and community resources during a transformative period in the city's history. Born on January 13, 1856, Turner became part of a generation of women who used civic clubs and volunteer organizations to improve public life at a time when women had limited formal political power."
+        }
+      },
+      {
+        "heading": { "en": "The Standard Club and a Legacy of Community Service" },
+        "body": {
+          "en": "Turner began her activist work through the Standard Club of Dallas, a women's literary organization founded in 1886. She became the club's first vice president in 1900. Although literary study was central to the organization, the Standard Club and similar women's groups became important forces for civic improvement. Their service contributed to the establishment of free local kindergartens, YMCA branches, and the Dallas Public Library.\n\nTurner's involvement reflected the growing influence of women's clubs during the late nineteenth and early twentieth centuries. These organizations provided women with opportunities to organize, advocate, raise funds, and address community needs. Through this work, women helped shape public institutions even before they gained the right to vote nationally."
+        }
+      },
+      {
+        "heading": { "en": "Bringing Library Access to Oak Cliff" },
+        "body": {
+          "en": "One of Turner's most significant contributions came in 1913, when she helped bring the first free library to Oak Cliff. At a time when access to books and educational resources was far more limited than it is today, a free public library represented an important investment in the community. It provided residents with opportunities for learning, literacy, and personal enrichment regardless of their ability to purchase books.\n\nThe library was located in the area now known as Turner Plaza, preserving a connection between Turner's civic service and the neighborhood she worked to support. Her contribution to Oak Cliff was part of a broader movement to make educational and cultural resources more accessible to Dallas residents."
+        }
+      },
+      {
+        "heading": { "en": "A Lasting Impact on Dallas Communities" },
+        "body": {
+          "en": "Turner's legacy demonstrates how local activism can have a lasting impact on a growing city. Her work was not defined by a single campaign. Instead, it was rooted in sustained civic participation and a belief that strong communities depend on shared institutions and opportunities.\n\nBy supporting libraries, education, and other community resources, Adella K. Turner helped lay the groundwork for services that generations of Dallas residents would benefit from. She died on June 6, 1938, but her name remains connected to the city through Turner Plaza and the history of civic engagement in Oak Cliff. Her life offers an example of how determined community leadership can help transform local neighborhoods and expand access to knowledge and opportunity."
+        }
+      }
+    ],
+    "relatedParkIds": []
   },
   {
-    "id": "robert-cullum",
-    "name": "Robert B. Cullum",
-    "lifespan": "1889-1959",
+    "id": "anderson-bonner",
+    "name": "Anderson Bonner",
+    "lifespan": "1839 – 1920",
+    "summary": {
+      "en": "Formerly enslaved farmer and landowner who built a remarkable legacy in North Dallas."
+    },
     "portrait": {
-      "source": "/figures/robert-cullum/portrait.jpg",
-      "alt": "Black and white portrait photograph of civic leader Robert B. Cullum",
-      "credit": "Dallas Public Library, Texas/Dallas History and Archives Division"
+      "source": "/figures/anderson-bonner/portrait.jpg",
+      "alt": "Portrait photograph of farmer and landowner Anderson Bonner",
+      "credit": "Bonner Family Collection"
     },
-    "biography": {
-      "en": "A Dallas civic leader and longtime president of the State Fair of Texas who championed the expansion of Fair Park's grounds and later advocated for preserving the shoreline parkland around White Rock Lake."
+    "biography": [
+      {
+        "heading": { "en": "From Enslavement to Freedom" },
+        "body": {
+          "en": "Anderson Bonner's life is a remarkable story of perseverance, independence, and achievement in the decades following slavery. Born into slavery in Alabama around 1839, Bonner likely came to Texas during the Civil War. When slavery ended in 1865, he began building a new life as a free man in Dallas County.\n\nBonner married a woman named Eliza, and together they had ten children. Establishing financial security for a large family would have been challenging under any circumstances, but formerly enslaved people faced extraordinary barriers. Discrimination, limited educational opportunities, and restricted access to land and capital made economic advancement difficult for people of color during Reconstruction and the decades that followed."
+        }
+      },
+      {
+        "heading": { "en": "Building a Remarkable Legacy Through Land Ownership" },
+        "body": {
+          "en": "Despite these obstacles, Bonner became a successful farmer and landowner. The 1870 United States Census listed his net worth at $275, an amount that reflected a measure of economic success at the time. Only a few years later, in April 1874, Bonner purchased 60 acres of land in Dallas.\n\nUnable to read or write, he signed the deed with an \"X.\" Yet the signature on that document marked the beginning of an extraordinary accumulation of property. Over time, Bonner acquired more than 2,000 acres in what is now North Dallas.\n\nLand ownership represented far more than financial success for formerly enslaved people. It offered independence, stability, and the ability to build wealth for future generations. Bonner's achievements were particularly significant because they occurred during an era when Black landowners faced systemic discrimination and widespread efforts to restrict their economic and political advancement.\n\nBonner's property became part of the changing landscape of Dallas as the city expanded. Although much of the area eventually developed into the modern urban environment of North Dallas, his story remains closely connected to the land he once owned."
+        }
+      },
+      {
+        "heading": { "en": "A Legacy Preserved in Dallas" },
+        "body": {
+          "en": "Anderson Bonner died in 1920 at approximately 82 years old. He was buried in White Rock Colored Union Cemetery, now known as White Rock Garden of Memories Cemetery. His burial place connects his story to the history of Dallas's African American communities and to generations of families who built lives in the region despite profound social and economic barriers.\n\nIn 1976, the City of Dallas officially named Anderson Bonner Park in his honor. The park encompasses more than 44 acres of land that was once part of Bonner's extensive holdings.\n\nToday, Anderson Bonner's legacy is preserved not only through the park bearing his name, but also through the extraordinary story of his life. Born into slavery and denied formal education, he gained his freedom and built substantial landholdings through determination and enterprise. His journey reflects both the possibilities and the immense challenges of freedom after emancipation, while ensuring his place in the history of Dallas."
+        }
+      }
+    ],
+    "relatedParkIds": []
+  },
+  {
+    "id": "anita-martinez",
+    "name": "Anita Martinez",
+    "lifespan": "December 8, 1925 – April 10, 2026",
+    "summary": {
+      "en": "Trailblazing civic leader who became the first Mexican American elected to public office in Dallas."
     },
-    "relatedParkIds": ["fair-park", "white-rock-lake-park"]
+    "portrait": {
+      "source": "/figures/anita-martinez/portrait.jpg",
+      "alt": "Portrait photograph of Dallas civic leader Anita N. Martinez"
+    },
+    "biography": [
+      {
+        "heading": { "en": "Breaking Barriers in Dallas Government" },
+        "body": {
+          "en": "Anita N. Martinez was a pioneering Dallas civic leader whose work in government, culture, and youth development created a lasting legacy. Born on December 8, 1925, Martinez dedicated much of her life to expanding opportunities and representation for Dallas's Mexican American and Hispanic communities.\n\nIn 1969, Martinez made history when she was elected to the Dallas City Council, becoming the first Mexican American elected government official in Dallas. She served on the council until 1973. Her election represented an important milestone for a community that had long contributed to Dallas but remained underrepresented in local government."
+        }
+      },
+      {
+        "heading": { "en": "Preserving Culture Through Ballet Folklorico" },
+        "body": {
+          "en": "Martinez's public service extended far beyond elected office. She understood that strong communities require places where young people can learn, gather, develop confidence, and connect with their heritage.\n\nIn 1975, she founded the Anita N. Martinez Ballet Folklorico. The organization was created to connect young people with Hispanic culture through traditional dance and performance. Ballet folklórico preserves and celebrates the diverse regional traditions of Mexico through movement, music, and colorful costumes.\n\nThrough the organization, generations of young people have had opportunities to explore their cultural heritage while developing discipline, confidence, and a sense of belonging. The organization continues to operate today, extending Martinez's cultural and educational legacy into new generations."
+        }
+      },
+      {
+        "heading": { "en": "Creating Opportunities for Dallas Youth" },
+        "body": {
+          "en": "Her commitment to young people was also reflected in the opening of the Anita Martinez Recreation Center in 1976. Created as a place for the children of West Dallas to play and participate in community activities, the center represented Martinez's belief that young people deserved safe and supportive spaces in their own neighborhoods. The facility remains part of Dallas's recreational landscape."
+        }
+      },
+      {
+        "heading": { "en": "A Legacy of Representation and Service" },
+        "body": {
+          "en": "Throughout her life, Martinez received recognition for her extensive community service. Her honors included the Zonta Award for Constructive Voluntary Contribution to Community and Civic Affairs and the JCPenney Golden Rule Award for Volunteer Service. These awards reflected a lifetime of leadership grounded in direct service to others.\n\nMartinez lived to see the long-term impact of many of the institutions and opportunities she helped create. She died on April 10, 2026, at the age of 100.\n\nHer legacy can be found in many forms: in the history of Latino representation in Dallas government, in the dancers who have connected with their heritage through Ballet Folklorico, and in the generations of children who have gathered at the recreation center bearing her name.\n\nAnita N. Martinez demonstrated that civic leadership can take many forms. She served through elected office, cultural preservation, volunteerism, and advocacy for young people. By opening doors in government and creating institutions that continue to serve the community, she helped shape a more representative and culturally vibrant Dallas."
+        }
+      }
+    ],
+    "relatedParkIds": []
+  },
+  {
+    "id": "edwin-j-kiest",
+    "name": "Edwin J. Kiest",
+    "lifespan": "1861 – 1941",
+    "summary": {
+      "en": "Newspaper publisher and civic leader who supported Dallas parks, broadcasting, and public institutions."
+    },
+    "portrait": {
+      "source": "/figures/edwin-j-kiest/portrait.jpg",
+      "alt": "Portrait photograph of publisher and park board president Edwin J. Kiest"
+    },
+    "biography": [
+      {
+        "heading": { "en": "A Publisher Who Helped Shape Dallas" },
+        "body": {
+          "en": "Edwin J. Kiest was a prominent Dallas publisher and civic leader whose influence extended across journalism, broadcasting, public events, and the city's park system. Born in Illinois in 1861, Kiest moved to Dallas in 1890 and became deeply involved in the growth and development of his adopted city.\n\nIn 1896, Kiest purchased the Dallas Daily Times Herald, placing him at the center of the city's rapidly developing newspaper industry. Newspapers played an essential role in shaping public conversation during this period, informing residents about politics, business, community affairs, and the dramatic changes occurring as Dallas grew.\n\nKiest's interest in communications expanded beyond print journalism. He supported the development of radio in Dallas, including WRR, one of the city's pioneering radio stations. In 1927, he purchased KRLD, further strengthening his role in the evolution of mass communication in North Texas."
+        }
+      },
+      {
+        "heading": { "en": "Leadership Beyond the Newsroom" },
+        "body": {
+          "en": "His civic involvement also included leadership with the State Fair of Texas. Kiest served as president of the organization from 1908 to 1911 and again from 1920 to 1921. The State Fair was already becoming one of Dallas's most important public institutions, and leadership of the organization placed Kiest at the center of efforts to promote the city and bring residents together through exhibitions, entertainment, agriculture, and industry.\n\nKiest also made a significant impact on Dallas's parks. He served as president of the Dallas City Park Board from 1931 to 1935 and continued as a director until his death in 1941. His years of service came during an important era for the development of public parks and recreational spaces in Dallas."
+        }
+      },
+      {
+        "heading": { "en": "The Lasting Legacy of Kiest Park" },
+        "body": {
+          "en": "In 1935, Kiest donated land to the city for the creation of a park honoring his late wife, Elizabeth Patterson Kiest. City archival records preserve documentation of the donation and the instructions associated with naming the park in her memory.\n\nKiest Park became a lasting part of Dallas's park system. Its creation reflected both Kiest's personal desire to memorialize his wife and his broader commitment to public green space. During the 1930s, the park also benefited from federal relief-era development, illustrating how local philanthropy and public investment could work together to create enduring community assets."
+        }
+      },
+      {
+        "heading": { "en": "A Lasting Impact on Dallas" },
+        "body": {
+          "en": "Edwin J. Kiest died in 1941, leaving behind a legacy that touched several major areas of Dallas life. Through newspapers and radio, he contributed to the ways residents received information. Through the State Fair of Texas, he supported one of the city's most significant public institutions. Through his leadership and philanthropy in the park system, he helped expand opportunities for recreation and community gathering.\n\nHis life reflects the influence that civic-minded individuals could have on a rapidly growing city. The park associated with the Kiest name remains a visible reminder of his contributions and of the personal memorial that became a public resource for generations of Dallas residents."
+        }
+      }
+    ],
+    "relatedParkIds": ["fair-park"]
+  },
+  {
+    "id": "george-kessler",
+    "name": "George Kessler",
+    "lifespan": "1862 – 1923",
+    "summary": {
+      "en": "Influential landscape architect and city planner whose vision helped shape modern Dallas."
+    },
+    "portrait": {
+      "source": "/figures/george-kessler/portrait.jpg",
+      "alt": "Portrait photograph of landscape architect and city planner George E. Kessler"
+    },
+    "biography": [
+      {
+        "heading": { "en": "A Visionary in Landscape Architecture and City Planning" },
+        "body": {
+          "en": "George E. Kessler was an internationally influential landscape architect and city planner whose ideas helped shape Dallas and communities across the United States. Born in Germany in 1862, Kessler immigrated to the United States with his family in 1865. He later returned to Germany to study landscape architecture, developing the expertise that would guide his career.\n\nAfter returning to the United States, Kessler gained professional experience during an era when American cities were beginning to think more deliberately about parks, transportation, public spaces, and long-term growth. His career was influenced by the broader development of landscape architecture and urban planning, including the work associated with Frederick Law Olmsted and the City Beautiful movement.\n\nKessler became known for approaching cities as interconnected systems. Streets, parks, waterways, transportation routes, and neighborhoods could not be planned effectively in isolation. Instead, he believed thoughtful planning could improve both the beauty and function of urban environments."
+        }
+      },
+      {
+        "heading": { "en": "Shaping the Future of Dallas" },
+        "body": {
+          "en": "In 1904, Kessler was hired to design Fair Park in Dallas. His work there helped establish his relationship with the city and demonstrated the value of professional landscape and civic planning.\n\nIn 1909, Kessler was hired to develop a comprehensive city plan for Dallas. The resulting Kessler Plan proposed long-term improvements intended to address some of the city's most pressing challenges. Among its recommendations were measures related to controlling flooding along the Trinity River, improving downtown streets, and creating transportation routes that would help Dallas accommodate future growth.\n\nThe plan was ambitious, and many of its ideas were not immediately implemented. Nevertheless, its influence endured. As Dallas continued to grow, elements of Kessler's vision informed later infrastructure and development decisions."
+        }
+      },
+      {
+        "heading": { "en": "A Lasting Influence Beyond Dallas" },
+        "body": {
+          "en": "Kessler returned to Dallas in 1918 and continued contributing to the city's planning efforts. He served as a consulting engineer for the Dallas Property Owners' Association and worked with the Metropolitan Development Association of the Dallas Chamber of Commerce.\n\nHis influence was not limited to Dallas. Throughout his career, Kessler contributed to plans and projects in communities across the United States, including Cincinnati, Terre Haute, Cleveland, El Paso, Denver, Sherman, and Syracuse. His work reflected the growing professionalization of city planning during the late nineteenth and early twentieth centuries."
+        }
+      },
+      {
+        "heading": { "en": "The Enduring Legacy of the Kessler Plan" },
+        "body": {
+          "en": "George Kessler died in 1923. By then, he had helped shape the development of numerous American cities and had established a particularly important legacy in Dallas. The lasting significance of the Kessler Plan lies not only in individual projects, but also in the idea that a city's future could be deliberately planned. Kessler encouraged Dallas leaders to think beyond immediate needs and consider how infrastructure, public space, transportation, and the natural environment would work together over generations.\n\nToday, his name remains closely connected to Dallas history and the evolution of its urban landscape. City archives continue to preserve materials related to Kessler and Dallas park planning, reflecting the lasting importance of his work."
+        }
+      }
+    ],
+    "relatedParkIds": ["fair-park"]
+  },
+  {
+    "id": "juanita-j-craft",
+    "name": "Juanita J. Craft",
+    "lifespan": "1902 – 1985",
+    "summary": {
+      "en": "Civil rights leader who fought segregation and expanded political representation in Dallas and across Texas."
+    },
+    "portrait": {
+      "source": "/figures/juanita-j-craft/portrait.jpg",
+      "alt": "Portrait photograph of civil rights leader Juanita J. Craft"
+    },
+    "biography": [
+      {
+        "heading": { "en": "A Champion for Civil Rights in Dallas" },
+        "body": {
+          "en": "Juanita J. Craft was one of Dallas's most influential civil rights leaders. Through decades of organizing, protest, voter engagement, and public service, she challenged segregation and worked to expand opportunities for Black Texans.\n\nBorn in Round Rock, Texas, in 1902, Craft moved to Dallas by 1925. She became involved with the NAACP in 1935, beginning a relationship with the organization that would define much of her public life.\n\nBy 1942, Craft had become membership chairman of the Dallas NAACP. In 1946, she became a Texas NAACP field organizer. Her work required extensive travel and community organizing, and she helped establish or organize 182 NAACP branches.\n\nIn 1944, Craft became the first Black woman to vote in a Dallas County election. Her participation in the political process carried particular significance during an era when discriminatory laws and practices were used throughout the South to suppress Black voting rights."
+        }
+      },
+      {
+        "heading": { "en": "Leading the Fight Against Segregation" },
+        "body": {
+          "en": "Craft understood that civil rights required action across many areas of public life. During the 1950s, she organized protests challenging segregation at lunch counters, restaurants, theaters, and on public transportation. These efforts were part of a broader movement to dismantle systems that excluded Black residents from equal participation in everyday civic life.\n\nShe also played an important role in efforts to integrate educational institutions, including the University of Texas School of Law and the Dallas Independent School District. Education was a central battleground of the Civil Rights Movement, and activists such as Craft worked for years to challenge discriminatory systems.\n\nIn 1955, Craft led a protest against segregation at the State Fair of Texas. At the time, Black visitors were largely restricted to attending on a designated \"Negro Achievement Day.\" The protest challenged the idea that a major public institution could welcome Black residents only under segregated conditions."
+        }
+      },
+      {
+        "heading": { "en": "From Activist to Public Servant" },
+        "body": {
+          "en": "Craft's leadership eventually extended into elected office. She served two terms on the Dallas City Council after elections in 1975 and 1979. Her service represented another chapter in a life dedicated to ensuring that Black Dallas residents had a voice in the decisions affecting their communities.\n\nThroughout her lifetime, Craft received significant recognition for her work. She was awarded the NAACP Golden Heritage Life Membership Award in 1978 and the Eleanor Roosevelt Humanitarian Award in 1984."
+        }
+      },
+      {
+        "heading": { "en": "An Enduring Legacy of Equality" },
+        "body": {
+          "en": "Juanita J. Craft died in 1985, but her legacy remains deeply embedded in Dallas history. Parks, recreation facilities, archival collections, and historic sites preserve her connection to the city. Dallas Municipal Archives records document both Juanita J. Craft Park and the J.J. Craft House and Museum.\n\nCraft's life demonstrates the power of sustained grassroots activism. Her achievements were built through decades of organizing meetings, recruiting members, challenging discriminatory practices, encouraging political participation, and refusing to accept segregation as permanent. Her work helped change Dallas and contributed to the larger struggle for civil rights in Texas and the United States."
+        }
+      }
+    ],
+    "relatedParkIds": ["juanita-j-craft-park", "fair-park"]
+  },
+  {
+    "id": "julien-reverchon",
+    "name": "Julien Reverchon",
+    "lifespan": "1837 – 1905",
+    "summary": {
+      "en": "French-born botanist whose extensive research documented thousands of Texas plant species."
+    },
+    "portrait": {
+      "source": "/figures/julien-reverchon/portrait.jpg",
+      "alt": "Portrait photograph of botanist Julien Reverchon"
+    },
+    "biography": [
+      {
+        "heading": { "en": "A Pioneer in Texas Botany" },
+        "body": {
+          "en": "Julien Reverchon was a French-born botanist whose exploration and documentation of Texas plant life made him an important figure in the scientific history of the state. Born in France in 1837, Reverchon developed a connection to the natural world that would eventually lead him to assemble one of the most significant collections of Texas plants of his era.\n\nAt the age of 19, Reverchon emigrated to the United States. He settled in the Dallas area in 1856, when the city and surrounding region looked dramatically different from the urban landscape of today.\n\nReverchon became deeply interested in botany and began studying and collecting the plants of Texas. During the nineteenth century, large portions of the state remained scientifically undocumented. Botanists who explored these regions played an essential role in identifying, preserving, and classifying plant species."
+        }
+      },
+      {
+        "heading": { "en": "Exploring the Flora of Texas" },
+        "body": {
+          "en": "In 1879, Reverchon explored West Texas and encountered an unknown plant species that would become associated with his name through the genus Reverchonia. The recognition reflected his growing reputation as a knowledgeable collector and botanist.\n\nHis explorations continued. In 1885, Reverchon traveled through Southwest Texas, including areas that had received little attention from botanists. These expeditions resulted in additional discoveries and contributed valuable information about the diversity of Texas plant life.\n\nReverchon donated specimens he collected to major scientific institutions, including the United States Department of Agriculture and the Smithsonian Institution. By sharing his discoveries, he helped make Texas plant specimens available for broader scientific study."
+        }
+      },
+      {
+        "heading": { "en": "Sharing Knowledge Through Science and Education" },
+        "body": {
+          "en": "His expertise also led him into education. Reverchon taught botany at the Baylor University College of Medicine and Pharmacy in Dallas, widely contributing to the scientific community of the growing city.\n\nBy the time of his death in 1905, Reverchon's farm contained more than 2,600 species and over 20,000 specimens of Texas plants. At the time, the collection was considered one of the finest of its kind.\n\nThe scale of his collection reflected decades of patient observation and fieldwork. Long before modern databases and digital photography, botanists documented the natural world by physically collecting, preserving, labeling, and comparing specimens. Their work created records that later scientists could study and build upon."
+        }
+      },
+      {
+        "heading": { "en": "A Lasting Legacy in Dallas Parks" },
+        "body": {
+          "en": "Reverchon was buried in the cemetery of La Réunion, the historic French colony established near Dallas. His connection to the city also lives on through Reverchon Park, which was named in his honor and remains part of the Dallas park system. Municipal archival collections preserve photographs and records documenting the park's long history.\n\nJulien Reverchon's legacy bridges science and place. His work helped document the remarkable botanical diversity of Texas while connecting Dallas to a broader network of scientific research. Through the plants he collected, the knowledge he shared, and the park that bears his name, his influence continues to be remembered."
+        }
+      }
+    ],
+    "relatedParkIds": ["reverchon-park"]
+  },
+  {
+    "id": "mildred-louise-dunn",
+    "name": "Mildred Louise Dunn",
+    "lifespan": "1924 – 1987",
+    "summary": {
+      "en": "Dedicated Dallas park employee whose three decades of service helped shape the city's recreational spaces."
+    },
+    "biography": [
+      {
+        "heading": { "en": "A Career Dedicated to Dallas Parks" },
+        "body": {
+          "en": "Mildred Louise Dunn devoted approximately 30 years of her career to park development in Dallas, contributing to the public spaces and recreational resources that served residents throughout the city. Born in 1924, Dunn belonged to a generation of municipal employees whose sustained work helped Dallas's park system expand and respond to the needs of a growing population.\n\nUnlike civic leaders whose careers were documented through elected office or highly visible public campaigns, Dunn's legacy is closely tied to long-term public service. Her work in park development reflected the essential role of municipal employees in turning plans for public spaces into resources that communities could use and enjoy."
+        }
+      },
+      {
+        "heading": { "en": "Supporting a Growing City" },
+        "body": {
+          "en": "Parks are more than areas of open land. Their development requires ongoing planning, coordination, improvement, maintenance, and an understanding of community needs. Over the course of a 30-year career, Dunn would have witnessed significant changes in Dallas and in the expectations placed on its public recreation system.\n\nDuring the mid-twentieth century, Dallas expanded geographically and experienced major demographic and social changes. As neighborhoods developed, the need for parks, playgrounds, recreation centers, athletic facilities, and other public amenities grew as well. Park development employees played an important role in helping the city respond to those changes.\n\nDunn's decades of service placed her within this broader story of Dallas's growth. Her work contributed to a public park system designed to provide residents with places for recreation, exercise, community gatherings, and everyday enjoyment."
+        }
+      },
+      {
+        "heading": { "en": "A Lasting Connection to Lagow Park" },
+        "body": {
+          "en": "Her connection to Dallas parks is preserved through the naming of Lagow Park in her honor. City archival materials identify the site as Lagow, or Mildred Dunn, Park, reflecting the relationship between the park's history and Dunn's service.\n\nThe park itself also has roots in an important period of American public works history. Municipal archival records identify Lagow Park as one of the Dallas projects developed through the Works Progress Administration during the New Deal era. Such projects helped create and improve public infrastructure while providing employment during the Great Depression.\n\nThe later association of the park with Mildred Dunn added another layer to its history. By honoring a longtime park development employee, Dallas recognized the contributions of someone whose career was devoted to the city's public spaces."
+        }
+      },
+      {
+        "heading": { "en": "Honoring a Legacy of Public Service" },
+        "body": {
+          "en": "While Dunn died in 1987, her story highlights the many people behind a successful park system. Public spaces are shaped not only by major donors, elected officials, and celebrated designers, but also by career professionals who dedicate decades to planning, developing, and supporting them.\n\nMildred Louise Dunn's legacy is therefore one of service. Through approximately three decades of work in park development, she contributed to the recreational landscape of Dallas and to the public spaces that help communities thrive."
+        }
+      }
+    ],
+    "relatedParkIds": []
+  },
+  {
+    "id": "w-w-samuell",
+    "name": "Dr. William Worthington \"W. W.\" Samuell",
+    "lifespan": "1878 – 1937",
+    "summary": {
+      "en": "Surgeon and philanthropist whose extraordinary land gifts transformed the Dallas park system."
+    },
+    "portrait": {
+      "source": "/figures/w-w-samuell/portrait.jpg",
+      "alt": "Portrait photograph of surgeon and philanthropist Dr. W. W. Samuell"
+    },
+    "biography": [
+      {
+        "heading": { "en": "A Surgeon with a Vision for Dallas" },
+        "body": {
+          "en": "Dr. William Worthington \"W. W.\" Samuell was a Dallas surgeon, civic leader, and philanthropist whose generosity had a profound impact on the city's park system. Often referred to as the \"father of Dallas parks,\" Samuell helped ensure that large areas of land would be preserved for public recreation and enjoyment.\n\nBorn in Kentucky in 1878, Samuell moved to Dallas with his family when he was approximately one year old. He grew up alongside the developing city and eventually pursued a career in medicine.\n\nSamuell attended medical school at Tulane University and continued his professional development in Europe. His education and international experience prepared him for a career as a surgeon at a time when medicine was undergoing rapid advances.\n\nIn 1914, Dr. Samuell opened a medical clinic in Dallas. His work as a physician established him as a respected professional, but his long-term legacy would extend well beyond medicine."
+        }
+      },
+      {
+        "heading": { "en": "Preserving Land for Future Generations" },
+        "body": {
+          "en": "Samuell became deeply interested in the future of Dallas and particularly in the importance of public land. As cities grow, undeveloped property often becomes increasingly valuable and vulnerable to private development. Preserving land for parks requires long-term vision, especially when the immediate financial value of selling or developing that land may be substantial.\n\nThrough major gifts of land and resources, Samuell helped shape the future of the Dallas park system. His philanthropy provided the city with property that could be used for recreation, green space, and community facilities.\n\nThe scale of his contributions earned him a lasting place in Dallas history. Parks and properties bearing the Samuell name remain part of the city's public landscape, including Samuell-Grand Park, Samuell-Elam Park, and Samuell Farm. Dallas Municipal Archives collections preserve extensive photographic and historical records related to these properties."
+        }
+      },
+      {
+        "heading": { "en": "A Legacy of Philanthropy" },
+        "body": {
+          "en": "Samuell's approach to philanthropy reflected a belief that land could become a permanent public asset. A gift of parkland does more than serve one generation. When protected and maintained, it can provide recreation, natural space, and community gathering places for decades or even centuries.\n\nHis legacy is particularly significant because Dallas continued to grow dramatically after his lifetime. Land that may once have seemed distant from the city's urban center eventually became increasingly valuable as development expanded. By dedicating property for public purposes, Samuell helped preserve spaces that might otherwise have disappeared."
+        }
+      },
+      {
+        "heading": { "en": "The Father of Dallas Parks" },
+        "body": {
+          "en": "Dr. W. W. Samuell died in 1937, but his influence continued through the property and resources he left for the benefit of Dallas residents. His life brought together medicine, civic responsibility, and philanthropy. As a surgeon, he devoted his professional career to caring for people. As a benefactor, he made investments in the long-term health and quality of life of the entire city.\n\nToday, the Samuell name remains woven into the Dallas park system. His contributions demonstrate how one individual's long-term vision and generosity can shape a city for generations."
+        }
+      }
+    ],
+    "relatedParkIds": ["samuell-grand-park"]
+  },
+  {
+    "id": "william-r-tietze",
+    "name": "William R. Tietze",
+    "lifespan": "1859 – 1933",
+    "summary": {
+      "en": "Longtime parks superintendent who helped expand Dallas from one park to a citywide park system."
+    },
+    "portrait": {
+      "source": "/figures/william-r-tietze/portrait.jpg",
+      "alt": "Portrait photograph of Dallas parks superintendent William R. Tietze"
+    },
+    "biography": [
+      {
+        "heading": { "en": "A Pioneer of Dallas Parks" },
+        "body": {
+          "en": "William Robert Tietze played a foundational role in the development of the Dallas park system. Born in 1859, Tietze was a wholesale florist whose knowledge of plants and landscapes complemented a career that would become closely connected to the growth of public parks in Dallas.\n\nTietze served as superintendent of the Dallas Park and Recreation Department from 1896 until his death in 1933. His tenure spanned nearly four decades, a period during which Dallas experienced dramatic growth and transformation.\n\nWhen Tietze began his work, Dallas had only one public park. By the end of his career, the system had grown to more than 50 parks. That expansion reflected both the city's rapid development and a growing national belief that parks were essential components of healthy urban communities."
+        }
+      },
+      {
+        "heading": { "en": "Growing a Park System for a Growing City" },
+        "body": {
+          "en": "In the late nineteenth and early twentieth centuries, American cities increasingly recognized the importance of public green spaces. Parks offered relief from crowded urban environments and provided places for recreation, exercise, gatherings, and contact with nature.\n\nAs superintendent, Tietze helped guide Dallas through this important period of park expansion. Growing a system from a single park to dozens of public spaces required sustained planning and administration. New properties had to be identified, acquired, developed, and maintained as the city expanded.\n\nTietze's background as a florist also connected him to the horticultural dimensions of park development. During this era, landscaping was an important part of creating attractive and welcoming public spaces. Trees, gardens, lawns, and other plantings helped transform land into parks designed for public enjoyment."
+        }
+      },
+      {
+        "heading": { "en": "Building the Foundation for Future Growth" },
+        "body": {
+          "en": "His long career also overlapped with major changes in the organization of Dallas parks. The Dallas Municipal Archives preserves the city charter amendment that created the Dallas Park Board in 1906, a significant step in the formal development of the municipal park system.\n\nOver the following decades, Dallas continued adding and improving parks. By the time of Tietze's death in 1933, the system he had helped oversee had expanded dramatically from its modest beginnings.\n\nTietze's legacy is commemorated through Tietze Park. Archival collections preserve extensive records and photographs related to the park, documenting its place in the city's recreational history. The park later benefited from Works Progress Administration improvements during the New Deal era, demonstrating how Dallas's established park system continued to evolve after Tietze's lifetime."
+        }
+      },
+      {
+        "heading": { "en": "A Lasting Legacy of Public Service" },
+        "body": {
+          "en": "William Robert Tietze died in 1933 after approximately 37 years of service to Dallas parks. Few individuals have careers that span such a formative period in a city's development.\n\nHis legacy can be measured in the extraordinary growth of the system he helped oversee—from one park to more than 50. More importantly, it can be seen in the idea of a connected municipal park system designed to serve residents across a growing city. Through decades of public service, William R. Tietze helped establish the foundation on which future generations of Dallas park leaders would build."
+        }
+      }
+    ],
+    "relatedParkIds": ["tietze-park"]
   }
 ]
