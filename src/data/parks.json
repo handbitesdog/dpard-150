@@ -305,8 +305,8 @@
     "streetAddress": "6805 Patrol Way, Dallas, TX 75241",
     "photos": [],
     "location": {
-      "latitude": 32.664,
-      "longitude": -96.781
+      "latitude": 32.666773,
+      "longitude": -96.789116
     },
     "stampRadiusMeters": 150,
     "stamp": {
