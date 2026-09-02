@@ -18,6 +18,13 @@ const park = parks[0]!;
 const figure = figures[0]!;
 const merchItem = merch[0]!;
 
+// No catalog park carries photography yet, so the CDN-resolution branch of
+// `parkPhoto` needs a park with a `photos` entry built for it.
+const photographedPark = {
+  ...park,
+  photos: [{ source: '/parks/fair-park/esplanade.jpg', alt: 'The Fair Park esplanade' }],
+};
+
 describe('catalog image assets', () => {
   afterEach(() => {
     delete process.env.EXPO_PUBLIC_CDN_BASE_URL;
@@ -59,9 +66,9 @@ describe('catalog image assets', () => {
     });
 
     it('resolves a park photo to the CDN, carrying the bundled art as fallback', () => {
-      expect(parkPhoto(park)).toEqual({
-        uri: `${BASE}${park.photos[0]!.source}`,
-        fallback: PARK_PHOTOS[park.id],
+      expect(parkPhoto(photographedPark)).toEqual({
+        uri: `${BASE}${photographedPark.photos[0]!.source}`,
+        fallback: PARK_PHOTOS[photographedPark.id],
       });
     });
 

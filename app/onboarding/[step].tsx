@@ -30,13 +30,13 @@ const SLIDE_BACKGROUNDS = [
   require('../../assets/onboarding-slide-bg-4.jpg'),
 ];
 
-// Picked for content relevance to each slide's copy, not file order —
-// "Collect" shows the Park Stamps screen (onboarding-3.png), for example.
+// Picked for content relevance to each slide's copy — the map slide shows the
+// Explore map, the audio slide the Audio Tour list, and so on.
 const SLIDE_PHONES = [
-  require('../../assets/onboarding-1.png'), // Learn — Explore map
-  require('../../assets/onboarding-3.png'), // Collect — Park Stamps
-  require('../../assets/onboarding-2.png'), // Listen — Audio Tour list
-  require('../../assets/onboarding-4.png'), // Connect — Passport
+  require('../../assets/onboarding-1.png'), // Map — Explore map
+  require('../../assets/onboarding-2.png'), // Audio — Audio Tour list
+  require('../../assets/onboarding-3.png'), // Stamps — Park Stamps
+  require('../../assets/onboarding-4.png'), // Reward — Passport
 ];
 
 const PHONE_ASPECT_RATIO = 928 / 1830;
