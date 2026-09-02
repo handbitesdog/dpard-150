@@ -19,6 +19,9 @@ type PassportCardProps = {
 /** completion-stamp.png is 2251x1811. */
 const COMPLETION_BADGE_ASPECT_RATIO = 2251 / 1811;
 
+/** Fraction of the card's width the completion badge spans. */
+const COMPLETION_BADGE_WIDTH_RATIO = 0.58;
+
 /**
  * passport-cover.jpg ships pre-cropped: the supplied artwork has rounded
  * corners baked into its alpha, so the transparent arcs are trimmed off and
@@ -30,14 +33,21 @@ const SEAL_ART = require('../../assets/passport-seal.png');
 /** Passport cover — stamp count and a link to the full collection. */
 export function PassportCard({ collected, total, onViewCollection }: PassportCardProps) {
   const [sealSize, setSealSize] = useState(0);
+  const [cardWidth, setCardWidth] = useState(0);
   const isComplete = total > 0 && collected >= total;
 
   const handleSealWrapperLayout = (event: LayoutChangeEvent) => {
     setSealSize(event.nativeEvent.layout.width);
   };
 
+  const handleCardLayout = (event: LayoutChangeEvent) => {
+    setCardWidth(event.nativeEvent.layout.width);
+  };
+
+  const badgeWidth = cardWidth * COMPLETION_BADGE_WIDTH_RATIO;
+
   return (
-    <View style={styles.card}>
+    <View style={styles.card} onLayout={handleCardLayout}>
       <Image source={COVER_ART} style={styles.cover} resizeMode="cover" />
 
       <View style={styles.content}>
@@ -47,18 +57,6 @@ export function PassportCard({ collected, total, onViewCollection }: PassportCar
             style={{ width: sealSize, height: sealSize }}
             resizeMode="contain"
           />
-          {isComplete && (
-            <Image
-              source={require('../../assets/completion-stamp.png')}
-              accessible
-              accessibilityLabel="Passport completed"
-              resizeMode="contain"
-              style={[
-                styles.completionBadge,
-                { width: sealSize * 0.55, height: (sealSize * 0.55) / COMPLETION_BADGE_ASPECT_RATIO },
-              ]}
-            />
-          )}
         </View>
 
         <View style={styles.spacer} />
@@ -90,6 +88,19 @@ export function PassportCard({ collected, total, onViewCollection }: PassportCar
           <Ionicons name="chevron-forward" size={typography.headline.size} color={palette.white} />
         </Pressable>
       </View>
+
+      {isComplete && (
+        <Image
+          source={require('../../assets/completion-stamp.png')}
+          accessible
+          accessibilityLabel="Passport completed"
+          resizeMode="contain"
+          style={[
+            styles.completionBadge,
+            { width: badgeWidth, height: badgeWidth / COMPLETION_BADGE_ASPECT_RATIO },
+          ]}
+        />
+      )}
     </View>
   );
 }
@@ -122,11 +133,13 @@ const styles = StyleSheet.create({
     marginTop: spacing['2xl'],
     marginHorizontal: spacing.lg,
   },
+  // Sized and placed against the card rather than the seal: the badge is meant
+  // to land across the seal's lower edge and the stamp count.
   completionBadge: {
     position: 'absolute',
-    right: '5%',
-    bottom: '-8%',
-    transform: [{ rotate: '-12deg' }],
+    right: '7%',
+    bottom: '16%',
+    transform: [{ rotate: '-10deg' }],
   },
   spacer: {
     flex: 1,
