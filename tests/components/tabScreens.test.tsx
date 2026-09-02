@@ -16,7 +16,7 @@ describe('tab screens', () => {
     ['Audio Tour Guides', ListenScreen],
     ['Explore', ExploreScreen],
     ['Passport', PassportScreen],
-    ['Connect', ConnectScreen],
+    ['Community Hub', ConnectScreen],
   ] as const;
 
   it.each(screens)('%s renders with a heading', async (title, Screen) => {
