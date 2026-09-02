@@ -102,7 +102,7 @@ export default function DiscoverScreen() {
 
 const styles = StyleSheet.create({
   title: {
-    marginTop: spacing.lg,
-    marginBottom: spacing.xl,
+    marginTop: spacing.sm,
+    marginBottom: spacing.base,
   },
 });

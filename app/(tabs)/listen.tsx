@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   hero: {
     backgroundColor: palette.navy,
     paddingHorizontal: spacing.base,
-    paddingBottom: spacing.lg,
+    paddingBottom: spacing.xl,
   },
   heroHeader: {
     flexDirection: 'row',
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     opacity: 0.85,
   },
   searchWrap: {
-    marginTop: spacing.lg,
+    marginTop: spacing.base,
     ...shadows.elevated,
   },
   list: {

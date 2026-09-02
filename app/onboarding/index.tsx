@@ -10,6 +10,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Text } from '@/components/Text';
 import { palette } from '@/design/colors';
+import { radii } from '@/design/radii';
+import { sizes } from '@/design/sizes';
+import { spacing } from '@/design/spacing';
 
 const BACKGROUND = require('../../assets/onboarding-background.jpg');
 const TOP_LOGO = require('../../assets/DPARD-150-logo.png');
@@ -57,7 +60,7 @@ export default function OnboardingWelcome() {
             width: bottomLogoWidth,
             height: bottomLogoWidth / BOTTOM_LOGO_RATIO,
             alignSelf: 'center',
-            marginTop: 16,
+            marginTop: spacing.base,
           }}
           resizeMode="contain"
           accessibilityRole="image"
@@ -70,16 +73,16 @@ export default function OnboardingWelcome() {
 
 const styles = StyleSheet.create({
   background: { flex: 1 },
-  screen: { flex: 1, padding: 24 },
-  body: { marginTop: 56 },
+  screen: { flex: 1, padding: spacing.xl },
+  body: { marginTop: spacing['4xl'] },
   button: {
-    minHeight: 44,
-    borderRadius: 12,
+    minHeight: sizes.touchTarget,
+    borderRadius: radii.md,
     backgroundColor: palette.pear,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 24,
-    marginBottom: 40,
+    paddingHorizontal: spacing.xl,
+    marginBottom: spacing['3xl'],
   },
   spacer: { flex: 1 },
   buttonLabel: { textTransform: 'uppercase', letterSpacing: 0.5 },
